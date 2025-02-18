@@ -1,0 +1,1596 @@
+<!doctype html>
+<html lang="en-US">
+    <head>
+        <title>React-admin - WizardForm</title>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+        <meta name="description" content="" />
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <link
+            rel="canonical"
+            href="/react-admin/WizardForm.html"
+        />
+        <link
+            rel="stylesheet"
+            href="/react-admin/css/materialize.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="/react-admin/css/style-v21.css"
+        />
+        <link rel="stylesheet" href="/react-admin/css/syntax.css" />
+        <link rel="stylesheet" href="/react-admin/css/prism.css" />
+        <link rel="stylesheet" href="/react-admin/css/tocbot.css" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.0/tocbot.css"
+            integrity="sha512-2kqK5bWDwdrluTn6Wkj+jgiwyzvAHLirVp08Kz7kN5I8PWQ0tUtEMxfhyWDCrnws91BJ9PfrUy6ImfA7Qb22TA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <link
+            rel="stylesheet"
+            href="/react-admin/css/docsearch.css"
+        />
+        <!-- Newsletter form -->
+        <style>
+            @font-face {
+                font-display: block;
+                font-family: Roboto;
+                src:
+                    url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2)
+                        format('woff2'),
+                    url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff)
+                        format('woff');
+            }
+
+            @font-face {
+                font-display: fallback;
+                font-family: Roboto;
+                font-weight: 600;
+                src:
+                    url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2)
+                        format('woff2'),
+                    url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/71501f0d8d5aa95960f6475d5487d4c2.woff)
+                        format('woff');
+            }
+
+            @font-face {
+                font-display: fallback;
+                font-family: Roboto;
+                font-weight: 700;
+                src:
+                    url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2)
+                        format('woff2'),
+                    url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff)
+                        format('woff');
+            }
+
+            #sib-container input:-ms-input-placeholder {
+                text-align: left;
+                font-family: 'Helvetica', sans-serif;
+                color: #c0ccda;
+            }
+
+            #sib-container input::placeholder {
+                text-align: left;
+                font-family: 'Helvetica', sans-serif;
+                color: #c0ccda;
+            }
+
+            #sib-container textarea::placeholder {
+                text-align: left;
+                font-family: 'Helvetica', sans-serif;
+                color: #c0ccda;
+            }
+        </style>
+        <link
+            rel="stylesheet"
+            href="/react-admin/css/newsletter.css"
+        />
+    </head>
+
+    <body>
+        <header>
+            <nav>
+    <a href="#" data-target="slide-out" class="sidenav-trigger">
+        <i class="material-icons">&#xe5d2;</i>
+    </a>
+    <div class="nav-wrapper">
+        <div class="left react-admin-logo">
+            <a href="https://marmelab.com/react-admin"> <svg version="1.0" x="0px" y="0px" preserveAspectRatio="xMidYMid meet" viewBox="0 0 130 130" >
+<style type="text/css">
+	:root{
+		--color: #ffffff;
+	}
+	.st0{opacity:0.3;}
+	.st2{opacity:0.6;}
+	.st1{fill: var(--color);}
+</style>
+<g id="layer3Fill" class="st0">
+	<polygon class="st1" points="67.4,117.7 81.3,125.7 88.7,112.9 75.7,112.9 	"/>
+	<polygon class="st1" points="12.3,67.5 4.4,81.2 17.2,88.6 17.2,76 	"/>
+	<polygon class="st1" points="62.6,12.3 48.8,4.3 41.4,17.1 54.2,17.1 	"/>
+	<polygon class="st1" points="117.7,62.6 125.7,48.8 112.8,41.3 112.8,54.1 	"/>
+</g>
+<g id="layer3Border" class="st2">
+	<path class="st1" d="M39.2,17.1c0.5,0,1.7,0,2.2,0l7.4-12.8l13.8,8l1.9-1.1L48.1,1.7L39.2,17.1z"/>
+	<path class="st1" d="M112.8,39.1c0,0.5,0,1.7,0,2.2l12.9,7.5l-8,13.8c0.3,0.5,0.8,1.5,1.1,2l9.5-16.5L112.8,39.1z"/>
+	<path class="st1" d="M88.7,112.9l-7.4,12.8l-13.9-8l-1.9,1.1l16.5,9.5l8.9-15.4C90.4,112.9,89.2,112.9,88.7,112.9z"/>
+	<path class="st1" d="M12.3,67.5c-0.3-0.5-0.8-1.4-1.1-1.9L1.8,82l15.4,8.9c0-0.6,0-1.7,0-2.3L4.4,81.2L12.3,67.5z"/>
+</g>
+<g id="layer2Fill" class="st2">
+	<polygon class="st1" points="41.9,112.9 48.9,125.1 70.1,112.9 	"/>
+	<polygon class="st1" points="17.2,70.1 17.2,41.9 5,49 	"/>
+	<polygon class="st1" points="60.1,17.1 88.1,17.1 81.1,5 	"/>
+	<polygon class="st1" points="112.8,60 112.8,88.2 125,81.1 	"/>
+</g>
+<g id="layer2Border">
+	<polygon class="st1" points="17.2,76 17.2,70.1 5,49 17.2,41.9 17.2,38.5 1,47.9 	"/>
+	<path class="st1" d="M54.2,17.1h5.9c0,0,19.9-11.5,21-12.1l7,12.1c0.8,0,2.5,0,3.3,0L82.1,1L54.2,17.1z"/>
+	<polygon class="st1" points="112.8,54.1 112.8,60 125,81.1 112.8,88.2 112.8,91.5 129,82.2 	"/>
+	<path class="st1" d="M48.9,125.1l-7-12.2c-0.8,0-2.6,0-3.4,0l9.3,16.1c6.7-3.9,21.4-12.3,27.9-16.1c-1.4,0-5.6,0-5.6,0L48.9,125.1z
+		"/>
+</g>
+<path id="raBorder" class="st1" d="M17,17v96h96V17H17z M108,108H22V22h86V108z"/>
+<g id="ra">
+	<path id="aLetter" class="st1" d="M96.1,55.4c-0.7-1.9-2-3.2-3.7-4c-1.9-0.8-4.6-1.2-8.2-1.2c-4.2,0-7.9,0.3-11.1,1v4.2
+		c1.2-0.2,2.7-0.4,4.7-0.5c1.9-0.1,3.5-0.2,4.8-0.2c2.9,0,5,0.2,6.2,0.5c1.3,0.4,2.1,1.2,2.5,2.3c0.5,1.2,0.7,3.2,0.7,6.1V66
+		c-6.2-0.2-9.9-0.3-11.1-0.3c-2.5,0-4.5,0.3-5.9,1c-1.4,0.7-2.3,1.8-2.9,3.2c-0.6,1.4-0.9,3.5-0.9,6.2c0,3.9,0.9,6.5,2.4,8
+		c1.7,1.5,4.2,2.1,7.8,2.1c2.4,0,4.6-0.4,6.4-1.1c1.9-0.7,3.2-2.1,4-4.3h0.3l0.3,4.9h4.7v-22C97.1,60,96.8,57.3,96.1,55.4z M92,71.6
+		c0,2.9-0.4,5.4-1.3,7.1c-0.6,1.2-1.6,2-2.7,2.3c-1.3,0.4-2.8,0.6-4.7,0.8c-2,0-3.4-0.2-4.4-0.5c-0.9-0.4-1.6-1-2-1.8
+		c-0.4-0.8-0.6-2.1-0.6-3.8s0.2-3,0.5-3.9c0.3-0.9,0.9-1.5,1.7-1.8s2.1-0.5,3.7-0.5H92V71.6z"/>
+	<path id="rLetter" class="st1" d="M62.4,61.2c0.9-2.2,1.3-5.1,1.3-8.5c0-3.1-0.3-5.7-0.8-7.6c-0.5-2-1.7-3.5-3.4-4.7
+		c-1.8-1.2-4.4-1.8-7.9-1.8H33.5v47.1H39V67h11.9h1.2l6.5,18.8h5.9L57.3,66C59.9,65,61.6,63.4,62.4,61.2z M55.4,61.2
+		c-1.3,0.7-3.1,1-5.6,1H39V43.5h11.2c2.4,0,4.2,0.3,5.4,1c1.2,0.7,2,1.6,2.2,2.8c0.3,1.3,0.5,3,0.5,5.5c0,2.3-0.2,4.2-0.6,5.5
+		C57.3,59.5,56.6,60.5,55.4,61.2z"/>
+</g>
+</svg>
+ </a>
+        </div>
+        <div class="left">
+            <div id="docsearch" class="center"></div>
+        </div>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li class="active">
+                <a href="https://marmelab.com/react-admin/documentation.html">Documentation</a>
+            </li>
+            <li>
+                <a href="https://marmelab.com/react-admin/Demos.html">Demos</a>
+            </li>
+            <li>
+                <a href="https://marmelab.com/en/blog/#react-admin">Blog</a>
+            </li>
+            <li>
+                <a
+                    href="https://react-admin-ee.marmelab.com/"
+                    style="color: #f0c070"
+                    >Enterprise Edition</a
+                >
+            </li>
+            <li class="social">
+                <a
+                    href="https://github.com/marmelab/react-admin"
+                    title="GitHub"
+                >
+                    <svg
+                        viewBox="0 0 256 250"
+                        preserveAspectRatio="xMidYMid"
+                        style="
+                            height: 20px;
+                            vertical-align: middle;
+                            fill: #ffffff;
+                        "
+                    >
+                        <path
+                            d="M128.001 0C57.317 0 0 57.307 0 128.001c0 56.554 36.676 104.535 87.535 121.46 6.397 1.185 8.746-2.777 8.746-6.158 0-3.052-.12-13.135-.174-23.83-35.61 7.742-43.124-15.103-43.124-15.103-5.823-14.795-14.213-18.73-14.213-18.73-11.613-7.944.876-7.78.876-7.78 12.853.902 19.621 13.19 19.621 13.19 11.417 19.568 29.945 13.911 37.249 10.64 1.149-8.272 4.466-13.92 8.127-17.116-28.431-3.236-58.318-14.212-58.318-63.258 0-13.975 5-25.394 13.188-34.358-1.329-3.224-5.71-16.242 1.24-33.874 0 0 10.749-3.44 35.21 13.121 10.21-2.836 21.16-4.258 32.038-4.307 10.878.049 21.837 1.47 32.066 4.307 24.431-16.56 35.165-13.12 35.165-13.12 6.967 17.63 2.584 30.65 1.255 33.873 8.207 8.964 13.173 20.383 13.173 34.358 0 49.163-29.944 59.988-58.447 63.157 4.591 3.972 8.682 11.762 8.682 23.704 0 17.126-.148 30.91-.148 35.126 0 3.407 2.304 7.398 8.792 6.14C219.37 232.5 256 184.537 256 128.002 256 57.307 198.691 0 128.001 0zm-80.06 182.34c-.282.636-1.283.827-2.194.39-.929-.417-1.45-1.284-1.15-1.922.276-.655 1.279-.838 2.205-.399.93.418 1.46 1.293 1.139 1.931zm6.296 5.618c-.61.566-1.804.303-2.614-.591-.837-.892-.994-2.086-.375-2.66.63-.566 1.787-.301 2.626.591.838.903 1 2.088.363 2.66zm4.32 7.188c-.785.545-2.067.034-2.86-1.104-.784-1.138-.784-2.503.017-3.05.795-.547 2.058-.055 2.861 1.075.782 1.157.782 2.522-.019 3.08zm7.304 8.325c-.701.774-2.196.566-3.29-.49-1.119-1.032-1.43-2.496-.726-3.27.71-.776 2.213-.558 3.315.49 1.11 1.03 1.45 2.505.701 3.27zm9.442 2.81c-.31 1.003-1.75 1.459-3.199 1.033-1.448-.439-2.395-1.613-2.103-2.626.301-1.01 1.747-1.484 3.207-1.028 1.446.436 2.396 1.602 2.095 2.622zm10.744 1.193c.036 1.055-1.193 1.93-2.715 1.95-1.53.034-2.769-.82-2.786-1.86 0-1.065 1.202-1.932 2.733-1.958 1.522-.03 2.768.818 2.768 1.868zm10.555-.405c.182 1.03-.875 2.088-2.387 2.37-1.485.271-2.861-.365-3.05-1.386-.184-1.056.893-2.114 2.376-2.387 1.514-.263 2.868.356 3.061 1.403z"
+                        ></path>
+                    </svg>
+                </a>
+            </li>
+            <li class="social">
+                <a href="https://discord.gg/GeZF9sqh3N" title="Discord">
+                    <svg
+                        height="25px"
+                        width="25px"
+                        viewBox="0 -28.5 256 256"
+                        preserveAspectRatio="xMidYMid"
+                        style="
+                            height: 20px;
+                            vertical-align: middle;
+                            fill: #ffffff;
+                        "
+                    >
+                        <path
+                            d="M216.856339,16.5966031 C200.285002,8.84328665 182.566144,3.2084988 164.041564,0 C161.766523,4.11318106 159.108624,9.64549908 157.276099,14.0464379 C137.583995,11.0849896 118.072967,11.0849896 98.7430163,14.0464379 C96.9108417,9.64549908 94.1925838,4.11318106 91.8971895,0 C73.3526068,3.2084988 55.6133949,8.86399117 39.0420583,16.6376612 C5.61752293,67.146514 -3.4433191,116.400813 1.08711069,164.955721 C23.2560196,181.510915 44.7403634,191.567697 65.8621325,198.148576 C71.0772151,190.971126 75.7283628,183.341335 79.7352139,175.300261 C72.104019,172.400575 64.7949724,168.822202 57.8887866,164.667963 C59.7209612,163.310589 61.5131304,161.891452 63.2445898,160.431257 C105.36741,180.133187 151.134928,180.133187 192.754523,160.431257 C194.506336,161.891452 196.298154,163.310589 198.110326,164.667963 C191.183787,168.842556 183.854737,172.420929 176.223542,175.320965 C180.230393,183.341335 184.861538,190.991831 190.096624,198.16893 C211.238746,191.588051 232.743023,181.531619 254.911949,164.955721 C260.227747,108.668201 245.831087,59.8662432 216.856339,16.5966031 Z M85.4738752,135.09489 C72.8290281,135.09489 62.4592217,123.290155 62.4592217,108.914901 C62.4592217,94.5396472 72.607595,82.7145587 85.4738752,82.7145587 C98.3405064,82.7145587 108.709962,94.5189427 108.488529,108.914901 C108.508531,123.290155 98.3405064,135.09489 85.4738752,135.09489 Z M170.525237,135.09489 C157.88039,135.09489 147.510584,123.290155 147.510584,108.914901 C147.510584,94.5396472 157.658606,82.7145587 170.525237,82.7145587 C183.391518,82.7145587 193.761324,94.5189427 193.539891,108.914901 C193.539891,123.290155 183.391518,135.09489 170.525237,135.09489 Z"
+                        ></path>
+                    </svg>
+                </a>
+            </li>
+            <li class="social">
+                <a href="https://www.youtube.com/@react-admin" title="Youtube">
+                    <svg
+                        height="25px"
+                        width="25px"
+                        viewBox="0 0 16 16"
+                        preserveAspectRatio="xMidYMid"
+                        style="
+                            vertical-align: middle;
+                            margin-right: 10px;
+                            fill: #ffffff;
+                        "
+                    >
+                        <path
+                            d="M15.32 4.06c-.434-.772-.905-.914-1.864-.968C12.498 3.027 10.089 3 8.002 3c-2.091 0-4.501.027-5.458.091-.957.055-1.429.196-1.867.969C.23 4.831 0 6.159 0 8.497v.008c0 2.328.23 3.666.677 4.429.438.772.909.912 1.866.977.958.056 3.368.089 5.459.089 2.087 0 4.496-.033 5.455-.088.959-.065 1.43-.205 1.864-.977.451-.763.679-2.101.679-4.429v-.008c0-2.339-.228-3.667-.68-4.438zM6 11.5v-6l5 3-5 3z"
+                        ></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+            <ul id="slide-out" class="sidenav sidenav-fixed">
+                <li class="logo">
+                    <a href="https://marmelab.com/react-admin"
+                        ><img src="https://marmelab.com/react-admin/assets/logo_white.png"
+                    /></a>
+                </li>
+                <li class="version">
+<a class="dropdown-trigger" href="#" data-target="versions">
+    
+    latest (5.5.4)
+    
+    <svg class="caret" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7 10l5 5 5-5z"></path>
+        <path d="M0 0h24v24H0z" fill="none"></path>
+    </svg>
+</a>
+<ul id="versions" class="dropdown-content">
+    
+    <li>
+        
+        
+        <a href="#">latest (5.5.4)</a>
+        
+        
+    </li>
+    
+    <li>
+        
+        <a href="https://marmelab.com/react-admin/doc/5.4/WizardForm.html">5.4</a>
+        
+    </li>
+    
+    <li>
+        
+        <a href="https://marmelab.com/react-admin/doc/5.3/WizardForm.html">5.3</a>
+        
+    </li>
+    
+    <li>
+        
+        <a href="https://marmelab.com/react-admin/doc/5.2/WizardForm.html">5.2</a>
+        
+    </li>
+    
+    <li>
+        
+        <a href="https://marmelab.com/react-admin/doc/5.1/WizardForm.html">5.1</a>
+        
+    </li>
+    
+    <li>
+        
+        <a href="https://marmelab.com/react-admin/doc/5.0/WizardForm.html">5.0</a>
+        
+    </li>
+    
+    <li>
+        
+        <a href="https://marmelab.com/react-admin/doc/4.16/WizardForm.html">4.16</a>
+        
+    </li>
+    
+    <li>
+        <a href="https://marmelab.com/react-admin/doc/3.19/Readme.html">3.19</a>
+    </li>
+    <li>
+        <a href="https://marmelab.com/react-admin/doc/2.9/Readme.html">2.9</a>
+    </li>
+    <li>
+        <a href="https://marmelab.com/react-admin/OldVersions.html">Older versions</a>
+    </li>
+</ul>
+</li>
+                <a class="center-align switch" style="display:block;margin-bottom: 1em" name="beginner-mode" title="Hide the sections concerning advanced usage to navigate more easily in the documentation">
+  <label>
+    <input type="checkbox" name="beginner-mode-trigger" id="beginner-mode-trigger" />
+    <span class="lever"></span>
+    Beginner Mode
+  </label>
+</a>
+
+<li><a class="nav-link external" href="https://github.com/marmelab/react-admin/releases" target="_blank">What's new?</a></li>
+
+<ul><div>Getting Started</div>
+  <li  class="beginner" ><a class="nav-link" href="./Tutorial.html">Tutorial</a></li>
+  <li  class="beginner" ><a class="nav-link" href="./CreateReactAdmin.html">Create React Admin</a></li>
+  <li ><a class="nav-link" href="./Vite.html">Vite</a></li>
+  <li ><a class="nav-link" href="./NextJs.html">Next.js</a></li>
+  <li ><a class="nav-link" href="./Remix.html">Remix</a></li>
+</ul>
+
+<ul><div>Guides & Concepts</div>
+  <li ><a class="nav-link" href="./Architecture.html">General Concepts</a></li>
+  <li  class="beginner" ><a class="nav-link" href="./DataFetchingGuide.html">Data Fetching</a></li>
+  <li  class="beginner" ><a class="nav-link" href="./CRUD.html">CRUD Pages</a></li>
+  <li  class="beginner" ><a class="nav-link" href="./Forms.html">Forms</a></li>
+  <li  class="beginner" ><a class="nav-link" href="./SecurityGuide.html">Security</a></li>
+  <li ><a class="nav-link" href="./Routing.html">Routing</a></li>
+  <li ><a class="nav-link" href="./Realtime.html">Realtime</a></li>
+  <li  class="beginner" ><a class="nav-link" href="./Theming.html">Theming</a></li>
+  <li ><a class="nav-link" href="./Translation.html">I18N</a></li>
+  <li ><a class="nav-link" href="./Store.html">Preferences</a></li>
+  <li  class="beginner" ><a class="nav-link" href="./Features.html">All Features</a></li>
+  <li ><a class="nav-link" href="./Upgrade.html">Upgrading to v5</a></li>
+  <li  class="beginner" ><a class="nav-link" href="./Community.html">Community</a></li>
+  </ul>
+
+  <ul><div>App Configuration</div>
+    <li  class="beginner" ><a class="nav-link" href="./Admin.html"><code>&lt;Admin&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./Resource.html"><code>&lt;Resource&gt;</code></a></li>
+    <li ><a class="nav-link" href="./CustomRoutes.html"><code>&lt;CustomRoutes&gt;</code></a></li>
+  </ul>
+  
+  <ul><div>Data Fetching</div>
+    <li  class="beginner" ><a class="nav-link" href="./DataProviders.html">Data Provider Setup</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./Actions.html">Querying the API</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./DataProviderList.html">Supported backends</a></li>
+    <li ><a class="nav-link" href="./DataProviderWriting.html">Writing A Data Provider</a></li>
+    <li ><a class="nav-link" href="./useDataProvider.html"><code>useDataProvider</code></a></li>
+    <li ><a class="nav-link" href="./useGetList.html"><code>useGetList</code></a></li>
+    <li ><a class="nav-link" href="./useInfiniteGetList.html"><code>useInfiniteGetList</code></a></li>
+    <li ><a class="nav-link" href="./useGetOne.html"><code>useGetOne</code></a></li>
+    <li ><a class="nav-link" href="./useGetMany.html"><code>useGetMany</code></a></li>
+    <li ><a class="nav-link" href="./useGetManyReference.html"><code>useGetManyReference</code></a></li>
+    <li ><a class="nav-link" href="./useCreate.html"><code>useCreate</code></a></li>
+    <li ><a class="nav-link" href="./useUpdate.html"><code>useUpdate</code></a></li>
+    <li ><a class="nav-link" href="./useUpdateMany.html"><code>useUpdateMany</code></a></li>
+    <li ><a class="nav-link" href="./useDelete.html"><code>useDelete</code></a></li>
+    <li ><a class="nav-link" href="./useDeleteMany.html"><code>useDeleteMany</code></a></li>
+    <li ><a class="nav-link" href="./useGetTree.html"><code>useGetTree</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./withLifecycleCallbacks.html"><code>withLifecycleCallbacks</code></a></li>
+    <li ><a class="nav-link" href="./fetchJson.html"><code>fetchJson</code></a></li>
+  </ul>
+  
+  <ul><div>Security</div>
+    <li  class="beginner" ><a class="nav-link" href="./Authentication.html">Auth Provider Setup</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./AuthProviderList.html">Supported backends</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./AuthProviderWriting.html">Writing An Auth Provider</a></li>
+    <li ><a class="nav-link" href="./Permissions.html">Authorization</a></li>
+    <li ><a class="nav-link" href="./AuthRBAC.html">RBAC<img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./Authenticated.html"><code>&lt;Authenticated&gt;</code></a></li>
+    <li ><a class="nav-link" href="./CanAccess.html"><code>&lt;CanAccess&gt;</code></a></li>
+    <li ><a class="nav-link" href="./useAuthenticated.html"><code>useAuthenticated</code></a></li>
+    <li ><a class="nav-link" href="./useAuthState.html"><code>useAuthState</code></a></li>
+    <li ><a class="nav-link" href="./useLogin.html"><code>useLogin</code></a></li>
+    <li ><a class="nav-link" href="./useLogout.html"><code>useLogout</code></a></li>
+    <li ><a class="nav-link" href="./useGetIdentity.html"><code>useGetIdentity</code></a></li>
+    <li ><a class="nav-link" href="./useCanAccess.html"><code>useCanAccess</code></a></li>
+    <li ><a class="nav-link" href="./usePermissions.html"><code>usePermissions</code></a></li>
+    <li ><a class="nav-link" href="./useAuthProvider.html"><code>useAuthProvider</code></a></li>
+    <li ><a class="nav-link" href="./addRefreshAuthToAuthProvider.html"><code>addRefreshAuthToAuthProvider</code></a></li>
+    <li ><a class="nav-link" href="./addRefreshAuthToDataProvider.html"><code>addRefreshAuthToDataProvider</code></a></li>
+  </ul>
+  
+  <ul><div>List Page</div>
+    <li  class="beginner" ><a class="nav-link" href="./ListTutorial.html">Introduction</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./FilteringTutorial.html">Filtering The List</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./List.html"><code>&lt;List&gt;</code></a></li>
+    <li ><a class="nav-link" href="./ListBase.html"><code>&lt;ListBase&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./ListGuesser.html"><code>&lt;ListGuesser&gt;</code></a></li>
+    <li ><a class="nav-link" href="./InfiniteList.html"><code>&lt;InfiniteList&gt;</code></a></li>
+    <li ><a class="nav-link" href="./TreeWithDetails.html"><code>&lt;TreeWithDetails&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./Datagrid.html"><code>&lt;Datagrid&gt;</code></a></li>
+    <li ><a class="nav-link" href="./DatagridAG.html"><code>&lt;DatagridAG&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./SimpleList.html"><code>&lt;SimpleList&gt;</code></a></li>
+    <li ><a class="nav-link" href="./SingleFieldList.html"><code>&lt;SingleFieldList&gt;</code></a></li>
+    <li ><a class="nav-link" href="./EditableDatagrid.html"><code>&lt;EditableDatagrid&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./Calendar.html"><code>&lt;Calendar&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./FilterButton.html"><code>&lt;FilterButton&gt;</code></a></li>
+    <li ><a class="nav-link" href="./FilterList.html"><code>&lt;FilterList&gt;</code></a></li>
+    <li ><a class="nav-link" href="./FilterLiveForm.html"><code>&lt;FilterLiveForm&gt;</code></a></li>
+    <li ><a class="nav-link" href="./FilterLiveSearch.html"><code>&lt;FilterLiveSearch&gt;</code></a></li>
+    <li ><a class="nav-link" href="./SavedQueriesList.html"><code>&lt;SavedQueriesList&gt;</code></a></li>
+    <li ><a class="nav-link" href="./StackedFilters.html"><code>&lt;StackedFilters&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./Pagination.html"><code>&lt;Pagination&gt;</code></a></li>
+    <li ><a class="nav-link" href="./SortButton.html"><code>&lt;SortButton&gt;</code></a></li>
+    <li ><a class="nav-link" href="./SelectColumnsButton.html"><code>&lt;SelectColumnsButton&gt;</code></a></li>
+    <li ><a class="nav-link" href="./Count.html"><code>&lt;Count&gt;</code></a></li>
+    <li ><a class="nav-link" href="./WithListContext.html"><code>&lt;WithListContext&gt;</code></a></li>
+    <li ><a class="nav-link" href="./useListContext.html"><code>useListContext</code></a></li>
+    <li ><a class="nav-link" href="./useList.html"><code>useList</code></a></li>
+    <li ><a class="nav-link" href="./useListController.html"><code>useListController</code></a></li>
+    <li ><a class="nav-link" href="./useUnselect.html"><code>useUnselect</code></a></li>
+    <li ><a class="nav-link" href="./useUnselectAll.html"><code>useUnselectAll</code></a></li>
+  </ul>
+  
+  <ul><div>Creation & Edition Pages</div>
+    <li  class="beginner" ><a class="nav-link" href="./EditTutorial.html">Introduction</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./Validation.html">Form Validation</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./Create.html"><code>&lt;Create&gt;</code></a></li>
+    <li ><a class="nav-link" href="./CreateBase.html"><code>&lt;CreateBase&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./Edit.html"><code>&lt;Edit&gt;</code></a></li>
+    <li ><a class="nav-link" href="./EditBase.html"><code>&lt;EditBase&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./EditGuesser.html"><code>&lt;EditGuesser&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./SimpleForm.html"><code>&lt;SimpleForm&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./TabbedForm.html"><code>&lt;TabbedForm&gt;</code></a></li>
+    <li ><a class="nav-link" href="./Form.html"><code>&lt;Form&gt;</code></a></li>
+    <li ><a class="nav-link" href="./LongForm.html"><code>&lt;LongForm&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./AccordionForm.html"><code>&lt;AccordionForm&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li  class="active" ><a class="nav-link" href="./WizardForm.html"><code>&lt;WizardForm&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./EditDialog.html"><code>&lt;EditDialog&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./EditInDialogButton.html"><code>&lt;EditInDialogButton&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./CreateDialog.html"><code>&lt;CreateDialog&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./CreateInDialogButton.html"><code>&lt;CreateInDialogButton&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./JsonSchemaForm.html"><code>&lt;JsonSchemaForm&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./Toolbar.html"><code>&lt;Toolbar&gt;</code></a></li>
+    <li ><a class="nav-link" href="./SaveButton.html"><code>&lt;SaveButton&gt;</code></a></li>
+    <li ><a class="nav-link" href="./AutoSave.html"><code>&lt;AutoSave&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useCreateContext.html"><code>useCreateContext</code></a></li>
+    <li ><a class="nav-link" href="./useCreateController.html"><code>useCreateController</code></a></li>
+    <li ><a class="nav-link" href="./useEditContext.html"><code>useEditContext</code></a></li>
+    <li ><a class="nav-link" href="./useEditController.html"><code>useEditController</code></a></li>
+    <li ><a class="nav-link" href="./useSaveContext.html"><code>useSaveContext</code></a></li>
+    <li ><a class="nav-link" href="./useRecordFromLocation.html"><code>useRecordFromLocation</code></a></li>
+    <li ><a class="nav-link" href="./useRegisterMutationMiddleware.html"><code>useRegisterMutationMiddleware</code></a></li>
+    <li ><a class="nav-link" href="./useUnique.html"><code>useUnique</code></a></li>
+  </ul>
+  
+  <ul><div>Show Page</div>
+    <li  class="beginner" ><a class="nav-link" href="./ShowTutorial.html">Introduction</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./Show.html"><code>&lt;Show&gt;</code></a></li>
+    <li ><a class="nav-link" href="./ShowBase.html"><code>&lt;ShowBase&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./ShowGuesser.html"><code>&lt;ShowGuesser&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./SimpleShowLayout.html"><code>&lt;SimpleShowLayout&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./TabbedShowLayout.html"><code>&lt;TabbedShowLayout&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./Labeled.html"><code>&lt;Labeled&gt;</code></a></li>
+    <li ><a class="nav-link" href="./ShowInDialogButton.html"><code>&lt;ShowInDialogButton&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useShowContext.html"><code>useShowContext</code></a></li>
+    <li ><a class="nav-link" href="./useShowController.html"><code>useShowController</code></a></li>
+  </ul>
+  
+  <ul><div>Common</div>
+    <li  class="beginner" ><a class="nav-link" href="./WithRecord.html"><code>&lt;WithRecord&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./useRecordContext.html"><code>useRecordContext</code></a></li>
+    <li ><a class="nav-link" href="./useGetRecordId.html"><code>useGetRecordId</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./useNotify.html"><code>useNotify</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./useRedirect.html"><code>useRedirect</code></a></li>
+    <li ><a class="nav-link" href="./useRefresh.html"><code>useRefresh</code></a></li>
+  </ul>
+  
+  <ul><div>Fields</div>
+    <li  class="beginner" ><a class="nav-link" href="./Fields.html">Introduction</a></li>
+    <li ><a class="nav-link" href="./FieldsForRelationships.html">Fields for Relationships</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./ArrayField.html"><code>&lt;ArrayField&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./BooleanField.html"><code>&lt;BooleanField&gt;</code></a></li>
+    <li ><a class="nav-link" href="./ChipField.html"><code>&lt;ChipField&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./DateField.html"><code>&lt;DateField&gt;</code></a></li>
+    <li ><a class="nav-link" href="./EmailField.html"><code>&lt;EmailField&gt;</code></a></li>
+    <li ><a class="nav-link" href="./FileField.html"><code>&lt;FileField&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./FunctionField.html"><code>&lt;FunctionField&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./ImageField.html"><code>&lt;ImageField&gt;</code></a></li>
+    <li ><a class="nav-link" href="./MarkdownField.html"><code>&lt;MarkdownField&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./NumberField.html"><code>&lt;NumberField&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./ReferenceField.html"><code>&lt;ReferenceField&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./ReferenceArrayField.html"><code>&lt;ReferenceArrayField&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./ReferenceManyField.html"><code>&lt;ReferenceManyField&gt;</code></a></li>
+    <li ><a class="nav-link" href="./ReferenceManyCount.html"><code>&lt;ReferenceManyCount&gt;</code></a></li>
+    <li ><a class="nav-link" href="./ReferenceManyToManyField.html"><code>&lt;ReferenceManyToManyField&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./ReferenceOneField.html"><code>&lt;ReferenceOneField&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./RichTextField.html"><code>&lt;RichTextField&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./SelectField.html"><code>&lt;SelectField&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./TextField.html"><code>&lt;TextField&gt;</code></a></li>
+    <li ><a class="nav-link" href="./TranslatableFields.html"><code>&lt;TranslatableFields&gt;</code></a></li>
+    <li ><a class="nav-link" href="./UrlField.html"><code>&lt;UrlField&gt;</code></a></li>
+    <li ><a class="nav-link" href="./WrapperField.html"><code>&lt;WrapperField&gt;</code></a></li>
+    <li ><a class="nav-link" href="./useFieldValue.html"><code>useFieldValue</code></a></li>
+  </ul>
+  
+  <ul><div>Inputs</div>
+    <li  class="beginner" ><a class="nav-link" href="./Inputs.html">Introduction</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./ArrayInput.html"><code>&lt;ArrayInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./AutocompleteInput.html"><code>&lt;AutocompleteInput&gt;</code></a></li>
+    <li ><a class="nav-link" href="./AutocompleteArrayInput.html"><code>&lt;AutocompleteArrayInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./BooleanInput.html"><code>&lt;BooleanInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./CheckboxGroupInput.html"><code>&lt;CheckboxGroupInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./DateInput.html"><code>&lt;DateInput></code></a></li>
+    <li ><a class="nav-link" href="./DateRangeInput.html"><code>&lt;DateRangeInput&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./DateTimeInput.html"><code>&lt;DateTimeInput&gt;</code></a></li>
+    <li ><a class="nav-link" href="./DualListInput.html"><code>&lt;DualListInput&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./FileInput.html"><code>&lt;FileInput&gt;</code></a></li>
+    <li ><a class="nav-link" href="./ImageInput.html"><code>&lt;ImageInput&gt;</code></a></li>
+    <li ><a class="nav-link" href="./MarkdownInput.html"><code>&lt;MarkdownInput&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./NullableBooleanInput.html"><code>&lt;NullableBooleanInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./NumberInput.html"><code>&lt;NumberInput&gt;</code></a></li>
+    <li ><a class="nav-link" href="./PasswordInput.html"><code>&lt;PasswordInput&gt;</code></a></li>
+    <li ><a class="nav-link" href="./PredictiveTextInput.html"><code>&lt;PredictiveTextInput&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./RadioButtonGroupInput.html"><code>&lt;RadioButtonGroupInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./ReferenceInput.html"><code>&lt;ReferenceInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./ReferenceArrayInput.html"><code>&lt;ReferenceArrayInput&gt;</code></a></li>
+    <li ><a class="nav-link" href="./ReferenceManyInput.html"><code>&lt;ReferenceManyInput&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./ReferenceManyToManyInput.html"><code>&lt;ReferenceManyToManyInput&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./ReferenceNodeInput.html"><code>&lt;ReferenceNodeInput&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./ReferenceOneInput.html"><code>&lt;ReferenceOneInput&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./RichTextInput.html"><code>&lt;RichTextInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./SearchInput.html"><code>&lt;SearchInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./SelectInput.html"><code>&lt;SelectInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./SelectArrayInput.html"><code>&lt;SelectArrayInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./SimpleFormIterator.html"><code>&lt;SimpleFormIterator&gt;</code></a></li>
+    <li ><a class="nav-link" href="./SmartRichTextInput.html"><code>&lt;SmartRichTextInput&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./TextArrayInput.html"><code>&lt;TextArrayInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./TextInput.html"><code>&lt;TextInput&gt;</code></a></li>
+    <li ><a class="nav-link" href="./TimeInput.html"><code>&lt;TimeInput&gt;</code></a></li>
+    <li ><a class="nav-link" href="./TranslatableInputs.html"><code>&lt;TranslatableInputs&gt;</code></a></li>
+    <li ><a class="nav-link" href="./TreeInput.html"><code>&lt;TreeInput&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useInput.html"><code>useInput</code></a></li>
+  </ul>
+  
+  <ul><div>Preferences</div>
+    <li ><a class="nav-link" href="./useStore.html"><code>useStore</code></a></li>
+    <li ><a class="nav-link" href="./useRemoveFromStore.html"><code>useRemoveFromStore</code></a></li>
+    <li ><a class="nav-link" href="./useResetStore.html"><code>useResetStore</code></a></li>
+    <li ><a class="nav-link" href="./useStoreContext.html"><code>useStoreContext</code></a></li>
+    <li ><a class="nav-link" href="./Configurable.html"><code>&lt;Configurable&gt;</code></a></li>
+  </ul>
+  
+  <ul><div>I18N Provider and Translations</div>
+    <li ><a class="nav-link" href="./TranslationSetup.html">Setting Up</a></li>
+    <li ><a class="nav-link" href="./TranslationLocales.html">Supported Locales</a></li>
+    <li ><a class="nav-link" href="./TranslationTranslating.html">Translating UI Components</a></li>
+    <li ><a class="nav-link" href="./TranslationWriting.html">Writing an i18nProvider</a></li>
+    <li ><a class="nav-link" href="./useTranslate.html"><code>useTranslate</code></a></li>
+    <li ><a class="nav-link" href="./useLocaleState.html"><code>useLocaleState</code></a></li>
+    <li ><a class="nav-link" href="./LocalesMenuButton.html"><code>&lt;LocalesMenuButton&gt;</code></a></li>
+  </ul>
+  
+  <ul><div>Other UI components</div>
+    <li  class="beginner" ><a class="nav-link" href="./Layout.html"><code>&lt;Layout&gt;</code></a></li>
+    <li ><a class="nav-link" href="./ContainerLayout.html"><code>&lt;ContainerLayout&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./SolarLayout.html"><code>&lt;SolarLayout&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./AppBar.html"><code>&lt;AppBar&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./Menu.html"><code>&lt;Menu&gt;</code></a></li>
+    <li ><a class="nav-link" href="./MultiLevelMenu.html"><code>&lt;MultiLevelMenu&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./IconMenu.html"><code>&lt;IconMenu&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./Title.html"><code>&lt;Title&gt;</code></a></li>
+    <li ><a class="nav-link" href="./Breadcrumb.html"><code>&lt;Breadcrumb&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./Search.html"><code>&lt;Search&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./SearchWithResult.html"><code>&lt;SearchWithResult&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./Confirm.html"><code>&lt;Confirm&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./Buttons.html">Buttons</a></li>
+    <li ><a class="nav-link" href="./RevisionsButton.html"><code>&lt;RevisionsButton&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./CheckForApplicationUpdate.html"><code>&lt;CheckForApplicationUpdate&gt;</code></a></li>
+    <li ><a class="nav-link" href="./RecordRepresentation.html"><code>&lt;RecordRepresentation&gt;</code></a></li>
+    <li ><a class="nav-link" href="./PrevNextButtons.html"><code>&lt;PrevNextButtons&gt;</code></a></li>
+    <li ><a class="nav-link" href="./useDefineAppLocation.html"><code>useDefineAppLocation</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useGetRecordRepresentation.html"><code>useGetRecordRepresentation</code></a></li>
+  </ul>
+  
+  <ul><div>Theming</div>
+    <li  class="beginner" ><a class="nav-link" href="./SX.html">The <code>sx</code> prop</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./AppTheme.html">Application Theme</a></li>
+    <li ><a class="nav-link" href="./BoxStackGrid.html"><code>&lt;Box&gt;</code>, <code>&lt;Stack&gt;</code> and <code>&lt;Grid&gt;</code></a></li>
+    <li ><a class="nav-link" href="./ToggleThemeButton.html"><code>&lt;ToggleThemeButton&gt;</code></a></li>
+    <li ><a class="nav-link" href="./useMediaQuery.html"><code>useMediaQuery</code></a></li>
+    <li ><a class="nav-link" href="./useTheme.html"><code>useTheme</code></a></li>
+  </ul>
+  
+  <ul><div>Realtime</div>
+    <li ><a class="nav-link" href="./RealtimeDataProvider.html">Setting Up</a></li>
+    <li ><a class="nav-link" href="./usePublish.html"><code>usePublish</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useSubscribe.html"><code>useSubscribe</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useSubscribeCallback.html"><code>useSubscribeCallback</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useSubscribeToRecord.html"><code>useSubscribeToRecord</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useSubscribeToRecordList.html"><code>useSubscribeToRecordList</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useLock.html"><code>useLock</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useUnlock.html"><code>useUnlock</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useGetLock.html"><code>useGetLock</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useGetLockLive.html"><code>useGetLockLive</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useGetLocks.html"><code>useGetLocks</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useGetLocksLive.html"><code>useGetLocksLive</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useLockOnMount.html"><code>useLockOnMount</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useLockOnCall.html"><code>useLockOnCall</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useGetListLive.html"><code>useGetListLive</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useGetOneLive.html"><code>useGetOneLive</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./ListLive.html"><code>&lt;ListLive&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./EditLive.html"><code>&lt;EditLive&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./ShowLive.html"><code>&lt;ShowLive&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./MenuLive.html"><code>&lt;MenuLive&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+  </ul>
+  
+  <ul><div>Recipes</div>
+    <li ><a class="nav-link" href="./Caching.html">Caching</a></li>
+    <li ><a class="nav-link" href="./UnitTesting.html">Unit Testing</a></li>
+    <li ><a class="nav-link" href="./AdvancedTutorials.html">Advanced tutorials</a></li>
+  </ul>
+  
+  <li ><a class="nav-link" href="./Ecosystem.html">Ecosystem</a></li>
+  <li ><a class="nav-link" href="./Contributing.html">Contributing</a></li>
+  <li ><a class="nav-link" href="./FAQ.html">FAQ</a></li>
+  <li  class="beginner" ><a class="nav-link" href="./Reference.html">Index</a></li>
+  
+  <div class="beginner-mode-on" style="margin:1em;padding:1em;background:#ffffca;border-radius:4px;display:none;font-size:0.8em;opacity:0.8;text-align:center;">
+    <a href="#beginner-mode">Beginner mode is on</a>. Turn it off to reveal more documentation for advanced components.
+  </div>
+  
+
+            </ul>
+        </header>
+
+        <main>
+            <div class="container sticker-container">
+                <div class="row">
+                    <div class="col s12 m9">
+                        <div
+                            class="markdown-section DocSearch-content toc-content"
+                        >
+                            <h1 id="wizardform"><code class="language-plaintext highlighter-rouge">&lt;WizardForm&gt;</code></h1>
+
+<p>This <a href="https://react-admin-ee.marmelab.com">Enterprise Edition</a><img class="icon" src="./img/premium.svg" /> component offers an alternative layout for large Create forms, allowing users to enter data step-by-step.</p>
+
+<video controls="" autoplay="" playsinline="" muted="" loop="">
+  <source src="https://react-admin-ee.marmelab.com/assets/ra-wizard-form-overview.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;WizardForm&gt;</code> renders one step at a time. The form is submitted when the user clicks on the <code class="language-plaintext highlighter-rouge">Save</code> button of the last step.</p>
+
+<h2 id="usage">Usage</h2>
+
+<p>Use <code class="language-plaintext highlighter-rouge">&lt;WizardForm&gt;</code> as the child of <code class="language-plaintext highlighter-rouge">&lt;Create&gt;</code>. It expects <code class="language-plaintext highlighter-rouge">&lt;WizardForm.Step&gt;</code> elements as children.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Create</span><span class="p">,</span> <span class="nx">TextInput</span><span class="p">,</span> <span class="nx">required</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-admin</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">WizardForm</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@react-admin/ra-form-layout</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">PostCreate</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Create</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">label</span><span class="p">=</span><span class="s">"First step"</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"title"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">label</span><span class="p">=</span><span class="s">"Second step"</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"description"</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">label</span><span class="p">=</span><span class="s">"Third step"</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"fullDescription"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">Create</span><span class="p">&gt;</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p><strong>Note</strong>: You can also use the <code class="language-plaintext highlighter-rouge">&lt;WizardForm&gt;</code> as child of <code class="language-plaintext highlighter-rouge">&lt;Edit&gt;</code> but it’s considered as a bad practice to provide a wizard form for existing resources.</p>
+
+<p><strong>Tip</strong>: You can use the <code class="language-plaintext highlighter-rouge">&lt;AutoSave&gt;</code> component to automatically save the form after a few seconds of inactivity. See <a href="/react-admin/AutoSave.html">the AutoSave documentation</a> for details.</p>
+
+<h2 id="props">Props</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">&lt;WizardForm&gt;</code> component accepts the following props:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Prop</th>
+      <th>Required</th>
+      <th>Type</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">authorizationError</code></td>
+      <td>Optional</td>
+      <td><code class="language-plaintext highlighter-rouge">ReactNode</code></td>
+      <td><code class="language-plaintext highlighter-rouge">null</code></td>
+      <td>The content to display when authorization checks fail</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">children</code></td>
+      <td>Required</td>
+      <td><code class="language-plaintext highlighter-rouge">ReactNode</code></td>
+      <td>-</td>
+      <td>A list of <code class="language-plaintext highlighter-rouge">&lt;WizardForm.Step&gt;</code> elements.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">defaultValues</code></td>
+      <td>Optional</td>
+      <td><code class="language-plaintext highlighter-rouge">object|function</code></td>
+      <td>-</td>
+      <td>The default values of the record.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">enableAccessControl</code></td>
+      <td>Optional</td>
+      <td><code class="language-plaintext highlighter-rouge">boolean</code></td>
+      <td><code class="language-plaintext highlighter-rouge">false</code></td>
+      <td>Enable checking authorization rights for each panel and input</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">id</code></td>
+      <td>Optional</td>
+      <td><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td>-</td>
+      <td>The id of the underlying <code class="language-plaintext highlighter-rouge">&lt;form&gt;</code> tag.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">loading</code></td>
+      <td>Optional</td>
+      <td><code class="language-plaintext highlighter-rouge">ReactNode</code></td>
+      <td> </td>
+      <td>The content to display when checking authorizations</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">noValidate</code></td>
+      <td>Optional</td>
+      <td><code class="language-plaintext highlighter-rouge">boolean</code></td>
+      <td>-</td>
+      <td>Set to <code class="language-plaintext highlighter-rouge">true</code> to disable the browser’s default validation.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">onSubmit</code></td>
+      <td>Optional</td>
+      <td><code class="language-plaintext highlighter-rouge">function</code></td>
+      <td><code class="language-plaintext highlighter-rouge">save</code></td>
+      <td>A callback to call when the form is submitted.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">progress</code></td>
+      <td>Optional</td>
+      <td><code class="language-plaintext highlighter-rouge">ReactElement</code></td>
+      <td>-</td>
+      <td>A custom progress stepper element.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">sanitize EmptyValues</code></td>
+      <td>Optional</td>
+      <td><code class="language-plaintext highlighter-rouge">boolean</code></td>
+      <td>-</td>
+      <td>Set to <code class="language-plaintext highlighter-rouge">true</code> to remove empty values from the form state.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">toolbar</code></td>
+      <td>Optional</td>
+      <td><code class="language-plaintext highlighter-rouge">ReactElement</code></td>
+      <td>-</td>
+      <td>A custom toolbar element.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">validate</code></td>
+      <td>Optional</td>
+      <td><code class="language-plaintext highlighter-rouge">function</code></td>
+      <td>-</td>
+      <td>A function to validate the form values.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">warnWhen UnsavedChanges</code></td>
+      <td>Optional</td>
+      <td><code class="language-plaintext highlighter-rouge">boolean</code></td>
+      <td>-</td>
+      <td>Set to <code class="language-plaintext highlighter-rouge">true</code> to warn the user when leaving the form with unsaved changes.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Additional props are passed to <code class="language-plaintext highlighter-rouge">react-hook-form</code>’s <a href="https://react-hook-form.com/docs/useform"><code class="language-plaintext highlighter-rouge">useForm</code> hook</a>.</p>
+
+<h2 id="authorizationerror"><code class="language-plaintext highlighter-rouge">authorizationError</code></h2>
+
+<p>Used when <code class="language-plaintext highlighter-rouge">enableAccessControl</code> is set to <code class="language-plaintext highlighter-rouge">true</code> and an error occurs while checking for users permissions. Defaults to <code class="language-plaintext highlighter-rouge">null</code>:</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">ArrayInput</span><span class="p">,</span> <span class="nx">Edit</span><span class="p">,</span> <span class="nx">DateInput</span><span class="p">,</span> <span class="nx">SimpleFormIterator</span><span class="p">,</span> <span class="nx">TextInput</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-admin</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">WizardForm</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@react-admin/ra-form-layout</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Alert</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@mui/material</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">CustomerEdit</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Edit</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">WizardForm</span>
+            <span class="na">enableAccessControl</span>
+            <span class="na">authorizationError</span><span class="p">=</span><span class="si">{</span>
+                <span class="p">&lt;</span><span class="nc">Alert</span>
+                    <span class="na">severity</span><span class="p">=</span><span class="s">"error"</span>
+                    <span class="na">sx</span><span class="p">=</span><span class="si">{</span><span class="p">{</span> <span class="na">px</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> <span class="na">py</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">mt</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">width</span><span class="p">:</span> <span class="dl">'</span><span class="s1">100%</span><span class="dl">'</span> <span class="p">}</span><span class="si">}</span>
+                <span class="p">&gt;</span>
+                    An error occurred while loading your permissions
+                <span class="p">&lt;/</span><span class="nc">Alert</span><span class="p">&gt;</span>
+            <span class="si">}</span>
+        <span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">id</span><span class="p">=</span><span class="s">"identity"</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"first_name"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"last_name"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">id</span><span class="p">=</span><span class="s">"occupations"</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">ArrayInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"occupations"</span> <span class="na">label</span><span class="p">=</span><span class="s">""</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nc">SimpleFormIterator</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"name"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+                        <span class="p">&lt;</span><span class="nc">DateInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"from"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+                        <span class="p">&lt;</span><span class="nc">DateInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"to"</span> <span class="p">/&gt;</span>
+                    <span class="p">&lt;/</span><span class="nc">SimpleFormIterator</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="nc">ArrayInput</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">Edit</span><span class="p">&gt;</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="children"><code class="language-plaintext highlighter-rouge">children</code></h2>
+
+<p>The children of <code class="language-plaintext highlighter-rouge">&lt;WizardForm&gt;</code> must be <code class="language-plaintext highlighter-rouge">&lt;WizardForm.Step&gt;</code> elements.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">PostCreate</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Create</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">label</span><span class="p">=</span><span class="s">"First step"</span><span class="p">&gt;</span>
+                ...
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">label</span><span class="p">=</span><span class="s">"Second step"</span><span class="p">&gt;</span>
+                ...
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">label</span><span class="p">=</span><span class="s">"Third step"</span><span class="p">&gt;</span>
+                ...
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">Create</span><span class="p">&gt;</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="defaultvalues"><code class="language-plaintext highlighter-rouge">defaultValues</code></h2>
+
+<p>The value of the form <code class="language-plaintext highlighter-rouge">defaultValues</code> prop is an object, or a function returning an object, specifying default values for the created record. For instance:</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">postDefaultValue</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">({</span> <span class="na">id</span><span class="p">:</span> <span class="nx">uuid</span><span class="p">(),</span> <span class="na">created_at</span><span class="p">:</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(),</span> <span class="na">nb_views</span><span class="p">:</span> <span class="mi">0</span> <span class="p">});</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">PostCreate</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Create</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">WizardForm</span> <span class="na">defaultValues</span><span class="p">=</span><span class="si">{</span><span class="nx">postDefaultValue</span><span class="si">}</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"title"</span> <span class="p">/&gt;</span>
+                <span class="p">&lt;</span><span class="nc">RichTextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"body"</span> <span class="p">/&gt;</span>
+                <span class="p">&lt;</span><span class="nc">NumberInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"nb_views"</span> <span class="p">/&gt;</span>
+                <span class="p">&lt;</span><span class="nc">SaveButton</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">Create</span><span class="p">&gt;</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p><strong>Tip</strong>: You can include properties in the form <code class="language-plaintext highlighter-rouge">defaultValues</code> that are not listed as input components, like the <code class="language-plaintext highlighter-rouge">created_at</code> property in the previous example.</p>
+
+<p><strong>Tip</strong>: React-admin also allows to define default values at the input level. See the <a href="./forms.md#default-values">Setting default Values</a> section.</p>
+
+<h2 id="enableaccesscontrol"><code class="language-plaintext highlighter-rouge">enableAccessControl</code></h2>
+
+<p>When set to <code class="language-plaintext highlighter-rouge">true</code>, React-admin will call the <code class="language-plaintext highlighter-rouge">authProvider.canAccess</code> method for each panel with the following parameters:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">action</code>: <code class="language-plaintext highlighter-rouge">write</code></li>
+  <li><code class="language-plaintext highlighter-rouge">resource</code>: <code class="language-plaintext highlighter-rouge">RESOURCE_NAME.section.PANEL_ID_OR_LABEL</code>. For instance: <code class="language-plaintext highlighter-rouge">customers.section.identity</code></li>
+  <li><code class="language-plaintext highlighter-rouge">record</code>: The current record</li>
+</ul>
+
+<p>For each panel, react-admin will also call the <code class="language-plaintext highlighter-rouge">authProvider.canAccess</code> method for each input with the following parameters:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">action</code>: <code class="language-plaintext highlighter-rouge">write</code></li>
+  <li><code class="language-plaintext highlighter-rouge">resource</code>: <code class="language-plaintext highlighter-rouge">RESOURCE_NAME.INPUT_SOURCE</code>. For instance: <code class="language-plaintext highlighter-rouge">customers.first_name</code></li>
+  <li><code class="language-plaintext highlighter-rouge">record</code>: The current record</li>
+</ul>
+
+<p><strong>Tip</strong>: <code class="language-plaintext highlighter-rouge">&lt;WizardForm.Step&gt;</code> direct children that don’t have a <code class="language-plaintext highlighter-rouge">source</code> will always be displayed.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> 
+    <span class="nx">ArrayInput</span><span class="p">,</span>
+    <span class="nx">Edit</span><span class="p">,</span>
+    <span class="nx">DateInput</span><span class="p">,</span>
+    <span class="nx">SimpleFormIterator</span><span class="p">,</span>
+    <span class="nx">TextInput</span>
+<span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-admin</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">WizardForm</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@react-admin/ra-form-layout</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">CustomerEdit</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Edit</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">WizardForm</span> <span class="na">enableAccessControl</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">id</span><span class="p">=</span><span class="s">"identity"</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"first_name"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"last_name"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">id</span><span class="p">=</span><span class="s">"occupations"</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">ArrayInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"occupations"</span> <span class="na">label</span><span class="p">=</span><span class="s">""</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nc">SimpleFormIterator</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"name"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+                        <span class="p">&lt;</span><span class="nc">DateInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"from"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+                        <span class="p">&lt;</span><span class="nc">DateInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"to"</span> <span class="p">/&gt;</span>
+                    <span class="p">&lt;/</span><span class="nc">SimpleFormIterator</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="nc">ArrayInput</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">Edit</span><span class="p">&gt;</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="id"><code class="language-plaintext highlighter-rouge">id</code></h2>
+
+<p>Normally, a submit button only works when placed inside a <code class="language-plaintext highlighter-rouge">&lt;form&gt;</code> tag. However, you can place a submit button outside the form if the submit button <code class="language-plaintext highlighter-rouge">form</code> matches the form <code class="language-plaintext highlighter-rouge">id</code>.</p>
+
+<p>Set this form <code class="language-plaintext highlighter-rouge">id</code> via the <code class="language-plaintext highlighter-rouge">id</code> prop.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">PostCreate</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Create</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">WizardForm</span> <span class="na">defaultValues</span><span class="p">=</span><span class="si">{</span><span class="nx">postDefaultValue</span><span class="si">}</span> <span class="na">id</span><span class="p">=</span><span class="s">"post_create_form"</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"title"</span> <span class="p">/&gt;</span>
+                <span class="p">&lt;</span><span class="nc">RichTextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"body"</span> <span class="p">/&gt;</span>
+                <span class="p">&lt;</span><span class="nc">NumberInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"nb_views"</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">SaveButton</span> <span class="na">form</span><span class="p">=</span><span class="s">"post_create_form"</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">Create</span><span class="p">&gt;</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="loading"><code class="language-plaintext highlighter-rouge">loading</code></h2>
+
+<p>Used when <code class="language-plaintext highlighter-rouge">enableAccessControl</code> is set to <code class="language-plaintext highlighter-rouge">true</code> while checking for users permissions. Defaults to <code class="language-plaintext highlighter-rouge">Loading</code> from <code class="language-plaintext highlighter-rouge">react-admin</code>:</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">ArrayInput</span><span class="p">,</span> <span class="nx">Edit</span><span class="p">,</span> <span class="nx">DateInput</span><span class="p">,</span> <span class="nx">SimpleFormIterator</span><span class="p">,</span> <span class="nx">TextInput</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-admin</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">WizardForm</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@react-admin/ra-form-layout</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Typography</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@mui/material</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">CustomerEdit</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Edit</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">WizardForm</span>
+            <span class="na">enableAccessControl</span>
+            <span class="na">loading</span><span class="p">=</span><span class="si">{</span>
+                <span class="p">&lt;</span><span class="nc">Typography</span><span class="p">&gt;</span>
+                    Loading your permissions...
+                <span class="p">&lt;/</span><span class="nc">Typography</span><span class="p">&gt;</span>
+            <span class="si">}</span>
+        <span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">id</span><span class="p">=</span><span class="s">"identity"</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"first_name"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"last_name"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">id</span><span class="p">=</span><span class="s">"occupations"</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">ArrayInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"occupations"</span> <span class="na">label</span><span class="p">=</span><span class="s">""</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nc">SimpleFormIterator</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"name"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+                        <span class="p">&lt;</span><span class="nc">DateInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"from"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+                        <span class="p">&lt;</span><span class="nc">DateInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"to"</span> <span class="p">/&gt;</span>
+                    <span class="p">&lt;/</span><span class="nc">SimpleFormIterator</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="nc">ArrayInput</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">Edit</span><span class="p">&gt;</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="novalidate"><code class="language-plaintext highlighter-rouge">noValidate</code></h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">&lt;form novalidate&gt;</code> attribute prevents the browser from validating the form. This is useful if you don’t want to use the browser’s default validation, or if you want to customize the error messages. To set this attribute on the underlying <code class="language-plaintext highlighter-rouge">&lt;form&gt;</code> tag, set the <code class="language-plaintext highlighter-rouge">noValidate</code> prop to <code class="language-plaintext highlighter-rouge">true</code>.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">PostCreate</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Create</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">WizardForm</span> <span class="na">noValidate</span><span class="p">&gt;</span>
+            ...
+        <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">Create</span><span class="p">&gt;</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="onsubmit"><code class="language-plaintext highlighter-rouge">onSubmit</code></h2>
+
+<p>By default, the <code class="language-plaintext highlighter-rouge">&lt;Form&gt;</code> calls the <code class="language-plaintext highlighter-rouge">save</code> callback passed to it by the edit or create controller, via the <code class="language-plaintext highlighter-rouge">SaveContext</code>. You can override this behavior by setting a callback as the <code class="language-plaintext highlighter-rouge">onSubmit</code> prop manually.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">PostCreate</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">create</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useCreate</span><span class="p">();</span>
+    <span class="kd">const</span> <span class="nx">postSave</span> <span class="o">=</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">create</span><span class="p">(</span><span class="dl">'</span><span class="s1">posts</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="nx">data</span> <span class="p">});</span>
+    <span class="p">};</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nc">Create</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span> <span class="na">onSubmit</span><span class="p">=</span><span class="si">{</span><span class="nx">postSave</span><span class="si">}</span><span class="p">&gt;</span>
+                ...
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nc">Create</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h2 id="progress"><code class="language-plaintext highlighter-rouge">progress</code></h2>
+
+<p>You can also customize the progress stepper by passing a custom component in the <code class="language-plaintext highlighter-rouge">progress</code> prop.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Create</span><span class="p">,</span> <span class="nx">TextInput</span><span class="p">,</span> <span class="nx">required</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-admin</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">WizardForm</span><span class="p">,</span> <span class="nx">WizardFormProgressProps</span><span class="p">,</span> <span class="nx">useWizardFormContext</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@react-admin/ra-form-layout</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">MyProgress</span> <span class="o">=</span> <span class="p">(</span><span class="nx">props</span><span class="p">:</span> <span class="nx">WizardFormProgressProps</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">currentStep</span><span class="p">,</span> <span class="nx">steps</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useWizardFormContext</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+            <span class="si">{</span><span class="nx">steps</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">step</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="kd">const</span> <span class="nx">label</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">cloneElement</span><span class="p">(</span><span class="nx">step</span><span class="p">,</span> <span class="p">{</span> <span class="na">intent</span><span class="p">:</span> <span class="dl">'</span><span class="s1">label</span><span class="dl">'</span> <span class="p">});</span>
+                <span class="k">return</span> <span class="p">(</span>
+                    <span class="p">&lt;</span><span class="nt">li</span> <span class="na">key</span><span class="p">=</span><span class="si">{</span><span class="s2">`step_</span><span class="p">${</span><span class="nx">index</span><span class="p">}</span><span class="s2">`</span><span class="si">}</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">span</span>
+                            <span class="na">style</span><span class="p">=</span><span class="si">{</span><span class="p">{</span>
+                                <span class="na">textDecoration</span><span class="p">:</span>
+                                    <span class="nx">currentStep</span> <span class="o">===</span> <span class="nx">index</span>
+                                        <span class="p">?</span> <span class="dl">'</span><span class="s1">underline</span><span class="dl">'</span>
+                                        <span class="p">:</span> <span class="kc">undefined</span><span class="p">,</span>
+                            <span class="p">}</span><span class="si">}</span>
+                        <span class="p">&gt;</span>
+                            <span class="si">{</span><span class="nx">label</span><span class="si">}</span>
+                        <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+                    <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+                <span class="p">);</span>
+            <span class="p">})</span><span class="si">}</span>
+        <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">PostCreate</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Create</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">WizardForm</span> <span class="na">progress</span><span class="p">=</span><span class="si">{</span><span class="p">&lt;</span><span class="nc">MyProgress</span> <span class="p">/&gt;</span><span class="si">}</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">label</span><span class="p">=</span><span class="s">"First step"</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"title"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">label</span><span class="p">=</span><span class="s">"Second step"</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"description"</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">label</span><span class="p">=</span><span class="s">"Third step"</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"fullDescription"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">Create</span><span class="p">&gt;</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p>Any additional props will be passed to the <code class="language-plaintext highlighter-rouge">&lt;Progress&gt;</code> component.</p>
+
+<p>You can also hide the progress stepper completely by setting <code class="language-plaintext highlighter-rouge">progress</code> to <code class="language-plaintext highlighter-rouge">false</code>.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Create</span><span class="p">,</span> <span class="nx">TextInput</span><span class="p">,</span> <span class="nx">required</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-admin</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">WizardForm</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@react-admin/ra-form-layout</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">PostCreate</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Create</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">WizardForm</span> <span class="na">progress</span><span class="p">=</span><span class="si">{</span><span class="kc">false</span><span class="si">}</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">label</span><span class="p">=</span><span class="s">"First step"</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"title"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">label</span><span class="p">=</span><span class="s">"Second step"</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"description"</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">label</span><span class="p">=</span><span class="s">"Third step"</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"fullDescription"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">Create</span><span class="p">&gt;</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="sanitizeemptyvalues"><code class="language-plaintext highlighter-rouge">sanitizeEmptyValues</code></h2>
+
+<p>In HTML, the value of empty form inputs is the empty string (<code class="language-plaintext highlighter-rouge">''</code>). React-admin inputs (like <code class="language-plaintext highlighter-rouge">&lt;TextInput&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;NumberInput&gt;</code>, etc.) automatically transform these empty values into <code class="language-plaintext highlighter-rouge">null</code>.</p>
+
+<p>But for your own input components based on react-hook-form, this is not the default. React-hook-form doesn’t transform empty values by default. This leads to unexpected <code class="language-plaintext highlighter-rouge">create</code> and <code class="language-plaintext highlighter-rouge">update</code> payloads like:</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+    <span class="na">id</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
+    <span class="na">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Lorem Ipsum</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">is_published</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+    <span class="na">body</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
+    <span class="c1">// etc.</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>If you prefer to omit the keys for empty values, set the <code class="language-plaintext highlighter-rouge">sanitizeEmptyValues</code> prop to <code class="language-plaintext highlighter-rouge">true</code>. This will sanitize the form data before passing it to the <code class="language-plaintext highlighter-rouge">dataProvider</code>, i.e. remove empty strings from the form state, unless the record actually had a value for that field before edition.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">PostCreate</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span>  <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Create</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">WizardForm</span> <span class="na">sanitizeEmptyValues</span><span class="p">&gt;</span>
+            ...
+        <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">Create</span><span class="p">&gt;</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p>For the previous example, the data sent to the <code class="language-plaintext highlighter-rouge">dataProvider</code> will be:</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+    <span class="na">id</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
+    <span class="na">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Lorem Ipsum</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Note:</strong> Setting the <code class="language-plaintext highlighter-rouge">sanitizeEmptyValues</code> prop to <code class="language-plaintext highlighter-rouge">true</code> will also have a (minor) impact on react-admin inputs (like <code class="language-plaintext highlighter-rouge">&lt;TextInput&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;NumberInput&gt;</code>, etc.): empty values (i.e. values equal to <code class="language-plaintext highlighter-rouge">null</code>) will be removed from the form state on submit, unless the record actually had a value for that field.</p>
+
+<p><strong>Note</strong> Even with <code class="language-plaintext highlighter-rouge">sanitizeEmptyValues</code> set to <code class="language-plaintext highlighter-rouge">true</code>, deeply nested fields won’t be set to <code class="language-plaintext highlighter-rouge">null</code> nor removed. If you need to sanitize those fields, use <a href="/react-admin/Edit.html#transform">the <code class="language-plaintext highlighter-rouge">transform</code> prop</a> of <code class="language-plaintext highlighter-rouge">&lt;Edit&gt;</code> or <code class="language-plaintext highlighter-rouge">&lt;Create&gt;</code> components.</p>
+
+<p>If you need a more fine-grained control over the sanitization, you can use <a href="/react-admin/Edit.html#transform">the <code class="language-plaintext highlighter-rouge">transform</code> prop</a> of <code class="language-plaintext highlighter-rouge">&lt;Edit&gt;</code> or <code class="language-plaintext highlighter-rouge">&lt;Create&gt;</code> components, or <a href="/react-admin/Inputs.html#parse">the <code class="language-plaintext highlighter-rouge">parse</code> prop</a> of individual inputs.</p>
+
+<h2 id="toolbar"><code class="language-plaintext highlighter-rouge">toolbar</code></h2>
+
+<p>You can customize the form toolbar by passing a custom component in the <code class="language-plaintext highlighter-rouge">toolbar</code> prop.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Button</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@mui/material</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Create</span><span class="p">,</span> <span class="nx">required</span><span class="p">,</span> <span class="nx">TextInput</span><span class="p">,</span> <span class="nx">useSaveContext</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-admin</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">useFormState</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-hook-form</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">useWizardFormContext</span><span class="p">,</span> <span class="nx">WizardForm</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@react-admin/ra-form-layout</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">MyToolbar</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">hasNextStep</span><span class="p">,</span> <span class="nx">hasPreviousStep</span><span class="p">,</span> <span class="nx">goToNextStep</span><span class="p">,</span> <span class="nx">goToPreviousStep</span> <span class="p">}</span> <span class="o">=</span>
+        <span class="nx">useWizardFormContext</span><span class="p">();</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">save</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useSaveContext</span><span class="p">();</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">isValidating</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useFormState</span><span class="p">();</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+            <span class="si">{</span><span class="nx">hasPreviousStep</span> <span class="p">?</span> <span class="p">(</span>
+                <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nc">Button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">goToPreviousStep</span><span class="p">()</span><span class="si">}</span><span class="p">&gt;</span>PREVIOUS<span class="p">&lt;/</span><span class="nc">Button</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+            <span class="p">)</span> <span class="p">:</span> <span class="kc">null</span><span class="si">}</span>
+            <span class="si">{</span><span class="nx">hasNextStep</span> <span class="p">?</span> <span class="p">(</span>
+                <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nc">Button</span>
+                        <span class="na">disabled</span><span class="p">=</span><span class="si">{</span><span class="nx">isValidating</span><span class="si">}</span>
+                        <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">goToNextStep</span><span class="p">()</span><span class="si">}</span>
+                    <span class="p">&gt;</span>
+                        NEXT
+                    <span class="p">&lt;/</span><span class="nc">Button</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+            <span class="p">)</span> <span class="p">:</span> <span class="p">(</span>
+                <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nc">Button</span> <span class="na">disabled</span><span class="p">=</span><span class="si">{</span><span class="nx">isValidating</span><span class="si">}</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="nx">save</span><span class="si">}</span><span class="p">&gt;</span>
+                        SAVE
+                    <span class="p">&lt;/</span><span class="nc">Button</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+            <span class="p">)</span><span class="si">}</span>
+        <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">PostCreate</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Create</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">WizardForm</span> <span class="na">toolbar</span><span class="p">=</span><span class="si">{</span><span class="p">&lt;</span><span class="nc">MyToolbar</span> <span class="p">/&gt;</span><span class="si">}</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">label</span><span class="p">=</span><span class="s">"First step"</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"title"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">label</span><span class="p">=</span><span class="s">"Second step"</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"description"</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">label</span><span class="p">=</span><span class="s">"Third step"</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"fullDescription"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">Create</span><span class="p">&gt;</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="validate"><code class="language-plaintext highlighter-rouge">validate</code></h2>
+
+<p>The value of the form <code class="language-plaintext highlighter-rouge">validate</code> prop must be a function taking the record as input, and returning an object with error messages indexed by field. For instance:</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">validateUserCreation</span> <span class="o">=</span> <span class="p">(</span><span class="nx">values</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">errors</span> <span class="o">=</span> <span class="p">{};</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">values</span><span class="p">.</span><span class="nx">firstName</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">errors</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">The firstName is required</span><span class="dl">'</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">values</span><span class="p">.</span><span class="nx">age</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// You can return translation keys</span>
+        <span class="nx">errors</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">ra.validation.required</span><span class="dl">'</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">values</span><span class="p">.</span><span class="nx">age</span> <span class="o">&lt;</span> <span class="mi">18</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Or an object if the translation messages need parameters</span>
+        <span class="nx">errors</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">ra.validation.minValue</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">args</span><span class="p">:</span> <span class="p">{</span> <span class="na">min</span><span class="p">:</span> <span class="mi">18</span> <span class="p">}</span>
+        <span class="p">};</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">errors</span>
+<span class="p">};</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">UserCreate</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Create</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">WizardForm</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">validateUserCreation</span><span class="si">}</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">label</span><span class="p">=</span><span class="s">"First Name"</span> <span class="na">source</span><span class="p">=</span><span class="s">"firstName"</span> <span class="p">/&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">label</span><span class="p">=</span><span class="s">"Age"</span> <span class="na">source</span><span class="p">=</span><span class="s">"age"</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">Create</span><span class="p">&gt;</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p><strong>Tip</strong>: The <code class="language-plaintext highlighter-rouge">validate</code> function can return a promise for asynchronous validation. See <a href="/react-admin/Validation.html#server-side-validation">the Server-Side Validation section</a> in the Validation documentation.</p>
+
+<p><strong>Tip</strong>: React-admin also allows to define validation rules at the input level. See <a href="/react-admin/Validation.html#per-input-validation-built-in-field-validators">the Validation chapter</a> for details.</p>
+
+<h2 id="warnwhenunsavedchanges"><code class="language-plaintext highlighter-rouge">warnWhenUnsavedChanges</code></h2>
+
+<p>React-admin keeps track of the form state, so it can detect when the user leaves an <code class="language-plaintext highlighter-rouge">Edit</code> or <code class="language-plaintext highlighter-rouge">Create</code> page with unsaved changes. To avoid data loss, you can use this ability to ask the user to confirm before leaving a page with unsaved changes.</p>
+
+<p><img src="/react-admin/img/warn_when_unsaved_changes.png" alt="Warn About Unsaved Changes" /></p>
+
+<p>Warning about unsaved changes is an opt-in feature: you must set the <code class="language-plaintext highlighter-rouge">warnWhenUnsavedChanges</code> prop in the form component to enable it:</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">TagEdit</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Edit</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">WizardForm</span> <span class="na">warnWhenUnsavedChanges</span><span class="p">&gt;</span>
+            ...
+        <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">Edit</span><span class="p">&gt;</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p><strong>Note</strong>: Due to limitations in react-router, this feature only works if you use the default router provided by react-admin, or if you use a <a href="https://reactrouter.com/en/6.22.3/routers/picking-a-router">Data Router</a>.</p>
+
+<h2 id="wizardformstep"><code class="language-plaintext highlighter-rouge">&lt;WizardForm.Step&gt;</code></h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">label</code> prop of the <code class="language-plaintext highlighter-rouge">&lt;WizardForm.Step&gt;</code> component accepts a translation key:</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Create</span><span class="p">,</span> <span class="nx">TextInput</span><span class="p">,</span> <span class="nx">required</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-admin</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">WizardForm</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@react-admin/ra-form-layout</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">PostCreate</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Create</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">label</span><span class="p">=</span><span class="s">"myapp.posts.steps.general"</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"title"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">label</span><span class="p">=</span><span class="s">"myapp.posts.steps.description"</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"description"</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">label</span><span class="p">=</span><span class="s">"myapp.posts.steps.misc"</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"fullDescription"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">Create</span><span class="p">&gt;</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p>The children of <code class="language-plaintext highlighter-rouge">&lt;WizardForm&gt;</code> must be <code class="language-plaintext highlighter-rouge">&lt;WizardForm.Step&gt;</code> elements.</p>
+
+<h3 id="props-1">Props</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Prop</th>
+      <th>Required</th>
+      <th>Type</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">authorizationError</code></td>
+      <td>Optional</td>
+      <td><code class="language-plaintext highlighter-rouge">ReactNode</code></td>
+      <td>-</td>
+      <td>The content to display when authorization checks fail</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">enableAccessControl</code></td>
+      <td>Optional</td>
+      <td><code class="language-plaintext highlighter-rouge">ReactNode</code></td>
+      <td>-</td>
+      <td>Enable authorization checks</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">label</code></td>
+      <td>Required</td>
+      <td><code class="language-plaintext highlighter-rouge">string</code></td>
+      <td>-</td>
+      <td>The main label used as the step title. Appears in red when the section has errors</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">loading</code></td>
+      <td>Optional</td>
+      <td><code class="language-plaintext highlighter-rouge">ReactNode</code></td>
+      <td>-</td>
+      <td>The content to display while checking authorizations</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">children</code></td>
+      <td>Required</td>
+      <td><code class="language-plaintext highlighter-rouge">ReactNode</code></td>
+      <td>-</td>
+      <td>A list of <code class="language-plaintext highlighter-rouge">&lt;Input&gt;</code> elements</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">sx</code></td>
+      <td>Optional</td>
+      <td><code class="language-plaintext highlighter-rouge">object</code></td>
+      <td>-</td>
+      <td>An object containing the MUI style overrides to apply to the root component</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="authorizationerror-1"><code class="language-plaintext highlighter-rouge">authorizationError</code></h3>
+
+<p>Used when <code class="language-plaintext highlighter-rouge">enableAccessControl</code> is set to <code class="language-plaintext highlighter-rouge">true</code> and an error occurs while checking for users permissions. Defaults to <code class="language-plaintext highlighter-rouge">null</code>:</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">ArrayInput</span><span class="p">,</span> <span class="nx">Edit</span><span class="p">,</span> <span class="nx">DateInput</span><span class="p">,</span> <span class="nx">SimpleFormIterator</span><span class="p">,</span> <span class="nx">TextInput</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-admin</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">WizardForm</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@react-admin/ra-form-layout</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Alert</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@mui/material</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">CustomerEdit</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Edit</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">WizardForm</span> <span class="na">enableAccessControl</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">id</span><span class="p">=</span><span class="s">"identity"</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"first_name"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"last_name"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">id</span><span class="p">=</span><span class="s">"occupations"</span> <span class="na">authorizationError</span><span class="p">=</span><span class="si">{</span>
+                <span class="p">&lt;</span><span class="nc">Alert</span>
+                    <span class="na">severity</span><span class="p">=</span><span class="s">"error"</span>
+                    <span class="na">sx</span><span class="p">=</span><span class="si">{</span><span class="p">{</span> <span class="na">px</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> <span class="na">py</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">mt</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">width</span><span class="p">:</span> <span class="dl">'</span><span class="s1">100%</span><span class="dl">'</span> <span class="p">}</span><span class="si">}</span>
+                <span class="p">&gt;</span>
+                    An error occurred while loading your permissions
+                <span class="p">&lt;/</span><span class="nc">Alert</span><span class="p">&gt;</span>
+            <span class="si">}</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">ArrayInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"occupations"</span> <span class="na">label</span><span class="p">=</span><span class="s">""</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nc">SimpleFormIterator</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"name"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+                        <span class="p">&lt;</span><span class="nc">DateInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"from"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+                        <span class="p">&lt;</span><span class="nc">DateInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"to"</span> <span class="p">/&gt;</span>
+                    <span class="p">&lt;/</span><span class="nc">SimpleFormIterator</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="nc">ArrayInput</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">Edit</span><span class="p">&gt;</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="enableaccesscontrol-1"><code class="language-plaintext highlighter-rouge">enableAccessControl</code></h3>
+
+<p>When set to <code class="language-plaintext highlighter-rouge">true</code>, react-admin will also call the <code class="language-plaintext highlighter-rouge">authProvider.canAccess</code> method for each input with the following parameters:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">action</code>: <code class="language-plaintext highlighter-rouge">write</code></li>
+  <li><code class="language-plaintext highlighter-rouge">resource</code>: <code class="language-plaintext highlighter-rouge">RESOURCE_NAME.INPUT_SOURCE</code>. For instance: <code class="language-plaintext highlighter-rouge">customers.first_name</code></li>
+  <li><code class="language-plaintext highlighter-rouge">record</code>: The current record</li>
+</ul>
+
+<p><strong>Tip</strong>: <code class="language-plaintext highlighter-rouge">&lt;WizardForm.Step&gt;</code> direct children that don’t have a <code class="language-plaintext highlighter-rouge">source</code> will always be displayed.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">ArrayInput</span><span class="p">,</span> <span class="nx">Edit</span><span class="p">,</span> <span class="nx">DateInput</span><span class="p">,</span> <span class="nx">SimpleFormIterator</span><span class="p">,</span> <span class="nx">TextInput</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-admin</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">WizardForm</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@react-admin/ra-form-layout</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">CustomerEdit</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Edit</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">id</span><span class="p">=</span><span class="s">"identity"</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"first_name"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"last_name"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">id</span><span class="p">=</span><span class="s">"occupations"</span> <span class="na">enableAccessControl</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">ArrayInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"occupations"</span> <span class="na">label</span><span class="p">=</span><span class="s">""</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nc">SimpleFormIterator</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"name"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+                        <span class="p">&lt;</span><span class="nc">DateInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"from"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+                        <span class="p">&lt;</span><span class="nc">DateInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"to"</span> <span class="p">/&gt;</span>
+                    <span class="p">&lt;/</span><span class="nc">SimpleFormIterator</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="nc">ArrayInput</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">Edit</span><span class="p">&gt;</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="loading-1"><code class="language-plaintext highlighter-rouge">loading</code></h3>
+
+<p>Used when <code class="language-plaintext highlighter-rouge">enableAccessControl</code> is set to <code class="language-plaintext highlighter-rouge">true</code> while checking for users permissions. Defaults to <code class="language-plaintext highlighter-rouge">Loading</code> from <code class="language-plaintext highlighter-rouge">react-admin</code>:</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">ArrayInput</span><span class="p">,</span> <span class="nx">Edit</span><span class="p">,</span> <span class="nx">DateInput</span><span class="p">,</span> <span class="nx">SimpleFormIterator</span><span class="p">,</span> <span class="nx">TextInput</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-admin</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">WizardForm</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@react-admin/ra-form-layout</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Typography</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@mui/material</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">CustomerEdit</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Edit</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">WizardForm</span> <span class="na">enableAccessControl</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">id</span><span class="p">=</span><span class="s">"identity"</span> <span class="na">loading</span><span class="p">=</span><span class="si">{</span>
+                <span class="p">&lt;</span><span class="nc">Typography</span><span class="p">&gt;</span>
+                    Loading your permissions...
+                <span class="p">&lt;/</span><span class="nc">Typography</span><span class="p">&gt;</span>
+            <span class="si">}</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"first_name"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"last_name"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">id</span><span class="p">=</span><span class="s">"occupations"</span> <span class="na">loading</span><span class="p">=</span><span class="si">{</span>
+                <span class="p">&lt;</span><span class="nc">Typography</span><span class="p">&gt;</span>
+                    Loading your permissions...
+                <span class="p">&lt;/</span><span class="nc">Typography</span><span class="p">&gt;</span>
+            <span class="si">}</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">ArrayInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"occupations"</span> <span class="na">label</span><span class="p">=</span><span class="s">""</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nc">SimpleFormIterator</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"name"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+                        <span class="p">&lt;</span><span class="nc">DateInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"from"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+                        <span class="p">&lt;</span><span class="nc">DateInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"to"</span> <span class="p">/&gt;</span>
+                    <span class="p">&lt;/</span><span class="nc">SimpleFormIterator</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="nc">ArrayInput</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">Edit</span><span class="p">&gt;</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="adding-a-summary-final-step">Adding a Summary Final Step</h2>
+
+<p>In order to add a final step with a summary of the form values before submit, you can leverage <code class="language-plaintext highlighter-rouge">react-hook-form</code> <a href="https://react-hook-form.com/docs/usewatch"><code class="language-plaintext highlighter-rouge">useWatch</code></a> hook:</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">FinalStepContent</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">values</span> <span class="o">=</span> <span class="nx">useWatch</span><span class="p">({</span>
+        <span class="na">name</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">title</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">description</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">fullDescription</span><span class="dl">'</span><span class="p">],</span>
+    <span class="p">});</span>
+
+    <span class="k">return</span> <span class="nx">values</span><span class="p">?.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">?</span> <span class="p">(</span>
+        <span class="p">&lt;&gt;</span>
+            <span class="p">&lt;</span><span class="nc">Typography</span><span class="p">&gt;</span>title: <span class="si">{</span><span class="nx">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="p">&lt;/</span><span class="nc">Typography</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">Typography</span><span class="p">&gt;</span>description: <span class="si">{</span><span class="nx">values</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="p">&lt;/</span><span class="nc">Typography</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">Typography</span><span class="p">&gt;</span>fullDescription: <span class="si">{</span><span class="nx">values</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="p">&lt;/</span><span class="nc">Typography</span><span class="p">&gt;</span>
+        <span class="p">&lt;/&gt;</span>
+    <span class="p">)</span> <span class="p">:</span> <span class="kc">null</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">PostCreate</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Create</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">label</span><span class="p">=</span><span class="s">"First step"</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"title"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">label</span><span class="p">=</span><span class="s">"Second step"</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"description"</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">label</span><span class="p">=</span><span class="s">"Third step"</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"fullDescription"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">label</span><span class="p">=</span><span class="s">""</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">FinalStepContent</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">Create</span><span class="p">&gt;</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="access-control">Access Control</h2>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;WizardForm&gt;</code> can use <a href="./AccessControl.md">Access Control</a> to check permissions for each section and input. To enable this feature, set the <code class="language-plaintext highlighter-rouge">enableAccessControl</code> prop to <code class="language-plaintext highlighter-rouge">true</code>.</p>
+
+<p>Check the <a href="#enableaccesscontrol"><code class="language-plaintext highlighter-rouge">enableAccessControl</code> prop</a> section for more details.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> 
+    <span class="nx">ArrayInput</span><span class="p">,</span>
+    <span class="nx">Edit</span><span class="p">,</span>
+    <span class="nx">DateInput</span><span class="p">,</span>
+    <span class="nx">SimpleFormIterator</span><span class="p">,</span>
+    <span class="nx">TextInput</span>
+<span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-admin</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">WizardForm</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@react-admin/ra-form-layout</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">CustomerEdit</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Edit</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">WizardForm</span> <span class="na">enableAccessControl</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">id</span><span class="p">=</span><span class="s">"identity"</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"first_name"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+                <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"last_name"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span> <span class="na">id</span><span class="p">=</span><span class="s">"occupations"</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">ArrayInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"occupations"</span> <span class="na">label</span><span class="p">=</span><span class="s">""</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nc">SimpleFormIterator</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nc">TextInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"name"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+                        <span class="p">&lt;</span><span class="nc">DateInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"from"</span> <span class="na">validate</span><span class="p">=</span><span class="si">{</span><span class="nx">required</span><span class="p">()</span><span class="si">}</span> <span class="p">/&gt;</span>
+                        <span class="p">&lt;</span><span class="nc">DateInput</span> <span class="na">source</span><span class="p">=</span><span class="s">"to"</span> <span class="p">/&gt;</span>
+                    <span class="p">&lt;/</span><span class="nc">SimpleFormIterator</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="nc">ArrayInput</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">.</span><span class="nc">Step</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nc">WizardForm</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">Edit</span><span class="p">&gt;</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+                        </div>
+                    </div>
+                    <div class="col hide-on-small-only m3 toc-container">
+                        <div class="toc"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <script src="/react-admin/js/materialize.min.js"></script>
+        <script src="/react-admin/js/prism.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.0/tocbot.min.js"
+            defer
+            integrity="sha512-oD3xGN8YTxenx6tdS4D/RKqO4OtORBQtAb2/FseM17GGMIi6jMwKUBc8duX4A5RwMOGGXoFBZrsqbOk8GpXFgQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+        <script src="/react-admin/js/ra-doc-exec.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+        
+        <script type="text/javascript">
+            docsearch({
+                container: '#docsearch',
+                appId: 'QY9T9CVM2N',
+                indexName: 'marmelab-react-admin',
+                apiKey: '75332227370be3dc35777cee6244881a',
+                searchParameters: {
+                    facetFilters: ['version:  latest'],
+                    attributesToHighlight: ['hierarchy.lvl0'],
+                },
+            });
+        </script>
+
+        <!--
+        React-admin protects your privacy!
+        We use our own self-hosted tracking solution to collect some raw metrics,
+        like page views, device type (mobile, desktop, etc.) or country.
+        We don't track any personal information about our visitors.
+    -->
+        <script
+            async
+            defer
+            data-website-id="ef7f8242-2808-4cbf-9dff-564daa515bbd"
+            src="https://analytics.marmelab.com/umami.js"
+        ></script>
+
+        <!-- Newsletter form -->
+        <script>
+            window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
+            window.LOCALE = 'en';
+            window.GENERIC_INVALID_MESSAGE =
+                window.EMAIL_INVALID_MESSAGE =
+                window.SMS_INVALID_MESSAGE =
+                    'The information provided is invalid. Please review the field format and try again.';
+            window.REQUIRED_ERROR_MESSAGE = 'This field is required.';
+
+            var AUTOHIDE = Boolean(0);
+        </script>
+
+        <script
+            async
+            defer
+            src="https://unpkg.com/typescript@5.1.3/lib/typescript.js"
+        ></script>
+        <script
+            async
+            defer
+            src="https://unpkg.com/prettier@2.8.8/standalone.js"
+        ></script>
+        <script
+            async
+            defer
+            src="https://unpkg.com/prettier@2.8.8/parser-babel.js"
+        ></script>
+    </body>
+</html>

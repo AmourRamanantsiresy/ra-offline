@@ -1,0 +1,1596 @@
+<!doctype html>
+<html lang="en-US">
+    <head>
+        <title>React-admin - The List Page</title>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+        <meta name="description" content="" />
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <link
+            rel="canonical"
+            href="/react-admin/ListTutorial.html"
+        />
+        <link
+            rel="stylesheet"
+            href="/react-admin/css/materialize.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="/react-admin/css/style-v21.css"
+        />
+        <link rel="stylesheet" href="/react-admin/css/syntax.css" />
+        <link rel="stylesheet" href="/react-admin/css/prism.css" />
+        <link rel="stylesheet" href="/react-admin/css/tocbot.css" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.0/tocbot.css"
+            integrity="sha512-2kqK5bWDwdrluTn6Wkj+jgiwyzvAHLirVp08Kz7kN5I8PWQ0tUtEMxfhyWDCrnws91BJ9PfrUy6ImfA7Qb22TA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <link
+            rel="stylesheet"
+            href="/react-admin/css/docsearch.css"
+        />
+        <!-- Newsletter form -->
+        <style>
+            @font-face {
+                font-display: block;
+                font-family: Roboto;
+                src:
+                    url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2)
+                        format('woff2'),
+                    url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff)
+                        format('woff');
+            }
+
+            @font-face {
+                font-display: fallback;
+                font-family: Roboto;
+                font-weight: 600;
+                src:
+                    url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2)
+                        format('woff2'),
+                    url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/71501f0d8d5aa95960f6475d5487d4c2.woff)
+                        format('woff');
+            }
+
+            @font-face {
+                font-display: fallback;
+                font-family: Roboto;
+                font-weight: 700;
+                src:
+                    url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2)
+                        format('woff2'),
+                    url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff)
+                        format('woff');
+            }
+
+            #sib-container input:-ms-input-placeholder {
+                text-align: left;
+                font-family: 'Helvetica', sans-serif;
+                color: #c0ccda;
+            }
+
+            #sib-container input::placeholder {
+                text-align: left;
+                font-family: 'Helvetica', sans-serif;
+                color: #c0ccda;
+            }
+
+            #sib-container textarea::placeholder {
+                text-align: left;
+                font-family: 'Helvetica', sans-serif;
+                color: #c0ccda;
+            }
+        </style>
+        <link
+            rel="stylesheet"
+            href="/react-admin/css/newsletter.css"
+        />
+    </head>
+
+    <body>
+        <header>
+            <nav>
+    <a href="#" data-target="slide-out" class="sidenav-trigger">
+        <i class="material-icons">&#xe5d2;</i>
+    </a>
+    <div class="nav-wrapper">
+        <div class="left react-admin-logo">
+            <a href="https://marmelab.com/react-admin"> <svg version="1.0" x="0px" y="0px" preserveAspectRatio="xMidYMid meet" viewBox="0 0 130 130" >
+<style type="text/css">
+	:root{
+		--color: #ffffff;
+	}
+	.st0{opacity:0.3;}
+	.st2{opacity:0.6;}
+	.st1{fill: var(--color);}
+</style>
+<g id="layer3Fill" class="st0">
+	<polygon class="st1" points="67.4,117.7 81.3,125.7 88.7,112.9 75.7,112.9 	"/>
+	<polygon class="st1" points="12.3,67.5 4.4,81.2 17.2,88.6 17.2,76 	"/>
+	<polygon class="st1" points="62.6,12.3 48.8,4.3 41.4,17.1 54.2,17.1 	"/>
+	<polygon class="st1" points="117.7,62.6 125.7,48.8 112.8,41.3 112.8,54.1 	"/>
+</g>
+<g id="layer3Border" class="st2">
+	<path class="st1" d="M39.2,17.1c0.5,0,1.7,0,2.2,0l7.4-12.8l13.8,8l1.9-1.1L48.1,1.7L39.2,17.1z"/>
+	<path class="st1" d="M112.8,39.1c0,0.5,0,1.7,0,2.2l12.9,7.5l-8,13.8c0.3,0.5,0.8,1.5,1.1,2l9.5-16.5L112.8,39.1z"/>
+	<path class="st1" d="M88.7,112.9l-7.4,12.8l-13.9-8l-1.9,1.1l16.5,9.5l8.9-15.4C90.4,112.9,89.2,112.9,88.7,112.9z"/>
+	<path class="st1" d="M12.3,67.5c-0.3-0.5-0.8-1.4-1.1-1.9L1.8,82l15.4,8.9c0-0.6,0-1.7,0-2.3L4.4,81.2L12.3,67.5z"/>
+</g>
+<g id="layer2Fill" class="st2">
+	<polygon class="st1" points="41.9,112.9 48.9,125.1 70.1,112.9 	"/>
+	<polygon class="st1" points="17.2,70.1 17.2,41.9 5,49 	"/>
+	<polygon class="st1" points="60.1,17.1 88.1,17.1 81.1,5 	"/>
+	<polygon class="st1" points="112.8,60 112.8,88.2 125,81.1 	"/>
+</g>
+<g id="layer2Border">
+	<polygon class="st1" points="17.2,76 17.2,70.1 5,49 17.2,41.9 17.2,38.5 1,47.9 	"/>
+	<path class="st1" d="M54.2,17.1h5.9c0,0,19.9-11.5,21-12.1l7,12.1c0.8,0,2.5,0,3.3,0L82.1,1L54.2,17.1z"/>
+	<polygon class="st1" points="112.8,54.1 112.8,60 125,81.1 112.8,88.2 112.8,91.5 129,82.2 	"/>
+	<path class="st1" d="M48.9,125.1l-7-12.2c-0.8,0-2.6,0-3.4,0l9.3,16.1c6.7-3.9,21.4-12.3,27.9-16.1c-1.4,0-5.6,0-5.6,0L48.9,125.1z
+		"/>
+</g>
+<path id="raBorder" class="st1" d="M17,17v96h96V17H17z M108,108H22V22h86V108z"/>
+<g id="ra">
+	<path id="aLetter" class="st1" d="M96.1,55.4c-0.7-1.9-2-3.2-3.7-4c-1.9-0.8-4.6-1.2-8.2-1.2c-4.2,0-7.9,0.3-11.1,1v4.2
+		c1.2-0.2,2.7-0.4,4.7-0.5c1.9-0.1,3.5-0.2,4.8-0.2c2.9,0,5,0.2,6.2,0.5c1.3,0.4,2.1,1.2,2.5,2.3c0.5,1.2,0.7,3.2,0.7,6.1V66
+		c-6.2-0.2-9.9-0.3-11.1-0.3c-2.5,0-4.5,0.3-5.9,1c-1.4,0.7-2.3,1.8-2.9,3.2c-0.6,1.4-0.9,3.5-0.9,6.2c0,3.9,0.9,6.5,2.4,8
+		c1.7,1.5,4.2,2.1,7.8,2.1c2.4,0,4.6-0.4,6.4-1.1c1.9-0.7,3.2-2.1,4-4.3h0.3l0.3,4.9h4.7v-22C97.1,60,96.8,57.3,96.1,55.4z M92,71.6
+		c0,2.9-0.4,5.4-1.3,7.1c-0.6,1.2-1.6,2-2.7,2.3c-1.3,0.4-2.8,0.6-4.7,0.8c-2,0-3.4-0.2-4.4-0.5c-0.9-0.4-1.6-1-2-1.8
+		c-0.4-0.8-0.6-2.1-0.6-3.8s0.2-3,0.5-3.9c0.3-0.9,0.9-1.5,1.7-1.8s2.1-0.5,3.7-0.5H92V71.6z"/>
+	<path id="rLetter" class="st1" d="M62.4,61.2c0.9-2.2,1.3-5.1,1.3-8.5c0-3.1-0.3-5.7-0.8-7.6c-0.5-2-1.7-3.5-3.4-4.7
+		c-1.8-1.2-4.4-1.8-7.9-1.8H33.5v47.1H39V67h11.9h1.2l6.5,18.8h5.9L57.3,66C59.9,65,61.6,63.4,62.4,61.2z M55.4,61.2
+		c-1.3,0.7-3.1,1-5.6,1H39V43.5h11.2c2.4,0,4.2,0.3,5.4,1c1.2,0.7,2,1.6,2.2,2.8c0.3,1.3,0.5,3,0.5,5.5c0,2.3-0.2,4.2-0.6,5.5
+		C57.3,59.5,56.6,60.5,55.4,61.2z"/>
+</g>
+</svg>
+ </a>
+        </div>
+        <div class="left">
+            <div id="docsearch" class="center"></div>
+        </div>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li class="active">
+                <a href="https://marmelab.com/react-admin/documentation.html">Documentation</a>
+            </li>
+            <li>
+                <a href="https://marmelab.com/react-admin/Demos.html">Demos</a>
+            </li>
+            <li>
+                <a href="https://marmelab.com/en/blog/#react-admin">Blog</a>
+            </li>
+            <li>
+                <a
+                    href="https://react-admin-ee.marmelab.com/"
+                    style="color: #f0c070"
+                    >Enterprise Edition</a
+                >
+            </li>
+            <li class="social">
+                <a
+                    href="https://github.com/marmelab/react-admin"
+                    title="GitHub"
+                >
+                    <svg
+                        viewBox="0 0 256 250"
+                        preserveAspectRatio="xMidYMid"
+                        style="
+                            height: 20px;
+                            vertical-align: middle;
+                            fill: #ffffff;
+                        "
+                    >
+                        <path
+                            d="M128.001 0C57.317 0 0 57.307 0 128.001c0 56.554 36.676 104.535 87.535 121.46 6.397 1.185 8.746-2.777 8.746-6.158 0-3.052-.12-13.135-.174-23.83-35.61 7.742-43.124-15.103-43.124-15.103-5.823-14.795-14.213-18.73-14.213-18.73-11.613-7.944.876-7.78.876-7.78 12.853.902 19.621 13.19 19.621 13.19 11.417 19.568 29.945 13.911 37.249 10.64 1.149-8.272 4.466-13.92 8.127-17.116-28.431-3.236-58.318-14.212-58.318-63.258 0-13.975 5-25.394 13.188-34.358-1.329-3.224-5.71-16.242 1.24-33.874 0 0 10.749-3.44 35.21 13.121 10.21-2.836 21.16-4.258 32.038-4.307 10.878.049 21.837 1.47 32.066 4.307 24.431-16.56 35.165-13.12 35.165-13.12 6.967 17.63 2.584 30.65 1.255 33.873 8.207 8.964 13.173 20.383 13.173 34.358 0 49.163-29.944 59.988-58.447 63.157 4.591 3.972 8.682 11.762 8.682 23.704 0 17.126-.148 30.91-.148 35.126 0 3.407 2.304 7.398 8.792 6.14C219.37 232.5 256 184.537 256 128.002 256 57.307 198.691 0 128.001 0zm-80.06 182.34c-.282.636-1.283.827-2.194.39-.929-.417-1.45-1.284-1.15-1.922.276-.655 1.279-.838 2.205-.399.93.418 1.46 1.293 1.139 1.931zm6.296 5.618c-.61.566-1.804.303-2.614-.591-.837-.892-.994-2.086-.375-2.66.63-.566 1.787-.301 2.626.591.838.903 1 2.088.363 2.66zm4.32 7.188c-.785.545-2.067.034-2.86-1.104-.784-1.138-.784-2.503.017-3.05.795-.547 2.058-.055 2.861 1.075.782 1.157.782 2.522-.019 3.08zm7.304 8.325c-.701.774-2.196.566-3.29-.49-1.119-1.032-1.43-2.496-.726-3.27.71-.776 2.213-.558 3.315.49 1.11 1.03 1.45 2.505.701 3.27zm9.442 2.81c-.31 1.003-1.75 1.459-3.199 1.033-1.448-.439-2.395-1.613-2.103-2.626.301-1.01 1.747-1.484 3.207-1.028 1.446.436 2.396 1.602 2.095 2.622zm10.744 1.193c.036 1.055-1.193 1.93-2.715 1.95-1.53.034-2.769-.82-2.786-1.86 0-1.065 1.202-1.932 2.733-1.958 1.522-.03 2.768.818 2.768 1.868zm10.555-.405c.182 1.03-.875 2.088-2.387 2.37-1.485.271-2.861-.365-3.05-1.386-.184-1.056.893-2.114 2.376-2.387 1.514-.263 2.868.356 3.061 1.403z"
+                        ></path>
+                    </svg>
+                </a>
+            </li>
+            <li class="social">
+                <a href="https://discord.gg/GeZF9sqh3N" title="Discord">
+                    <svg
+                        height="25px"
+                        width="25px"
+                        viewBox="0 -28.5 256 256"
+                        preserveAspectRatio="xMidYMid"
+                        style="
+                            height: 20px;
+                            vertical-align: middle;
+                            fill: #ffffff;
+                        "
+                    >
+                        <path
+                            d="M216.856339,16.5966031 C200.285002,8.84328665 182.566144,3.2084988 164.041564,0 C161.766523,4.11318106 159.108624,9.64549908 157.276099,14.0464379 C137.583995,11.0849896 118.072967,11.0849896 98.7430163,14.0464379 C96.9108417,9.64549908 94.1925838,4.11318106 91.8971895,0 C73.3526068,3.2084988 55.6133949,8.86399117 39.0420583,16.6376612 C5.61752293,67.146514 -3.4433191,116.400813 1.08711069,164.955721 C23.2560196,181.510915 44.7403634,191.567697 65.8621325,198.148576 C71.0772151,190.971126 75.7283628,183.341335 79.7352139,175.300261 C72.104019,172.400575 64.7949724,168.822202 57.8887866,164.667963 C59.7209612,163.310589 61.5131304,161.891452 63.2445898,160.431257 C105.36741,180.133187 151.134928,180.133187 192.754523,160.431257 C194.506336,161.891452 196.298154,163.310589 198.110326,164.667963 C191.183787,168.842556 183.854737,172.420929 176.223542,175.320965 C180.230393,183.341335 184.861538,190.991831 190.096624,198.16893 C211.238746,191.588051 232.743023,181.531619 254.911949,164.955721 C260.227747,108.668201 245.831087,59.8662432 216.856339,16.5966031 Z M85.4738752,135.09489 C72.8290281,135.09489 62.4592217,123.290155 62.4592217,108.914901 C62.4592217,94.5396472 72.607595,82.7145587 85.4738752,82.7145587 C98.3405064,82.7145587 108.709962,94.5189427 108.488529,108.914901 C108.508531,123.290155 98.3405064,135.09489 85.4738752,135.09489 Z M170.525237,135.09489 C157.88039,135.09489 147.510584,123.290155 147.510584,108.914901 C147.510584,94.5396472 157.658606,82.7145587 170.525237,82.7145587 C183.391518,82.7145587 193.761324,94.5189427 193.539891,108.914901 C193.539891,123.290155 183.391518,135.09489 170.525237,135.09489 Z"
+                        ></path>
+                    </svg>
+                </a>
+            </li>
+            <li class="social">
+                <a href="https://www.youtube.com/@react-admin" title="Youtube">
+                    <svg
+                        height="25px"
+                        width="25px"
+                        viewBox="0 0 16 16"
+                        preserveAspectRatio="xMidYMid"
+                        style="
+                            vertical-align: middle;
+                            margin-right: 10px;
+                            fill: #ffffff;
+                        "
+                    >
+                        <path
+                            d="M15.32 4.06c-.434-.772-.905-.914-1.864-.968C12.498 3.027 10.089 3 8.002 3c-2.091 0-4.501.027-5.458.091-.957.055-1.429.196-1.867.969C.23 4.831 0 6.159 0 8.497v.008c0 2.328.23 3.666.677 4.429.438.772.909.912 1.866.977.958.056 3.368.089 5.459.089 2.087 0 4.496-.033 5.455-.088.959-.065 1.43-.205 1.864-.977.451-.763.679-2.101.679-4.429v-.008c0-2.339-.228-3.667-.68-4.438zM6 11.5v-6l5 3-5 3z"
+                        ></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+            <ul id="slide-out" class="sidenav sidenav-fixed">
+                <li class="logo">
+                    <a href="https://marmelab.com/react-admin"
+                        ><img src="https://marmelab.com/react-admin/assets/logo_white.png"
+                    /></a>
+                </li>
+                <li class="version">
+<a class="dropdown-trigger" href="#" data-target="versions">
+    
+    latest (5.5.4)
+    
+    <svg class="caret" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7 10l5 5 5-5z"></path>
+        <path d="M0 0h24v24H0z" fill="none"></path>
+    </svg>
+</a>
+<ul id="versions" class="dropdown-content">
+    
+    <li>
+        
+        
+        <a href="#">latest (5.5.4)</a>
+        
+        
+    </li>
+    
+    <li>
+        
+        <a href="https://marmelab.com/react-admin/doc/5.4/ListTutorial.html">5.4</a>
+        
+    </li>
+    
+    <li>
+        
+        <a href="https://marmelab.com/react-admin/doc/5.3/ListTutorial.html">5.3</a>
+        
+    </li>
+    
+    <li>
+        
+        <a href="https://marmelab.com/react-admin/doc/5.2/ListTutorial.html">5.2</a>
+        
+    </li>
+    
+    <li>
+        
+        <a href="https://marmelab.com/react-admin/doc/5.1/ListTutorial.html">5.1</a>
+        
+    </li>
+    
+    <li>
+        
+        <a href="https://marmelab.com/react-admin/doc/5.0/ListTutorial.html">5.0</a>
+        
+    </li>
+    
+    <li>
+        
+        <a href="https://marmelab.com/react-admin/doc/4.16/ListTutorial.html">4.16</a>
+        
+    </li>
+    
+    <li>
+        <a href="https://marmelab.com/react-admin/doc/3.19/Readme.html">3.19</a>
+    </li>
+    <li>
+        <a href="https://marmelab.com/react-admin/doc/2.9/Readme.html">2.9</a>
+    </li>
+    <li>
+        <a href="https://marmelab.com/react-admin/OldVersions.html">Older versions</a>
+    </li>
+</ul>
+</li>
+                <a class="center-align switch" style="display:block;margin-bottom: 1em" name="beginner-mode" title="Hide the sections concerning advanced usage to navigate more easily in the documentation">
+  <label>
+    <input type="checkbox" name="beginner-mode-trigger" id="beginner-mode-trigger" />
+    <span class="lever"></span>
+    Beginner Mode
+  </label>
+</a>
+
+<li><a class="nav-link external" href="https://github.com/marmelab/react-admin/releases" target="_blank">What's new?</a></li>
+
+<ul><div>Getting Started</div>
+  <li  class="beginner" ><a class="nav-link" href="./Tutorial.html">Tutorial</a></li>
+  <li  class="beginner" ><a class="nav-link" href="./CreateReactAdmin.html">Create React Admin</a></li>
+  <li ><a class="nav-link" href="./Vite.html">Vite</a></li>
+  <li ><a class="nav-link" href="./NextJs.html">Next.js</a></li>
+  <li ><a class="nav-link" href="./Remix.html">Remix</a></li>
+</ul>
+
+<ul><div>Guides & Concepts</div>
+  <li ><a class="nav-link" href="./Architecture.html">General Concepts</a></li>
+  <li  class="beginner" ><a class="nav-link" href="./DataFetchingGuide.html">Data Fetching</a></li>
+  <li  class="beginner" ><a class="nav-link" href="./CRUD.html">CRUD Pages</a></li>
+  <li  class="beginner" ><a class="nav-link" href="./Forms.html">Forms</a></li>
+  <li  class="beginner" ><a class="nav-link" href="./SecurityGuide.html">Security</a></li>
+  <li ><a class="nav-link" href="./Routing.html">Routing</a></li>
+  <li ><a class="nav-link" href="./Realtime.html">Realtime</a></li>
+  <li  class="beginner" ><a class="nav-link" href="./Theming.html">Theming</a></li>
+  <li ><a class="nav-link" href="./Translation.html">I18N</a></li>
+  <li ><a class="nav-link" href="./Store.html">Preferences</a></li>
+  <li  class="beginner" ><a class="nav-link" href="./Features.html">All Features</a></li>
+  <li ><a class="nav-link" href="./Upgrade.html">Upgrading to v5</a></li>
+  <li  class="beginner" ><a class="nav-link" href="./Community.html">Community</a></li>
+  </ul>
+
+  <ul><div>App Configuration</div>
+    <li  class="beginner" ><a class="nav-link" href="./Admin.html"><code>&lt;Admin&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./Resource.html"><code>&lt;Resource&gt;</code></a></li>
+    <li ><a class="nav-link" href="./CustomRoutes.html"><code>&lt;CustomRoutes&gt;</code></a></li>
+  </ul>
+  
+  <ul><div>Data Fetching</div>
+    <li  class="beginner" ><a class="nav-link" href="./DataProviders.html">Data Provider Setup</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./Actions.html">Querying the API</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./DataProviderList.html">Supported backends</a></li>
+    <li ><a class="nav-link" href="./DataProviderWriting.html">Writing A Data Provider</a></li>
+    <li ><a class="nav-link" href="./useDataProvider.html"><code>useDataProvider</code></a></li>
+    <li ><a class="nav-link" href="./useGetList.html"><code>useGetList</code></a></li>
+    <li ><a class="nav-link" href="./useInfiniteGetList.html"><code>useInfiniteGetList</code></a></li>
+    <li ><a class="nav-link" href="./useGetOne.html"><code>useGetOne</code></a></li>
+    <li ><a class="nav-link" href="./useGetMany.html"><code>useGetMany</code></a></li>
+    <li ><a class="nav-link" href="./useGetManyReference.html"><code>useGetManyReference</code></a></li>
+    <li ><a class="nav-link" href="./useCreate.html"><code>useCreate</code></a></li>
+    <li ><a class="nav-link" href="./useUpdate.html"><code>useUpdate</code></a></li>
+    <li ><a class="nav-link" href="./useUpdateMany.html"><code>useUpdateMany</code></a></li>
+    <li ><a class="nav-link" href="./useDelete.html"><code>useDelete</code></a></li>
+    <li ><a class="nav-link" href="./useDeleteMany.html"><code>useDeleteMany</code></a></li>
+    <li ><a class="nav-link" href="./useGetTree.html"><code>useGetTree</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./withLifecycleCallbacks.html"><code>withLifecycleCallbacks</code></a></li>
+    <li ><a class="nav-link" href="./fetchJson.html"><code>fetchJson</code></a></li>
+  </ul>
+  
+  <ul><div>Security</div>
+    <li  class="beginner" ><a class="nav-link" href="./Authentication.html">Auth Provider Setup</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./AuthProviderList.html">Supported backends</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./AuthProviderWriting.html">Writing An Auth Provider</a></li>
+    <li ><a class="nav-link" href="./Permissions.html">Authorization</a></li>
+    <li ><a class="nav-link" href="./AuthRBAC.html">RBAC<img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./Authenticated.html"><code>&lt;Authenticated&gt;</code></a></li>
+    <li ><a class="nav-link" href="./CanAccess.html"><code>&lt;CanAccess&gt;</code></a></li>
+    <li ><a class="nav-link" href="./useAuthenticated.html"><code>useAuthenticated</code></a></li>
+    <li ><a class="nav-link" href="./useAuthState.html"><code>useAuthState</code></a></li>
+    <li ><a class="nav-link" href="./useLogin.html"><code>useLogin</code></a></li>
+    <li ><a class="nav-link" href="./useLogout.html"><code>useLogout</code></a></li>
+    <li ><a class="nav-link" href="./useGetIdentity.html"><code>useGetIdentity</code></a></li>
+    <li ><a class="nav-link" href="./useCanAccess.html"><code>useCanAccess</code></a></li>
+    <li ><a class="nav-link" href="./usePermissions.html"><code>usePermissions</code></a></li>
+    <li ><a class="nav-link" href="./useAuthProvider.html"><code>useAuthProvider</code></a></li>
+    <li ><a class="nav-link" href="./addRefreshAuthToAuthProvider.html"><code>addRefreshAuthToAuthProvider</code></a></li>
+    <li ><a class="nav-link" href="./addRefreshAuthToDataProvider.html"><code>addRefreshAuthToDataProvider</code></a></li>
+  </ul>
+  
+  <ul><div>List Page</div>
+    <li  class="active beginner" ><a class="nav-link" href="./ListTutorial.html">Introduction</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./FilteringTutorial.html">Filtering The List</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./List.html"><code>&lt;List&gt;</code></a></li>
+    <li ><a class="nav-link" href="./ListBase.html"><code>&lt;ListBase&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./ListGuesser.html"><code>&lt;ListGuesser&gt;</code></a></li>
+    <li ><a class="nav-link" href="./InfiniteList.html"><code>&lt;InfiniteList&gt;</code></a></li>
+    <li ><a class="nav-link" href="./TreeWithDetails.html"><code>&lt;TreeWithDetails&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./Datagrid.html"><code>&lt;Datagrid&gt;</code></a></li>
+    <li ><a class="nav-link" href="./DatagridAG.html"><code>&lt;DatagridAG&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./SimpleList.html"><code>&lt;SimpleList&gt;</code></a></li>
+    <li ><a class="nav-link" href="./SingleFieldList.html"><code>&lt;SingleFieldList&gt;</code></a></li>
+    <li ><a class="nav-link" href="./EditableDatagrid.html"><code>&lt;EditableDatagrid&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./Calendar.html"><code>&lt;Calendar&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./FilterButton.html"><code>&lt;FilterButton&gt;</code></a></li>
+    <li ><a class="nav-link" href="./FilterList.html"><code>&lt;FilterList&gt;</code></a></li>
+    <li ><a class="nav-link" href="./FilterLiveForm.html"><code>&lt;FilterLiveForm&gt;</code></a></li>
+    <li ><a class="nav-link" href="./FilterLiveSearch.html"><code>&lt;FilterLiveSearch&gt;</code></a></li>
+    <li ><a class="nav-link" href="./SavedQueriesList.html"><code>&lt;SavedQueriesList&gt;</code></a></li>
+    <li ><a class="nav-link" href="./StackedFilters.html"><code>&lt;StackedFilters&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./Pagination.html"><code>&lt;Pagination&gt;</code></a></li>
+    <li ><a class="nav-link" href="./SortButton.html"><code>&lt;SortButton&gt;</code></a></li>
+    <li ><a class="nav-link" href="./SelectColumnsButton.html"><code>&lt;SelectColumnsButton&gt;</code></a></li>
+    <li ><a class="nav-link" href="./Count.html"><code>&lt;Count&gt;</code></a></li>
+    <li ><a class="nav-link" href="./WithListContext.html"><code>&lt;WithListContext&gt;</code></a></li>
+    <li ><a class="nav-link" href="./useListContext.html"><code>useListContext</code></a></li>
+    <li ><a class="nav-link" href="./useList.html"><code>useList</code></a></li>
+    <li ><a class="nav-link" href="./useListController.html"><code>useListController</code></a></li>
+    <li ><a class="nav-link" href="./useUnselect.html"><code>useUnselect</code></a></li>
+    <li ><a class="nav-link" href="./useUnselectAll.html"><code>useUnselectAll</code></a></li>
+  </ul>
+  
+  <ul><div>Creation & Edition Pages</div>
+    <li  class="beginner" ><a class="nav-link" href="./EditTutorial.html">Introduction</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./Validation.html">Form Validation</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./Create.html"><code>&lt;Create&gt;</code></a></li>
+    <li ><a class="nav-link" href="./CreateBase.html"><code>&lt;CreateBase&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./Edit.html"><code>&lt;Edit&gt;</code></a></li>
+    <li ><a class="nav-link" href="./EditBase.html"><code>&lt;EditBase&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./EditGuesser.html"><code>&lt;EditGuesser&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./SimpleForm.html"><code>&lt;SimpleForm&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./TabbedForm.html"><code>&lt;TabbedForm&gt;</code></a></li>
+    <li ><a class="nav-link" href="./Form.html"><code>&lt;Form&gt;</code></a></li>
+    <li ><a class="nav-link" href="./LongForm.html"><code>&lt;LongForm&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./AccordionForm.html"><code>&lt;AccordionForm&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./WizardForm.html"><code>&lt;WizardForm&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./EditDialog.html"><code>&lt;EditDialog&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./EditInDialogButton.html"><code>&lt;EditInDialogButton&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./CreateDialog.html"><code>&lt;CreateDialog&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./CreateInDialogButton.html"><code>&lt;CreateInDialogButton&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./JsonSchemaForm.html"><code>&lt;JsonSchemaForm&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./Toolbar.html"><code>&lt;Toolbar&gt;</code></a></li>
+    <li ><a class="nav-link" href="./SaveButton.html"><code>&lt;SaveButton&gt;</code></a></li>
+    <li ><a class="nav-link" href="./AutoSave.html"><code>&lt;AutoSave&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useCreateContext.html"><code>useCreateContext</code></a></li>
+    <li ><a class="nav-link" href="./useCreateController.html"><code>useCreateController</code></a></li>
+    <li ><a class="nav-link" href="./useEditContext.html"><code>useEditContext</code></a></li>
+    <li ><a class="nav-link" href="./useEditController.html"><code>useEditController</code></a></li>
+    <li ><a class="nav-link" href="./useSaveContext.html"><code>useSaveContext</code></a></li>
+    <li ><a class="nav-link" href="./useRecordFromLocation.html"><code>useRecordFromLocation</code></a></li>
+    <li ><a class="nav-link" href="./useRegisterMutationMiddleware.html"><code>useRegisterMutationMiddleware</code></a></li>
+    <li ><a class="nav-link" href="./useUnique.html"><code>useUnique</code></a></li>
+  </ul>
+  
+  <ul><div>Show Page</div>
+    <li  class="beginner" ><a class="nav-link" href="./ShowTutorial.html">Introduction</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./Show.html"><code>&lt;Show&gt;</code></a></li>
+    <li ><a class="nav-link" href="./ShowBase.html"><code>&lt;ShowBase&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./ShowGuesser.html"><code>&lt;ShowGuesser&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./SimpleShowLayout.html"><code>&lt;SimpleShowLayout&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./TabbedShowLayout.html"><code>&lt;TabbedShowLayout&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./Labeled.html"><code>&lt;Labeled&gt;</code></a></li>
+    <li ><a class="nav-link" href="./ShowInDialogButton.html"><code>&lt;ShowInDialogButton&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useShowContext.html"><code>useShowContext</code></a></li>
+    <li ><a class="nav-link" href="./useShowController.html"><code>useShowController</code></a></li>
+  </ul>
+  
+  <ul><div>Common</div>
+    <li  class="beginner" ><a class="nav-link" href="./WithRecord.html"><code>&lt;WithRecord&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./useRecordContext.html"><code>useRecordContext</code></a></li>
+    <li ><a class="nav-link" href="./useGetRecordId.html"><code>useGetRecordId</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./useNotify.html"><code>useNotify</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./useRedirect.html"><code>useRedirect</code></a></li>
+    <li ><a class="nav-link" href="./useRefresh.html"><code>useRefresh</code></a></li>
+  </ul>
+  
+  <ul><div>Fields</div>
+    <li  class="beginner" ><a class="nav-link" href="./Fields.html">Introduction</a></li>
+    <li ><a class="nav-link" href="./FieldsForRelationships.html">Fields for Relationships</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./ArrayField.html"><code>&lt;ArrayField&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./BooleanField.html"><code>&lt;BooleanField&gt;</code></a></li>
+    <li ><a class="nav-link" href="./ChipField.html"><code>&lt;ChipField&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./DateField.html"><code>&lt;DateField&gt;</code></a></li>
+    <li ><a class="nav-link" href="./EmailField.html"><code>&lt;EmailField&gt;</code></a></li>
+    <li ><a class="nav-link" href="./FileField.html"><code>&lt;FileField&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./FunctionField.html"><code>&lt;FunctionField&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./ImageField.html"><code>&lt;ImageField&gt;</code></a></li>
+    <li ><a class="nav-link" href="./MarkdownField.html"><code>&lt;MarkdownField&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./NumberField.html"><code>&lt;NumberField&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./ReferenceField.html"><code>&lt;ReferenceField&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./ReferenceArrayField.html"><code>&lt;ReferenceArrayField&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./ReferenceManyField.html"><code>&lt;ReferenceManyField&gt;</code></a></li>
+    <li ><a class="nav-link" href="./ReferenceManyCount.html"><code>&lt;ReferenceManyCount&gt;</code></a></li>
+    <li ><a class="nav-link" href="./ReferenceManyToManyField.html"><code>&lt;ReferenceManyToManyField&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./ReferenceOneField.html"><code>&lt;ReferenceOneField&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./RichTextField.html"><code>&lt;RichTextField&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./SelectField.html"><code>&lt;SelectField&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./TextField.html"><code>&lt;TextField&gt;</code></a></li>
+    <li ><a class="nav-link" href="./TranslatableFields.html"><code>&lt;TranslatableFields&gt;</code></a></li>
+    <li ><a class="nav-link" href="./UrlField.html"><code>&lt;UrlField&gt;</code></a></li>
+    <li ><a class="nav-link" href="./WrapperField.html"><code>&lt;WrapperField&gt;</code></a></li>
+    <li ><a class="nav-link" href="./useFieldValue.html"><code>useFieldValue</code></a></li>
+  </ul>
+  
+  <ul><div>Inputs</div>
+    <li  class="beginner" ><a class="nav-link" href="./Inputs.html">Introduction</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./ArrayInput.html"><code>&lt;ArrayInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./AutocompleteInput.html"><code>&lt;AutocompleteInput&gt;</code></a></li>
+    <li ><a class="nav-link" href="./AutocompleteArrayInput.html"><code>&lt;AutocompleteArrayInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./BooleanInput.html"><code>&lt;BooleanInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./CheckboxGroupInput.html"><code>&lt;CheckboxGroupInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./DateInput.html"><code>&lt;DateInput></code></a></li>
+    <li ><a class="nav-link" href="./DateRangeInput.html"><code>&lt;DateRangeInput&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./DateTimeInput.html"><code>&lt;DateTimeInput&gt;</code></a></li>
+    <li ><a class="nav-link" href="./DualListInput.html"><code>&lt;DualListInput&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./FileInput.html"><code>&lt;FileInput&gt;</code></a></li>
+    <li ><a class="nav-link" href="./ImageInput.html"><code>&lt;ImageInput&gt;</code></a></li>
+    <li ><a class="nav-link" href="./MarkdownInput.html"><code>&lt;MarkdownInput&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./NullableBooleanInput.html"><code>&lt;NullableBooleanInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./NumberInput.html"><code>&lt;NumberInput&gt;</code></a></li>
+    <li ><a class="nav-link" href="./PasswordInput.html"><code>&lt;PasswordInput&gt;</code></a></li>
+    <li ><a class="nav-link" href="./PredictiveTextInput.html"><code>&lt;PredictiveTextInput&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./RadioButtonGroupInput.html"><code>&lt;RadioButtonGroupInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./ReferenceInput.html"><code>&lt;ReferenceInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./ReferenceArrayInput.html"><code>&lt;ReferenceArrayInput&gt;</code></a></li>
+    <li ><a class="nav-link" href="./ReferenceManyInput.html"><code>&lt;ReferenceManyInput&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./ReferenceManyToManyInput.html"><code>&lt;ReferenceManyToManyInput&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./ReferenceNodeInput.html"><code>&lt;ReferenceNodeInput&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./ReferenceOneInput.html"><code>&lt;ReferenceOneInput&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./RichTextInput.html"><code>&lt;RichTextInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./SearchInput.html"><code>&lt;SearchInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./SelectInput.html"><code>&lt;SelectInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./SelectArrayInput.html"><code>&lt;SelectArrayInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./SimpleFormIterator.html"><code>&lt;SimpleFormIterator&gt;</code></a></li>
+    <li ><a class="nav-link" href="./SmartRichTextInput.html"><code>&lt;SmartRichTextInput&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./TextArrayInput.html"><code>&lt;TextArrayInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./TextInput.html"><code>&lt;TextInput&gt;</code></a></li>
+    <li ><a class="nav-link" href="./TimeInput.html"><code>&lt;TimeInput&gt;</code></a></li>
+    <li ><a class="nav-link" href="./TranslatableInputs.html"><code>&lt;TranslatableInputs&gt;</code></a></li>
+    <li ><a class="nav-link" href="./TreeInput.html"><code>&lt;TreeInput&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useInput.html"><code>useInput</code></a></li>
+  </ul>
+  
+  <ul><div>Preferences</div>
+    <li ><a class="nav-link" href="./useStore.html"><code>useStore</code></a></li>
+    <li ><a class="nav-link" href="./useRemoveFromStore.html"><code>useRemoveFromStore</code></a></li>
+    <li ><a class="nav-link" href="./useResetStore.html"><code>useResetStore</code></a></li>
+    <li ><a class="nav-link" href="./useStoreContext.html"><code>useStoreContext</code></a></li>
+    <li ><a class="nav-link" href="./Configurable.html"><code>&lt;Configurable&gt;</code></a></li>
+  </ul>
+  
+  <ul><div>I18N Provider and Translations</div>
+    <li ><a class="nav-link" href="./TranslationSetup.html">Setting Up</a></li>
+    <li ><a class="nav-link" href="./TranslationLocales.html">Supported Locales</a></li>
+    <li ><a class="nav-link" href="./TranslationTranslating.html">Translating UI Components</a></li>
+    <li ><a class="nav-link" href="./TranslationWriting.html">Writing an i18nProvider</a></li>
+    <li ><a class="nav-link" href="./useTranslate.html"><code>useTranslate</code></a></li>
+    <li ><a class="nav-link" href="./useLocaleState.html"><code>useLocaleState</code></a></li>
+    <li ><a class="nav-link" href="./LocalesMenuButton.html"><code>&lt;LocalesMenuButton&gt;</code></a></li>
+  </ul>
+  
+  <ul><div>Other UI components</div>
+    <li  class="beginner" ><a class="nav-link" href="./Layout.html"><code>&lt;Layout&gt;</code></a></li>
+    <li ><a class="nav-link" href="./ContainerLayout.html"><code>&lt;ContainerLayout&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./SolarLayout.html"><code>&lt;SolarLayout&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./AppBar.html"><code>&lt;AppBar&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./Menu.html"><code>&lt;Menu&gt;</code></a></li>
+    <li ><a class="nav-link" href="./MultiLevelMenu.html"><code>&lt;MultiLevelMenu&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./IconMenu.html"><code>&lt;IconMenu&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./Title.html"><code>&lt;Title&gt;</code></a></li>
+    <li ><a class="nav-link" href="./Breadcrumb.html"><code>&lt;Breadcrumb&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./Search.html"><code>&lt;Search&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./SearchWithResult.html"><code>&lt;SearchWithResult&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./Confirm.html"><code>&lt;Confirm&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./Buttons.html">Buttons</a></li>
+    <li ><a class="nav-link" href="./RevisionsButton.html"><code>&lt;RevisionsButton&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./CheckForApplicationUpdate.html"><code>&lt;CheckForApplicationUpdate&gt;</code></a></li>
+    <li ><a class="nav-link" href="./RecordRepresentation.html"><code>&lt;RecordRepresentation&gt;</code></a></li>
+    <li ><a class="nav-link" href="./PrevNextButtons.html"><code>&lt;PrevNextButtons&gt;</code></a></li>
+    <li ><a class="nav-link" href="./useDefineAppLocation.html"><code>useDefineAppLocation</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useGetRecordRepresentation.html"><code>useGetRecordRepresentation</code></a></li>
+  </ul>
+  
+  <ul><div>Theming</div>
+    <li  class="beginner" ><a class="nav-link" href="./SX.html">The <code>sx</code> prop</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./AppTheme.html">Application Theme</a></li>
+    <li ><a class="nav-link" href="./BoxStackGrid.html"><code>&lt;Box&gt;</code>, <code>&lt;Stack&gt;</code> and <code>&lt;Grid&gt;</code></a></li>
+    <li ><a class="nav-link" href="./ToggleThemeButton.html"><code>&lt;ToggleThemeButton&gt;</code></a></li>
+    <li ><a class="nav-link" href="./useMediaQuery.html"><code>useMediaQuery</code></a></li>
+    <li ><a class="nav-link" href="./useTheme.html"><code>useTheme</code></a></li>
+  </ul>
+  
+  <ul><div>Realtime</div>
+    <li ><a class="nav-link" href="./RealtimeDataProvider.html">Setting Up</a></li>
+    <li ><a class="nav-link" href="./usePublish.html"><code>usePublish</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useSubscribe.html"><code>useSubscribe</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useSubscribeCallback.html"><code>useSubscribeCallback</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useSubscribeToRecord.html"><code>useSubscribeToRecord</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useSubscribeToRecordList.html"><code>useSubscribeToRecordList</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useLock.html"><code>useLock</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useUnlock.html"><code>useUnlock</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useGetLock.html"><code>useGetLock</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useGetLockLive.html"><code>useGetLockLive</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useGetLocks.html"><code>useGetLocks</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useGetLocksLive.html"><code>useGetLocksLive</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useLockOnMount.html"><code>useLockOnMount</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useLockOnCall.html"><code>useLockOnCall</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useGetListLive.html"><code>useGetListLive</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useGetOneLive.html"><code>useGetOneLive</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./ListLive.html"><code>&lt;ListLive&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./EditLive.html"><code>&lt;EditLive&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./ShowLive.html"><code>&lt;ShowLive&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./MenuLive.html"><code>&lt;MenuLive&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+  </ul>
+  
+  <ul><div>Recipes</div>
+    <li ><a class="nav-link" href="./Caching.html">Caching</a></li>
+    <li ><a class="nav-link" href="./UnitTesting.html">Unit Testing</a></li>
+    <li ><a class="nav-link" href="./AdvancedTutorials.html">Advanced tutorials</a></li>
+  </ul>
+  
+  <li ><a class="nav-link" href="./Ecosystem.html">Ecosystem</a></li>
+  <li ><a class="nav-link" href="./Contributing.html">Contributing</a></li>
+  <li ><a class="nav-link" href="./FAQ.html">FAQ</a></li>
+  <li  class="beginner" ><a class="nav-link" href="./Reference.html">Index</a></li>
+  
+  <div class="beginner-mode-on" style="margin:1em;padding:1em;background:#ffffca;border-radius:4px;display:none;font-size:0.8em;opacity:0.8;text-align:center;">
+    <a href="#beginner-mode">Beginner mode is on</a>. Turn it off to reveal more documentation for advanced components.
+  </div>
+  
+
+            </ul>
+        </header>
+
+        <main>
+            <div class="container sticker-container">
+                <div class="row">
+                    <div class="col s12 m9">
+                        <div
+                            class="markdown-section DocSearch-content toc-content"
+                        >
+                            <h1 id="the-list-page">The List Page</h1>
+
+<p>The List view displays a list of records, and lets users search for specific records using filters, sorting, and pagination.</p>
+
+<p><img src="/react-admin/img/list-view.jpg" alt="The List View" /></p>
+
+<p>This tutorial explains the List view from first principles, and shows how react-admin allows you to reduce the amount of boilerplate code to focus on the business logic.</p>
+
+<h2 id="from-pure-react-to-react-admin">From Pure React To React-Admin</h2>
+
+<p>The List view fetches a list of records and renders them, together with UI controls for filter, sort and pagination.</p>
+
+<p><a href="./img/list-from-react-to-react-admin.webp"><img src="/react-admin/img/list-from-react-to-react-admin.webp" alt="From Pure React To React-Admin" /></a></p>
+
+<p>To better understand how to use the various react-admin hooks and components dedicated to editing and creating, let’s start by building such an edition view by hand.</p>
+
+<h3 id="a-list-view-built-by-hand">A List View Built By Hand</h3>
+
+<p>You’ve probably developed it a dozen times, and in fact you don’t need react-admin to build, say, a book List view:</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">useState</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Title</span><span class="p">,</span> <span class="nx">useGetList</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-admin</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span>
+    <span class="nx">Card</span><span class="p">,</span>
+    <span class="nx">TextField</span><span class="p">,</span>
+    <span class="nx">Button</span><span class="p">,</span>
+    <span class="nx">Toolbar</span><span class="p">,</span>
+    <span class="nx">Table</span><span class="p">,</span>
+    <span class="nx">TableHead</span><span class="p">,</span>
+    <span class="nx">TableRow</span><span class="p">,</span>
+    <span class="nx">TableBody</span><span class="p">,</span>
+    <span class="nx">TableCell</span><span class="p">,</span>
+<span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@mui/material</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">BookList</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">filter</span><span class="p">,</span> <span class="nx">setFilter</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="dl">''</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">page</span><span class="p">,</span> <span class="nx">setPage</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">perPage</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">total</span><span class="p">,</span> <span class="nx">isPending</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useGetList</span><span class="o">&lt;</span><span class="nx">Book</span><span class="o">&gt;</span><span class="p">(</span><span class="dl">'</span><span class="s1">books</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">filter</span><span class="p">:</span> <span class="p">{</span> <span class="na">q</span><span class="p">:</span> <span class="nx">filter</span> <span class="p">},</span>
+        <span class="na">pagination</span><span class="p">:</span> <span class="p">{</span> <span class="nx">page</span><span class="p">,</span> <span class="nx">perPage</span> <span class="p">},</span>
+        <span class="na">sort</span><span class="p">:</span> <span class="p">{</span> <span class="na">field</span><span class="p">:</span> <span class="dl">'</span><span class="s1">id</span><span class="dl">'</span><span class="p">,</span> <span class="na">order</span><span class="p">:</span> <span class="dl">'</span><span class="s1">ASC</span><span class="dl">'</span> <span class="p">}</span>
+    <span class="p">});</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">isPending</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>Loading...<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">Title</span> <span class="na">title</span><span class="p">=</span><span class="s">"Book list"</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;</span><span class="nc">TextField</span>
+                <span class="na">label</span><span class="p">=</span><span class="s">"Search"</span>
+                <span class="na">value</span><span class="p">=</span><span class="si">{</span><span class="nx">filter</span><span class="si">}</span>
+                <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">e</span> <span class="o">=&gt;</span> <span class="nx">setFilter</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span><span class="si">}</span>
+                <span class="na">variant</span><span class="p">=</span><span class="s">"filled"</span>
+                <span class="na">size</span><span class="p">=</span><span class="s">"small"</span>
+                <span class="na">margin</span><span class="p">=</span><span class="s">"dense"</span>
+            <span class="p">/&gt;</span>
+            <span class="p">&lt;</span><span class="nc">Card</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">Table</span> <span class="na">sx</span><span class="p">=</span><span class="si">{</span><span class="p">{</span> <span class="na">padding</span><span class="p">:</span> <span class="mi">2</span> <span class="p">}</span><span class="si">}</span> <span class="na">size</span><span class="p">=</span><span class="s">"small"</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nc">TableHead</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nc">TableRow</span><span class="p">&gt;</span>
+                            <span class="p">&lt;</span><span class="nc">TableCell</span><span class="p">&gt;</span>Id<span class="p">&lt;/</span><span class="nc">TableCell</span><span class="p">&gt;</span>
+                            <span class="p">&lt;</span><span class="nc">TableCell</span><span class="p">&gt;</span>Title<span class="p">&lt;/</span><span class="nc">TableCell</span><span class="p">&gt;</span>
+                            <span class="p">&lt;</span><span class="nc">TableCell</span><span class="p">&gt;</span>Author<span class="p">&lt;/</span><span class="nc">TableCell</span><span class="p">&gt;</span>
+                            <span class="p">&lt;</span><span class="nc">TableCell</span><span class="p">&gt;</span>Year<span class="p">&lt;/</span><span class="nc">TableCell</span><span class="p">&gt;</span>
+                        <span class="p">&lt;/</span><span class="nc">TableRow</span><span class="p">&gt;</span>
+                    <span class="p">&lt;/</span><span class="nc">TableHead</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nc">TableBody</span><span class="p">&gt;</span>
+                        <span class="si">{</span><span class="nx">data</span><span class="p">?.</span><span class="nx">map</span><span class="p">(</span><span class="nx">book</span> <span class="o">=&gt;</span> <span class="p">(</span>
+                            <span class="p">&lt;</span><span class="nc">TableRow</span> <span class="na">key</span><span class="p">=</span><span class="si">{</span><span class="nx">book</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="p">&gt;</span>
+                                <span class="p">&lt;</span><span class="nc">TableCell</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">book</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="p">&lt;/</span><span class="nc">TableCell</span><span class="p">&gt;</span>
+                                <span class="p">&lt;</span><span class="nc">TableCell</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">book</span><span class="p">.</span><span class="nx">title</span><span class="si">}</span><span class="p">&lt;/</span><span class="nc">TableCell</span><span class="p">&gt;</span>
+                                <span class="p">&lt;</span><span class="nc">TableCell</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">book</span><span class="p">.</span><span class="nx">author</span><span class="si">}</span><span class="p">&lt;/</span><span class="nc">TableCell</span><span class="p">&gt;</span>
+                                <span class="p">&lt;</span><span class="nc">TableCell</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">book</span><span class="p">.</span><span class="nx">year</span><span class="si">}</span><span class="p">&lt;/</span><span class="nc">TableCell</span><span class="p">&gt;</span>
+                            <span class="p">&lt;/</span><span class="nc">TableRow</span><span class="p">&gt;</span>
+                        <span class="p">))</span><span class="si">}</span>
+                    <span class="p">&lt;/</span><span class="nc">TableBody</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="nc">Table</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nc">Card</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">Toolbar</span><span class="p">&gt;</span>
+                <span class="si">{</span><span class="nx">page</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="p">&lt;</span><span class="nc">Button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">setPage</span><span class="p">(</span><span class="nx">page</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="p">&gt;</span>Previous page<span class="p">&lt;/</span><span class="nc">Button</span><span class="p">&gt;</span><span class="si">}</span>
+                <span class="si">{</span><span class="nx">page</span> <span class="o">&lt;</span> <span class="p">(</span><span class="nx">total</span> <span class="o">||</span> <span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="nx">perPage</span> <span class="o">&amp;&amp;</span> <span class="p">&lt;</span><span class="nc">Button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">setPage</span><span class="p">(</span><span class="nx">page</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="p">&gt;</span>Next page<span class="p">&lt;/</span><span class="nc">Button</span><span class="p">&gt;</span><span class="si">}</span>
+            <span class="p">&lt;/</span><span class="nc">Toolbar</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>You can pass this <code class="language-plaintext highlighter-rouge">BookList</code> component as the <code class="language-plaintext highlighter-rouge">list</code> prop of the <code class="language-plaintext highlighter-rouge">&lt;Resource name="books" /&gt;</code>, and react-admin will render it on the <code class="language-plaintext highlighter-rouge">/books/</code> path.</p>
+
+<p>This example uses the <code class="language-plaintext highlighter-rouge">useGetList</code> hook instead of <code class="language-plaintext highlighter-rouge">fetch</code> because <code class="language-plaintext highlighter-rouge">useGetList</code> already contains the authentication and request state logic. But you could totally write a List view with <code class="language-plaintext highlighter-rouge">fetch</code>.</p>
+
+<p>This list is a bit rough in the edges (for instance, typing in the search input makes one call to the dataProvider per character), but it’s good enough for the purpose of this chapter.</p>
+
+<h3 id="datagrid-displays-fields-in-a-table"><code class="language-plaintext highlighter-rouge">&lt;Datagrid&gt;</code> Displays Fields In A Table</h3>
+
+<p>Table layouts usually require a lot of code to define the table head, row, columns, etc. React-admin <code class="language-plaintext highlighter-rouge">&lt;Datagrid&gt;</code> component, together with Field components, can help remove that boilerplate:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">import { useState } from 'react';
+</span><span class="gd">-import { Title, useGetList } from 'react-admin';
+</span><span class="gi">+import { Title, useGetList, Datagrid, TextField } from 'react-admin';
+</span><span class="p">import {
+</span>    Card,
+    TextField as MuiTextField,
+    Button,
+    Toolbar,
+<span class="gd">-   Table,
+-   TableHead,
+-   TableRow,
+-   TableBody,
+-   TableCell,
+</span><span class="err">}</span> from '@mui/material';
+
+const BookList = () =&gt; {
+    const [filter, setFilter] = useState('');
+    const [page, setPage] = useState(1);
+    const perPage = 10;
+<span class="gi">+   const sort = { field: 'id', order: 'ASC' };
+</span>    const { data, total, isPending } = useGetList('books', {
+        filter: { q: filter },
+        pagination: { page, perPage },
+<span class="gi">+       sort
+</span>    });
+    if (isPending) {
+        return &lt;div&gt;Loading...&lt;/div&gt;;
+    }
+    return (
+        &lt;div&gt;
+            &lt;Title title="Book list" /&gt;
+            &lt;MuiTextField
+                label="Search"
+                value={filter}
+                onChange={e =&gt; setFilter(e.target.value)}
+                variant="filled"
+                size="small"
+                margin="dense"
+            /&gt;
+            &lt;Card&gt;
+<span class="gd">-               &lt;Table sx={{ padding: 2 }} size="small"&gt;
+-                   &lt;TableHead&gt;
+-                       &lt;TableRow&gt;
+-                           &lt;TableCell&gt;Id&lt;/TableCell&gt;
+-                           &lt;TableCell&gt;Title&lt;/TableCell&gt;
+-                           &lt;TableCell&gt;Author&lt;/TableCell&gt;
+-                           &lt;TableCell&gt;Year&lt;/TableCell&gt;
+-                       &lt;/TableRow&gt;
+-                   &lt;/TableHead&gt;
+-                   &lt;TableBody&gt;
+-                       {data.map(book =&gt; (
+-                           &lt;TableRow key={book.id}&gt;
+-                               &lt;TableCell&gt;{book.id}&lt;/TableCell&gt;
+-                               &lt;TableCell&gt;{book.title}&lt;/TableCell&gt;
+-                               &lt;TableCell&gt;{book.author}&lt;/TableCell&gt;
+-                               &lt;TableCell&gt;{book.year}&lt;/TableCell&gt;
+-                           &lt;/TableRow&gt;
+-                       ))}
+-                   &lt;/TableBody&gt;
+-               &lt;/Table&gt;
+</span><span class="gi">+               &lt;Datagrid data={data} sort={sort}&gt;
++                   &lt;TextField source="id" /&gt;
++                   &lt;TextField source="title" /&gt;
++                   &lt;TextField source="author" /&gt;
++                   &lt;TextField source="year" /&gt;
++               &lt;/Datagrid&gt;
+</span>            &lt;/Card&gt;
+            &lt;Toolbar&gt;
+                {page &gt; 1 &amp;&amp; &lt;Button onClick={() =&gt; setPage(page - 1)}&gt;Previous page&lt;/Button&gt;}
+                {page &lt; total / perPage &amp;&amp; &lt;Button onClick={() =&gt; setPage(page + 1)}&gt;Next page&lt;/Button&gt;}
+            &lt;/Toolbar&gt;
+        &lt;/div&gt;
+    );
+<span class="err">};</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;Datagrid&gt;</code> does more than the previous table: it renders table headers depending on the current sort, and allows you to change the sort order by clicking a column header. Also, for each row, <code class="language-plaintext highlighter-rouge">&lt;Datagrid&gt;</code> creates a <code class="language-plaintext highlighter-rouge">RecordContext</code>, which lets you use react-admin Field and Buttons without explicitly passing the row data.</p>
+
+<h3 id="listcontext-exposes-list-data-to-descendants"><code class="language-plaintext highlighter-rouge">ListContext</code> Exposes List Data To Descendants</h3>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;Datagrid&gt;</code> requires a <code class="language-plaintext highlighter-rouge">data</code> prop to render, but it can grab it from a <code class="language-plaintext highlighter-rouge">ListContext</code> instead. Creating such a context with <code class="language-plaintext highlighter-rouge">&lt;ListContextProvider&gt;</code> also allows to use other react-admin components specialized in filtering (<code class="language-plaintext highlighter-rouge">&lt;FilterForm&gt;</code>) and pagination (<code class="language-plaintext highlighter-rouge">&lt;Pagination&gt;</code>), and to reduce the boilerplate code even further:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">import { useState } from 'react';
+import { 
+</span>    Title,
+    useGetList,
+    Datagrid,
+    TextField,
+<span class="gi">+   ListContextProvider,
++   FilterForm,
++   Pagination,
++   TextInput
+</span><span class="err">}</span> from 'react-admin';
+<span class="gd">-import { Card, TextField as MuiTextField, Button, Toolbar } from '@mui/material';
+</span><span class="gi">+import { Card } from '@mui/material';
+</span>
+const BookList = () =&gt; {
+    const [filter, setFilter] = useState('');
+    const [page, setPage] = useState(1);
+    const perPage = 10;
+    const sort = { field: 'id', order: 'ASC' };
+    const { data, total, isPending } = useGetList('books', {
+        filter: { q: filter },
+        pagination: { page, perPage },
+        sort,
+    });
+    if (isPending) {
+        return &lt;div&gt;Loading...&lt;/div&gt;;
+    }
+<span class="gi">+   const filters = [&lt;TextInput label="Search" source="q" size="small" alwaysOn /&gt;];
++   const filterValues = { q: filter };
++   const setFilters = filters =&gt; setFilter(filters.q);
+</span>    return (
+<span class="gi">+       /* The ListContext actually does a lot more so we ignored the TS error to keep this example simple */
++       /* @ts-ignore */
++       &lt;ListContextProvider value={{ data: data || [], total: total || 0, page, perPage, setPage, filterValues, setFilters, sort }}&gt;
+</span>        &lt;div&gt;
+            &lt;Title title="Book list" /&gt;
+<span class="gd">-           &lt;MuiTextField
+-               label="Search"
+-               value={filter}
+-               onChange={e =&gt; setFilter(e.target.value)}
+-               variant="filled"
+-               size="small"
+-               margin="dense"
+-           /&gt;
+</span><span class="gi">+           &lt;FilterForm filters={filters} /&gt;
+</span>            &lt;Card&gt;
+<span class="gd">-               &lt;Datagrid data={data} sort={sort}&gt;
+</span><span class="gi">+               &lt;Datagrid&gt;
+</span>                    &lt;TextField source="id" /&gt;
+                    &lt;TextField source="title" /&gt;
+                    &lt;TextField source="author" /&gt;
+                    &lt;TextField source="year" /&gt;
+                &lt;/Datagrid&gt;
+            &lt;/Card&gt;
+<span class="gd">-           &lt;Toolbar&gt;
+-               {page &gt; 1 &amp;&amp; &lt;Button onClick={() =&gt; setPage(page - 1)}&gt;Previous page&lt;/Button&gt;}
+-               {page &lt; total / perPage &amp;&amp; &lt;Button onClick={() =&gt; setPage(page + 1)}&gt;Next page&lt;/Button&gt;}
+-           &lt;/Toolbar&gt;
+</span><span class="gi">+           &lt;Pagination /&gt;
+</span>        &lt;/div&gt;
+<span class="gi">+       &lt;/ListContextProvider&gt;
+</span>    );
+<span class="err">};</span>
+</code></pre></div></div>
+
+<h3 id="uselistcontroller-handles-controller-logic"><code class="language-plaintext highlighter-rouge">useListController</code> Handles Controller Logic</h3>
+
+<p>The initial logic that grabs the records from the API, handles the filter and pagination state, and creates callbacks to change them is also common, and react-admin exposes <a href="/react-admin/useListController.html">the <code class="language-plaintext highlighter-rouge">useListController</code> hook</a> to do it. It returns an object that fits perfectly the format expected by <code class="language-plaintext highlighter-rouge">&lt;ListContextProvider&gt;</code>:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">-import { useState } from 'react';
+</span><span class="p">import { 
+</span>    Title,
+<span class="gd">-   useGetList,
+</span><span class="gi">+   useListController,
+</span>    Datagrid,
+    TextField,
+    ListContextProvider,
+    FilterForm,
+    Pagination,
+    TextInput
+<span class="err">}</span> from 'react-admin';
+<span class="p">import { Card } from '@mui/material';
+</span>
+const BookList = () =&gt; {
+<span class="gd">-   const [filter, setFilter] = useState('');
+-   const [page, setPage] = useState(1);
+-   const perPage = 10;
+-   const sort = { field: 'id', order: 'ASC' };
+-   const { data, total, isPending } = useGetList('books', {
+-       filter: { q: filter },
+-       pagination: { page, perPage },
+-       sort,
+-   });
+-   if (isPending) {
+-       return &lt;div&gt;Loading...&lt;/div&gt;;
+-   }
+</span><span class="gi">+   const listContext = useListController();
++   if (listContext.isPending) {
++       return &lt;div&gt;Loading...&lt;/div&gt;;
++   }
+</span>    const filters = [&lt;TextInput label="Search" source="q" size="small" alwaysOn /&gt;];
+<span class="gd">-   const filterValues = { q: filter };
+-   const setFilters = filters =&gt; setFilter(filters.q);
+</span>    return (
+<span class="gd">-       &lt;ListContextProvider value={{ data, total, page, perPage, setPage, filterValues, setFilters, sort }}&gt;
+</span><span class="gi">+       &lt;ListContextProvider value={listContext}&gt;
+</span>            &lt;div&gt;
+                &lt;Title title="Book list" /&gt;
+                &lt;FilterForm filters={filters} /&gt;
+                &lt;Card&gt;
+                    &lt;Datagrid&gt;
+                        &lt;TextField source="id" /&gt;
+                        &lt;TextField source="title" /&gt;
+                        &lt;TextField source="author" /&gt;
+                        &lt;TextField source="year" /&gt;
+                    &lt;/Datagrid&gt;
+                &lt;/Card&gt;
+                &lt;Pagination /&gt;
+            &lt;/div&gt;
+        &lt;/ListContextProvider&gt;
+    );
+<span class="err">};</span>
+</code></pre></div></div>
+
+<p>Notice that <code class="language-plaintext highlighter-rouge">useListController</code> doesn’t need the ‘books’ resource name - it relies on the <code class="language-plaintext highlighter-rouge">ResourceContext</code>, set by the <code class="language-plaintext highlighter-rouge">&lt;Resource&gt;</code> component, to guess it.</p>
+
+<p>React-admin’s List controller does much, much more than the code it replaces above:</p>
+
+<ul>
+  <li>it uses sensible defaults for the sort and pagination state,</li>
+  <li>it stores the list state (sort, pagination, filters) in the URL to make the page bookmarkable,</li>
+  <li>it memorises this state to let users find the same filters when they come back to the list,</li>
+  <li>it allows to select records for bulk actions,</li>
+  <li>it debounces the calls to the API when the user types text in the filter form,</li>
+  <li>it keeps the current data on screen while a new page is being fetched,</li>
+  <li>it changes the current page if it’s empty,</li>
+  <li>it translates the title</li>
+</ul>
+
+<h3 id="listbase-component-version-of-the-controller"><code class="language-plaintext highlighter-rouge">&lt;ListBase&gt;</code>: Component Version Of The Controller</h3>
+
+<p>As calling the List controller and putting its result into a context is also common, react-admin provides <a href="/react-admin/ListBase.html">the <code class="language-plaintext highlighter-rouge">&lt;ListBase&gt;</code> component</a> to do it. So the example can be further simplified to the following:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">import { 
+</span>    Title,
+<span class="gd">-   useListController,
+</span>    Datagrid,
+    TextField,
+<span class="gd">-   ListContextProvider,
+</span><span class="gi">+   ListBase,
+</span>    FilterForm,
+    Pagination,
+    TextInput
+<span class="err">}</span> from 'react-admin';
+<span class="p">import { Card } from '@mui/material';
+</span>
++const filters = [&lt;TextInput label="Search" source="q" size="small" alwaysOn /&gt;];
+
+const BookList = () =&gt; {
+<span class="gd">-   const listContext = useListController();
+-   if (listContext.isPending) {
+-       return &lt;div&gt;Loading...&lt;/div&gt;;
+-   }
+-   const filters = [&lt;TextInput label="Search" source="q" size="small" alwaysOn /&gt;];
+</span>    return (
+<span class="gd">-       &lt;ListContextProvider value={listContext}&gt;
+</span><span class="gi">+       &lt;ListBase&gt;
+</span>            &lt;div&gt;
+                &lt;Title title="Book list" /&gt;
+                &lt;FilterForm filters={filters} /&gt;
+                &lt;Card&gt;
+                    &lt;Datagrid&gt;
+                        &lt;TextField source="id" /&gt;
+                        &lt;TextField source="title" /&gt;
+                        &lt;TextField source="author" /&gt;
+                        &lt;TextField source="year" /&gt;
+                    &lt;/Datagrid&gt;
+                &lt;/Card&gt;
+                &lt;Pagination /&gt;
+            &lt;/div&gt;
+<span class="gd">-       &lt;/ListContextProvider&gt;
+</span><span class="gi">+       &lt;/ListBase&gt;
+</span>    );
+<span class="err">};</span>
+</code></pre></div></div>
+
+<p>Notice that we’re not handling the loading state manually anymore. In fact, the <code class="language-plaintext highlighter-rouge">&lt;Datagrid&gt;</code> component can render a skeleton while the data is being fetched.</p>
+
+<h3 id="uselistcontext-accesses-the-list-context"><code class="language-plaintext highlighter-rouge">useListContext</code> Accesses The List Context</h3>
+
+<p>Using the <code class="language-plaintext highlighter-rouge">&lt;ListBase&gt;</code> component has one drawback: you can no longer access the list context (<code class="language-plaintext highlighter-rouge">data</code>, <code class="language-plaintext highlighter-rouge">total</code>, etc.) in the component. Instead, you have to access it from the <code class="language-plaintext highlighter-rouge">ListContext</code> using <a href="/react-admin/useListContext.html">the <code class="language-plaintext highlighter-rouge">useListContext</code> hook</a>.</p>
+
+<p>The following example illustrates the usage of <code class="language-plaintext highlighter-rouge">useListContext</code> with a custom pagination component:</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">useListContext</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-admin</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Toolbar</span><span class="p">,</span> <span class="nx">Button</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@mui/material</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">Pagination</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">page</span><span class="p">,</span> <span class="nx">setPage</span><span class="p">,</span> <span class="nx">total</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useListContext</span><span class="p">();</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nc">Toolbar</span><span class="p">&gt;</span>
+            <span class="si">{</span><span class="nx">page</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="p">&lt;</span><span class="nc">Button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">setPage</span><span class="p">(</span><span class="nx">page</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="p">&gt;</span>Previous page<span class="p">&lt;/</span><span class="nc">Button</span><span class="p">&gt;</span><span class="si">}</span>
+            <span class="si">{</span><span class="nx">page</span> <span class="o">&lt;</span> <span class="nx">total</span> <span class="o">/</span> <span class="mi">10</span> <span class="o">&amp;&amp;</span> <span class="p">&lt;</span><span class="nc">Button</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">setPage</span><span class="p">(</span><span class="nx">page</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="p">&gt;</span>Next page<span class="p">&lt;/</span><span class="nc">Button</span><span class="p">&gt;</span><span class="si">}</span>
+        <span class="p">&lt;/</span><span class="nc">Toolbar</span><span class="p">&gt;</span>
+    <span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="list-renders-title-filters-and-pagination"><code class="language-plaintext highlighter-rouge">&lt;List&gt;</code> Renders Title, Filters, And Pagination</h3>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;ListBase&gt;</code> is a headless component: it renders only its children. But almost every List view needs a wrapping <code class="language-plaintext highlighter-rouge">&lt;div&gt;</code>, a title, filters, pagination, a Material UI <code class="language-plaintext highlighter-rouge">&lt;Card&gt;</code>, etc. That’s why react-admin provides <a href="/react-admin/List.html">the <code class="language-plaintext highlighter-rouge">&lt;List&gt;</code> component</a>, which includes the <code class="language-plaintext highlighter-rouge">&lt;ListBase&gt;</code> component and a “classic” layout to reduce the boilerplate even further:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">import { 
+</span><span class="gd">-   Title,
+-   ListBase,
+</span><span class="gi">+   List,
+</span>    Datagrid,
+    TextField,
+<span class="gd">-   FilterForm,
+-   Pagination,
+</span>    TextInput
+<span class="err">}</span> from 'react-admin';
+<span class="gd">-import { Card } from '@mui/material';
+</span>
+const filters = [&lt;TextInput label="Search" source="q" size="small" alwaysOn /&gt;];
+
+const BookList = () =&gt; (
+<span class="gd">-   &lt;ListBase&gt;
+-       &lt;div&gt;
+-           &lt;Title title="Book list" /&gt;
+-           &lt;FilterForm filters={filters} /&gt;
+-           &lt;Card&gt;
+</span><span class="gi">+    &lt;List filters={filters}&gt;
+</span>                &lt;Datagrid&gt;
+                    &lt;TextField source="id" /&gt;
+                    &lt;TextField source="title" /&gt;
+                    &lt;TextField source="author" /&gt;
+                    &lt;TextField source="year" /&gt;
+                &lt;/Datagrid&gt;
+<span class="gd">-           &lt;/Card&gt;
+-           &lt;Pagination /&gt;
+-       &lt;/div&gt;
+-   &lt;/ListBase&gt;
+</span><span class="gi">+   &lt;/List&gt;
+</span><span class="err">);</span>
+</code></pre></div></div>
+
+<h2 id="a-typical-react-admin-list-view">A Typical React-Admin List View</h2>
+
+<p>Remember the first snippet in this page? The react-admin version is much shorter, and more expressive:</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> 
+    <span class="nx">List</span><span class="p">,</span>
+    <span class="nx">Datagrid</span><span class="p">,</span>
+    <span class="nx">TextField</span><span class="p">,</span>
+    <span class="nx">TextInput</span>
+<span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-admin</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">filters</span> <span class="o">=</span> <span class="p">[&lt;</span><span class="nc">TextInput</span> <span class="na">label</span><span class="p">=</span><span class="s">"Search"</span> <span class="na">source</span><span class="p">=</span><span class="s">"q"</span> <span class="na">size</span><span class="p">=</span><span class="s">"small"</span> <span class="na">alwaysOn</span> <span class="p">/&gt;];</span>
+
+<span class="kd">const</span> <span class="nx">BookList</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">List</span> <span class="na">filters</span><span class="p">=</span><span class="si">{</span><span class="nx">filters</span><span class="si">}</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">Datagrid</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">TextField</span> <span class="na">source</span><span class="p">=</span><span class="s">"id"</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;</span><span class="nc">TextField</span> <span class="na">source</span><span class="p">=</span><span class="s">"title"</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;</span><span class="nc">TextField</span> <span class="na">source</span><span class="p">=</span><span class="s">"author"</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;</span><span class="nc">TextField</span> <span class="na">source</span><span class="p">=</span><span class="s">"year"</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;/</span><span class="nc">Datagrid</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">List</span><span class="p">&gt;</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p>By encapsulating common CRUD logic, react-admin reduces the amount of code you need to write, and lets you focus on the business logic. As you’ve seen with the List controller and context, there is no magic: it’s just standard React hooks and components designed for B2B apps and web developers with deadlines.</p>
+
+<h2 id="listguesser-zero-configuration-list"><code class="language-plaintext highlighter-rouge">&lt;ListGuesser&gt;</code>: Zero-Configuration List</h2>
+
+<p>Sometimes typing <code class="language-plaintext highlighter-rouge">&lt;Datagrid&gt;</code> and a few <code class="language-plaintext highlighter-rouge">&lt;Field&gt;</code> components is too much - for instance if you want to prototype an admin for many resources, or search data through an API without worrying about the actual data structure.</p>
+
+<p>For these cases, react-admin provides a <code class="language-plaintext highlighter-rouge">&lt;ListGuesser&gt;</code> component that will guess the datagrid columns from the data. It’s a bit like the <code class="language-plaintext highlighter-rouge">&lt;List&gt;</code> component, but it doesn’t require any configuration.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Admin</span><span class="p">,</span> <span class="nx">Resource</span><span class="p">,</span> <span class="nx">ListGuesser</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-admin</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">dataProvider</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./dataProvider</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Admin</span> <span class="na">dataProvider</span><span class="p">=</span><span class="si">{</span><span class="nx">dataProvider</span><span class="si">}</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">Resource</span> <span class="na">name</span><span class="p">=</span><span class="s">"posts"</span> <span class="na">list</span><span class="p">=</span><span class="si">{</span><span class="nx">ListGuesser</span><span class="si">}</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">Admin</span><span class="p">&gt;</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;ListGuesser&gt;</code> is also a good way to bootstrap a List view, as it outputs the code that it generated for the List into the console. Copy and paste that code in a custom List component, and you can start customizing the list view in no time.</p>
+
+<h2 id="list-iterators">List Iterators</h2>
+
+<p>The components you can use as child of <code class="language-plaintext highlighter-rouge">&lt;List&gt;</code> are called “List Iterator”. They render a list of records. <code class="language-plaintext highlighter-rouge">&lt;Datagrid&gt;</code> is such a List Iterator, but react-admin provides many more:</p>
+
+<ul>
+  <li><a href="/react-admin/Datagrid.html"><code class="language-plaintext highlighter-rouge">&lt;Datagrid&gt;</code></a></li>
+  <li><a href="/react-admin/DatagridAG.html"><code class="language-plaintext highlighter-rouge">&lt;DatagridAG&gt;</code></a></li>
+  <li><a href="/react-admin/SimpleList.html"><code class="language-plaintext highlighter-rouge">&lt;SimpleList&gt;</code></a></li>
+  <li><a href="/react-admin/SingleFieldList.html"><code class="language-plaintext highlighter-rouge">&lt;SingleFieldList&gt;</code></a></li>
+  <li><a href="/react-admin/EditableDatagrid.html"><code class="language-plaintext highlighter-rouge">&lt;EditableDatagrid&gt;</code></a></li>
+  <li><a href="/react-admin/TreeWithDetails.html"><code class="language-plaintext highlighter-rouge">&lt;TreeWithDetails&gt;</code></a></li>
+  <li><a href="/react-admin/Calendar.html"><code class="language-plaintext highlighter-rouge">&lt;Calendar&gt;</code></a></li>
+</ul>
+
+<p>If that’s not enough, <a href="#building-a-custom-iterator">building a custom iterator</a> isn’t hard.</p>
+
+<h2 id="responsive-lists">Responsive Lists</h2>
+
+<p>On Mobile, <code class="language-plaintext highlighter-rouge">&lt;Datagrid&gt;</code> doesn’t work well - the screen is too narrow. You should use <a href="/react-admin/SimpleList.html">the  <code class="language-plaintext highlighter-rouge">&lt;SimpleList&gt;</code> component</a> instead - it’s another built-in List Iterator.</p>
+
+<video controls="" autoplay="" playsinline="" muted="" loop="" style="height:300px">
+    <source src="./img/simple-list.webm" type="video/webm" />
+    <source src="./img/simple-list.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+</video>
+
+<p>To use <code class="language-plaintext highlighter-rouge">&lt;Datagrid&gt;</code> on desktop and <code class="language-plaintext highlighter-rouge">&lt;SimpleList&gt;</code> on mobile, use the <code class="language-plaintext highlighter-rouge">useMediaQuery</code> hook:</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// in src/posts.tsx</span>
+<span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">useMediaQuery</span><span class="p">,</span> <span class="nx">Theme</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@mui/material</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">List</span><span class="p">,</span> <span class="nx">SimpleList</span><span class="p">,</span> <span class="nx">Datagrid</span><span class="p">,</span> <span class="nx">TextField</span><span class="p">,</span> <span class="nx">ReferenceField</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-admin</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">type</span> <span class="nx">Post</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">id</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="nl">userId</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="nl">title</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">views</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="nl">published_at</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">PostList</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">isSmall</span> <span class="o">=</span> <span class="nx">useMediaQuery</span><span class="o">&lt;</span><span class="nx">Theme</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">theme</span> <span class="o">=&gt;</span> <span class="nx">theme</span><span class="p">.</span><span class="nx">breakpoints</span><span class="p">.</span><span class="nx">down</span><span class="p">(</span><span class="dl">'</span><span class="s1">sm</span><span class="dl">'</span><span class="p">));</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nc">List</span><span class="p">&gt;</span>
+            <span class="si">{</span><span class="nx">isSmall</span> <span class="p">?</span> <span class="p">(</span>
+                <span class="p">&lt;</span><span class="nc">SimpleList</span><span class="err">&lt;</span><span class="na">Post</span><span class="p">&gt;</span>
+                    primaryText=<span class="si">{</span><span class="nx">record</span> <span class="o">=&gt;</span> <span class="nx">record</span><span class="p">.</span><span class="nx">title</span><span class="si">}</span>
+                    secondaryText=<span class="si">{</span><span class="nx">record</span> <span class="o">=&gt;</span> <span class="s2">`</span><span class="p">${</span><span class="nx">record</span><span class="p">.</span><span class="nx">views</span><span class="p">}</span><span class="s2"> views`</span><span class="si">}</span>
+                    tertiaryText=<span class="si">{</span><span class="nx">record</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">record</span><span class="p">.</span><span class="nx">published_at</span><span class="p">).</span><span class="nx">toLocaleDateString</span><span class="p">()</span><span class="si">}</span>
+                /&gt;
+            ) : (
+                <span class="p">&lt;</span><span class="nc">Datagrid</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nc">TextField</span> <span class="na">source</span><span class="p">=</span><span class="s">"id"</span> <span class="p">/&gt;</span>
+                    <span class="p">&lt;</span><span class="nc">ReferenceField</span> <span class="na">label</span><span class="p">=</span><span class="s">"User"</span> <span class="na">source</span><span class="p">=</span><span class="s">"userId"</span> <span class="na">reference</span><span class="p">=</span><span class="s">"users"</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nc">TextField</span> <span class="na">source</span><span class="p">=</span><span class="s">"name"</span> <span class="p">/&gt;</span>
+                    <span class="p">&lt;/</span><span class="nc">ReferenceField</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nc">TextField</span> <span class="na">source</span><span class="p">=</span><span class="s">"title"</span> <span class="p">/&gt;</span>
+                    <span class="p">&lt;</span><span class="nc">TextField</span> <span class="na">source</span><span class="p">=</span><span class="s">"body"</span> <span class="p">/&gt;</span>
+                <span class="p">&lt;/</span><span class="nc">Datagrid</span><span class="p">&gt;</span>
+            )}
+        <span class="p">&lt;/</span><span class="nc">List</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>Check <a href="/react-admin/useMediaQuery.html">the dedicated <code class="language-plaintext highlighter-rouge">useMediaQuery</code> documentation</a> for more information.</p>
+
+<h2 id="building-a-custom-iterator">Building a Custom Iterator</h2>
+
+<p>In some cases, neither the <code class="language-plaintext highlighter-rouge">&lt;Datagrid&gt;</code> nor the <code class="language-plaintext highlighter-rouge">&lt;SimpleList&gt;</code> components allow to display the records in an optimal way for a given task. In these cases, pass your layout component directly as children of the <code class="language-plaintext highlighter-rouge">&lt;List&gt;</code> component.</p>
+
+<p>As <code class="language-plaintext highlighter-rouge">&lt;List&gt;</code> takes care of fetching the data and putting it in a <code class="language-plaintext highlighter-rouge">ListContext</code>, you can leverage <a href="/react-admin/WithListContext.html">the <code class="language-plaintext highlighter-rouge">&lt;WithListContext&gt;</code> component</a> to get the list data in a render prop.</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">List</span><span class="p">,</span> <span class="nx">WithListContext</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-admin</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Stack</span><span class="p">,</span> <span class="nx">Typography</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@mui/material</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">type</span> <span class="nx">Book</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="na">id</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+	<span class="nl">title</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+	<span class="nl">author</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+	<span class="nl">year</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">BookList</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">List</span> <span class="na">emptyWhileLoading</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">WithListContext</span><span class="err">&lt;</span><span class="na">Book</span><span class="p">&gt;</span> render=<span class="si">{</span><span class="p">({</span> <span class="nx">data</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">(</span>
+            <span class="p">&lt;</span><span class="nc">Stack</span> <span class="na">spacing</span><span class="p">=</span><span class="si">{</span><span class="mi">2</span><span class="si">}</span> <span class="na">sx</span><span class="p">=</span><span class="si">{</span><span class="p">{</span> <span class="na">padding</span><span class="p">:</span> <span class="mi">2</span> <span class="p">}</span><span class="si">}</span><span class="p">&gt;</span>
+                <span class="si">{</span><span class="nx">data</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">book</span> <span class="o">=&gt;</span> <span class="p">(</span>
+                    <span class="p">&lt;</span><span class="nc">Typography</span> <span class="na">key</span><span class="p">=</span><span class="si">{</span><span class="nx">book</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">i</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">book</span><span class="p">.</span><span class="nx">title</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>, by <span class="si">{</span><span class="nx">book</span><span class="p">.</span><span class="nx">author</span><span class="si">}</span> (<span class="si">{</span><span class="nx">book</span><span class="p">.</span><span class="nx">year</span><span class="si">}</span>)
+                    <span class="p">&lt;/</span><span class="nc">Typography</span><span class="p">&gt;</span>
+                <span class="p">))</span><span class="si">}</span>
+            <span class="p">&lt;/</span><span class="nc">Stack</span><span class="p">&gt;</span>
+        <span class="p">)</span><span class="si">}</span> /&gt;
+    <span class="p">&lt;/</span><span class="nc">List</span><span class="p">&gt;</span>
+);
+</code></pre></div></div>
+
+<p>If you prefer using a hook, you can use <a href="/react-admin/useListContext.html">the <code class="language-plaintext highlighter-rouge">useListContext</code> hook</a> instead:</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">List</span><span class="p">,</span> <span class="nx">useListContext</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-admin</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Stack</span><span class="p">,</span> <span class="nx">Typography</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@mui/material</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">type</span> <span class="nx">Book</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="na">id</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+	<span class="nl">title</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+	<span class="nl">author</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+	<span class="nl">year</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">BookListView</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">data</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useListContext</span><span class="o">&lt;</span><span class="nx">Book</span><span class="o">&gt;</span><span class="p">();</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nc">Stack</span> <span class="na">spacing</span><span class="p">=</span><span class="si">{</span><span class="mi">2</span><span class="si">}</span> <span class="na">sx</span><span class="p">=</span><span class="si">{</span><span class="p">{</span> <span class="na">padding</span><span class="p">:</span> <span class="mi">2</span> <span class="p">}</span><span class="si">}</span><span class="p">&gt;</span>
+            <span class="si">{</span><span class="nx">data</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">book</span> <span class="o">=&gt;</span> <span class="p">(</span>
+                <span class="p">&lt;</span><span class="nc">Typography</span> <span class="na">key</span><span class="p">=</span><span class="si">{</span><span class="nx">book</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">i</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">book</span><span class="p">.</span><span class="nx">title</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>, by <span class="si">{</span><span class="nx">book</span><span class="p">.</span><span class="nx">author</span><span class="si">}</span> (<span class="si">{</span><span class="nx">book</span><span class="p">.</span><span class="nx">year</span><span class="si">}</span>)
+                <span class="p">&lt;/</span><span class="nc">Typography</span><span class="p">&gt;</span>
+            <span class="p">))</span><span class="si">}</span>
+        <span class="p">&lt;/</span><span class="nc">Stack</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">BookList</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">List</span> <span class="na">emptyWhileLoading</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">BookListView</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">List</span><span class="p">&gt;</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p><strong>Tip</strong>: With <code class="language-plaintext highlighter-rouge">emptyWhileLoading</code> turned on, the <code class="language-plaintext highlighter-rouge">&lt;List&gt;</code> component doesn’t render its child component until the data is available. Without this flag, the <code class="language-plaintext highlighter-rouge">&lt;SimpleBookList&gt;</code> component would render even during the loading phase, break at <code class="language-plaintext highlighter-rouge">data.map()</code>.</p>
+
+<p>You can also handle the loading state inside a custom list layout by grabbing the <code class="language-plaintext highlighter-rouge">isPending</code> variable from the <code class="language-plaintext highlighter-rouge">ListContext</code>, but <code class="language-plaintext highlighter-rouge">emptyWhileLoading</code> is usually more convenient.</p>
+
+<h2 id="filtering-the-list">Filtering the List</h2>
+
+<p>One of the most important features of the List page is the ability to search for a dedicated record. In this documentation, we use the term “filter” for the controls allowing to search the list.</p>
+
+<p>React-admin provides 2 possible UIs for filters, and lets your own if they’re not sufficient.</p>
+
+<p>The first filter UI is called “the Filer/Form Combo”.</p>
+
+<video controls="" autoplay="" playsinline="" muted="" loop="">
+  <source src="./img/list_filter.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+<p>The second filter UI is called “the Filter List Sidebar”.</p>
+
+<video controls="" autoplay="" playsinline="" muted="" loop="">
+  <source src="./img/filter-sidebar.webm" type="video/webm" />
+  <source src="./img/filter-sidebar.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+<p>Check <a href="/react-admin/FilteringTutorial.html">the dedicated Filter tutorial chapter</a> for more information on filtering.</p>
+
+<h2 id="sorting-the-list">Sorting the List</h2>
+
+<p>The List view uses the <code class="language-plaintext highlighter-rouge">sort</code> and <code class="language-plaintext highlighter-rouge">order</code> query parameters to determine the sort field and order passed to <code class="language-plaintext highlighter-rouge">dataProvider.getList()</code>.</p>
+
+<p>Here is a typical List URL:</p>
+
+<blockquote>
+  <p>https://myadmin.dev/#/posts?displayedFilters=%7B%22commentable%22%3Atrue%7D&amp;filter=%7B%22commentable%22%3Atrue%2C%22q%22%3A%22lorem%20%22%7D&amp;order=DESC&amp;page=1&amp;perPage=10&amp;sort=published_at</p>
+</blockquote>
+
+<p>Once decoded, this URL reveals the intended sort:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sort=published_at
+order=DESC
+</code></pre></div></div>
+
+<p>If you’re using a <code class="language-plaintext highlighter-rouge">&lt;Datagrid&gt;</code> inside the List view, then the column headers are buttons allowing users to change the list sort field and order. This feature requires no configuration and works out fo the box. Check <a href="/react-admin/Datagrid.html#customizing-column-sort">the <code class="language-plaintext highlighter-rouge">&lt;Datagrid&gt;</code> documentation</a> to see how to disable or modify the field used for sorting on a particular column.</p>
+
+<video controls="" autoplay="" playsinline="" muted="" loop="">
+  <source src="./img/sort-column-header.webm" type="video/webm" />
+  <source src="./img/sort-column-header.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+<p>If you’re using another List layout, check <a href="/react-admin/SortButton.html">the <code class="language-plaintext highlighter-rouge">&lt;SortButton&gt;</code> component</a>: It’s a standalone button that allows users to change the list sort field and order.</p>
+
+<video controls="" autoplay="" playsinline="" muted="" loop="">
+  <source src="./img/sort-button.webm" type="video/webm" />
+  <source src="./img/sort-button.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+<h2 id="linking-to-a-pre-sorted-list">Linking to a Pre-Sorted List</h2>
+
+<p>As the sort values are taken from the URL, you can link to a pre-sorted list by setting the <code class="language-plaintext highlighter-rouge">sort</code> and <code class="language-plaintext highlighter-rouge">order</code> query parameters.</p>
+
+<p>For instance, if you have a list of posts ordered by publication date, and you want to provide a button to sort the list by number of views descendant:</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">Button</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@mui/material/Button</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Link</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-router-dom</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">stringify</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">query-string</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">SortByViews</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Button</span>
+        <span class="na">color</span><span class="p">=</span><span class="s">"primary"</span>
+        <span class="na">component</span><span class="p">=</span><span class="si">{</span><span class="nx">Link</span><span class="si">}</span>
+        <span class="na">to</span><span class="p">=</span><span class="si">{</span><span class="p">{</span>
+            <span class="na">pathname</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/posts</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">search</span><span class="p">:</span> <span class="nx">stringify</span><span class="p">({</span>
+                <span class="na">page</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="na">perPage</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
+                <span class="na">sort</span><span class="p">:</span> <span class="dl">'</span><span class="s1">nb_views</span><span class="dl">'</span><span class="p">,</span>
+                <span class="na">order</span><span class="p">:</span> <span class="dl">'</span><span class="s1">DESC</span><span class="dl">'</span><span class="p">,</span>
+                <span class="na">filter</span><span class="p">:</span> <span class="p">{},</span>
+            <span class="p">}),</span>
+        <span class="p">}</span><span class="si">}</span>
+    <span class="p">&gt;</span>
+        Sort by views 
+    <span class="p">&lt;/</span><span class="nc">Button</span><span class="p">&gt;</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p><strong>Tip</strong>: You have to pass <em>all</em> the query string parameters - not just <code class="language-plaintext highlighter-rouge">sort</code> and <code class="language-plaintext highlighter-rouge">order</code>. That’s a current limitation of react-admin.</p>
+
+<h2 id="building-a-custom-sort-control">Building a Custom Sort Control</h2>
+
+<p>When neither the <code class="language-plaintext highlighter-rouge">&lt;Datagrid&gt;</code> or the <code class="language-plaintext highlighter-rouge">&lt;SortButton&gt;</code> fit your UI needs, you have to write a custom sort control. As with custom filters, this boils down to grabbing the required data and callbacks from the <code class="language-plaintext highlighter-rouge">ListContext</code>. Let’s use the <code class="language-plaintext highlighter-rouge">&lt;SortButton&gt;</code> source as an example usage of <code class="language-plaintext highlighter-rouge">sort</code> and <code class="language-plaintext highlighter-rouge">setSort</code>:</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Button</span><span class="p">,</span> <span class="nx">Menu</span><span class="p">,</span> <span class="nx">MenuItem</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@mui/material</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">SortIcon</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@mui/icons-material/Sort</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">ArrowDropDownIcon</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@mui/icons-material/ArrowDropDown</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">useListSortContext</span><span class="p">,</span> <span class="nx">useTranslate</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-admin</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">SortButton</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">fields</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// sort is an object { field, order } containing the current sort</span>
+    <span class="c1">// setSort is a callback ({ field, order }) =&gt; void allowing to change the sort field and order</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">sort</span><span class="p">,</span> <span class="nx">setSort</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useListSortContext</span><span class="p">();</span>
+    <span class="c1">// rely on the translations to display labels like 'Sort by sales descending'</span>
+    <span class="kd">const</span> <span class="nx">translate</span> <span class="o">=</span> <span class="nx">useTranslate</span><span class="p">();</span>
+    <span class="c1">// open/closed state for dropdown</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">anchorEl</span><span class="p">,</span> <span class="nx">setAnchorEl</span><span class="p">]</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">useState</span><span class="o">&lt;</span><span class="nx">HTMLButtonElement</span> <span class="o">|</span> <span class="kc">null</span><span class="o">&gt;</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+
+    <span class="c1">// mouse handlers</span>
+	<span class="kd">const</span> <span class="na">handleClick</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">MouseEventHandler</span><span class="o">&lt;</span><span class="nx">HTMLButtonElement</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">setAnchorEl</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">currentTarget</span><span class="p">);</span>
+    <span class="p">};</span>
+    <span class="kd">const</span> <span class="nx">handleClose</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">setAnchorEl</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+    <span class="p">};</span>
+    <span class="kd">const</span> <span class="na">handleChangeSort</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">MouseEventHandler</span><span class="o">&lt;</span><span class="nx">HTMLLIElement</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">field</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">currentTarget</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">sort</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">field</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">setSort</span><span class="p">({</span>
+                <span class="nx">field</span><span class="p">,</span>
+                <span class="na">order</span><span class="p">:</span> <span class="nx">field</span> <span class="o">===</span> <span class="nx">sort</span><span class="p">.</span><span class="nx">field</span> <span class="p">?</span> <span class="nx">inverseOrder</span><span class="p">(</span><span class="nx">sort</span><span class="p">.</span><span class="nx">order</span><span class="p">)</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">ASC</span><span class="dl">'</span>
+            <span class="p">});</span>
+        <span class="p">}</span>
+        <span class="nx">setAnchorEl</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+    <span class="p">};</span>
+
+    <span class="c1">// English stranslation is 'Sort by %{field} %{order}'</span>
+    <span class="kd">const</span> <span class="nx">buttonLabel</span> <span class="o">=</span> <span class="nx">translate</span><span class="p">(</span><span class="dl">'</span><span class="s1">ra.sort.sort_by</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">field</span><span class="p">:</span> <span class="nx">translate</span><span class="p">(</span><span class="s2">`resources.products.fields.</span><span class="p">${</span><span class="nx">sort</span><span class="p">.</span><span class="nx">field</span><span class="p">}</span><span class="s2">`</span><span class="p">),</span>
+        <span class="na">order</span><span class="p">:</span> <span class="nx">translate</span><span class="p">(</span><span class="s2">`ra.sort.</span><span class="p">${</span><span class="nx">sort</span><span class="p">.</span><span class="nx">order</span><span class="p">}</span><span class="s2">`</span><span class="p">),</span>
+    <span class="p">});</span>
+
+    <span class="k">return</span> <span class="p">(&lt;&gt;</span>
+        <span class="p">&lt;</span><span class="nc">Button</span>
+            <span class="na">aria-controls</span><span class="p">=</span><span class="s">"simple-menu"</span>
+            <span class="na">aria-haspopup</span><span class="p">=</span><span class="s">"true"</span>
+            <span class="na">color</span><span class="p">=</span><span class="s">"primary"</span>
+            <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="nx">handleClick</span><span class="si">}</span>
+            <span class="na">startIcon</span><span class="p">=</span><span class="si">{</span><span class="p">&lt;</span><span class="nc">SortIcon</span> <span class="p">/&gt;</span><span class="si">}</span>
+            <span class="na">endIcon</span><span class="p">=</span><span class="si">{</span><span class="p">&lt;</span><span class="nc">ArrowDropDownIcon</span> <span class="p">/&gt;</span><span class="si">}</span>
+            <span class="na">size</span><span class="p">=</span><span class="s">"small"</span>
+        <span class="p">&gt;</span>
+            <span class="si">{</span><span class="nx">buttonLabel</span><span class="si">}</span>
+        <span class="p">&lt;/</span><span class="nc">Button</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">Menu</span>
+            <span class="na">id</span><span class="p">=</span><span class="s">"simple-menu"</span>
+            <span class="na">anchorEl</span><span class="p">=</span><span class="si">{</span><span class="nx">anchorEl</span><span class="si">}</span>
+            <span class="na">keepMounted</span>
+            <span class="na">open</span><span class="p">=</span><span class="si">{</span><span class="nb">Boolean</span><span class="p">(</span><span class="nx">anchorEl</span><span class="p">)</span><span class="si">}</span>
+            <span class="na">onClose</span><span class="p">=</span><span class="si">{</span><span class="nx">handleClose</span><span class="si">}</span>
+        <span class="p">&gt;</span>
+            <span class="si">{</span><span class="nx">fields</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">field</span> <span class="o">=&gt;</span> <span class="p">(</span>
+                <span class="p">&lt;</span><span class="nc">MenuItem</span>
+                    <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="nx">handleChangeSort</span><span class="si">}</span>
+                    <span class="c1">// store the sort field in the element dataset to avoid creating a new click handler for each item (better for performance)</span>
+                    <span class="na">data-sort</span><span class="p">=</span><span class="si">{</span><span class="nx">field</span><span class="si">}</span>
+                    <span class="na">key</span><span class="p">=</span><span class="si">{</span><span class="nx">field</span><span class="si">}</span>
+                <span class="p">&gt;</span>
+                    <span class="si">{</span><span class="nx">translate</span><span class="p">(</span><span class="s2">`resources.products.fields.</span><span class="p">${</span><span class="nx">field</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span><span class="si">}{</span><span class="dl">'</span><span class="s1"> </span><span class="dl">'</span><span class="si">}</span>
+                    <span class="si">{</span><span class="nx">translate</span><span class="p">(</span>
+                        <span class="s2">`ra.sort.</span><span class="p">${</span>
+                            <span class="nx">sort</span><span class="p">.</span><span class="nx">field</span> <span class="o">===</span> <span class="nx">field</span>
+                                <span class="p">?</span> <span class="nx">inverseOrder</span><span class="p">(</span><span class="nx">sort</span><span class="p">.</span><span class="nx">order</span><span class="p">)</span>
+                                <span class="p">:</span> <span class="dl">'</span><span class="s1">ASC</span><span class="dl">'</span>
+                        <span class="p">}</span><span class="s2">`</span>
+                    <span class="p">)</span><span class="si">}</span>
+                <span class="p">&lt;/</span><span class="nc">MenuItem</span><span class="p">&gt;</span>
+            <span class="p">))</span><span class="si">}</span>
+        <span class="p">&lt;/</span><span class="nc">Menu</span><span class="p">&gt;</span>
+    <span class="p">&lt;/&gt;);</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">inverseOrder</span> <span class="o">=</span> <span class="p">(</span><span class="nx">sort</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">sort</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">ASC</span><span class="dl">'</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">DESC</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">ASC</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">SortButton</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="building-a-custom-pagination">Building a Custom Pagination</h2>
+
+<p>The <a href="/react-admin/Pagination.html"><code class="language-plaintext highlighter-rouge">&lt;Pagination&gt;</code></a> component gets the following constants from <a href="/react-admin/useListContext.html">the <code class="language-plaintext highlighter-rouge">useListContext</code> hook</a>:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">page</code>: The current page number (integer). First page is <code class="language-plaintext highlighter-rouge">1</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">perPage</code>: The number of records per page.</li>
+  <li><code class="language-plaintext highlighter-rouge">setPage</code>: <code class="language-plaintext highlighter-rouge">Function(page: number) =&gt; void</code>. A function that set the current page number.</li>
+  <li><code class="language-plaintext highlighter-rouge">total</code>: The total number of records (may be undefined when the data provider uses <a href="/react-admin/DataProviderWriting.html#partial-pagination">Partial pagination</a>).</li>
+  <li><code class="language-plaintext highlighter-rouge">hasPreviousPage</code>: True if the page number is greater than 1.</li>
+  <li><code class="language-plaintext highlighter-rouge">hasNextPage</code>: True if the page number is lower than the total number of pages.</li>
+  <li><code class="language-plaintext highlighter-rouge">actions</code>: A component that displays the pagination buttons (default: <code class="language-plaintext highlighter-rouge">&lt;PaginationActions&gt;</code>)</li>
+</ul>
+
+<p>If you want to replace the default pagination by a “&lt; previous - next &gt;” pagination, create a pagination component like the following:</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">List</span><span class="p">,</span> <span class="nx">useListContext</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-admin</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Button</span><span class="p">,</span> <span class="nx">Toolbar</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@mui/material</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">ChevronLeft</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@mui/icons-material/ChevronLeft</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">ChevronRight</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@mui/icons-material/ChevronRight</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">PostPagination</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">page</span><span class="p">,</span> <span class="nx">hasPreviousPage</span><span class="p">,</span> <span class="nx">hasNextPage</span><span class="p">,</span> <span class="nx">setPage</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useListContext</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">hasPreviousPage</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">hasNextPage</span><span class="p">)</span> <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nc">Toolbar</span><span class="p">&gt;</span>
+            <span class="si">{</span><span class="nx">hasPreviousPage</span> <span class="o">&amp;&amp;</span>
+                <span class="p">&lt;</span><span class="nc">Button</span> 
+                    <span class="na">key</span><span class="p">=</span><span class="s">"previous"</span>
+                    <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">setPage</span><span class="p">(</span><span class="nx">page</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="si">}</span>
+                    <span class="na">startIcon</span><span class="p">=</span><span class="si">{</span><span class="p">&lt;</span><span class="nc">ChevronLeft</span> <span class="p">/&gt;</span><span class="si">}</span>
+                <span class="p">&gt;</span>
+                    Previous
+                <span class="p">&lt;/</span><span class="nc">Button</span><span class="p">&gt;</span>
+            <span class="si">}</span>
+            <span class="si">{</span><span class="nx">hasNextPage</span> <span class="o">&amp;&amp;</span>
+                <span class="p">&lt;</span><span class="nc">Button</span> 
+                    <span class="na">key</span><span class="p">=</span><span class="s">"next"</span>
+                    <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">setPage</span><span class="p">(</span><span class="nx">page</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="si">}</span>
+                    <span class="na">startIcon</span><span class="p">=</span><span class="si">{</span><span class="p">&lt;</span><span class="nc">ChevronRight</span> <span class="p">/&gt;</span><span class="si">}</span>
+                <span class="p">&gt;</span>
+                    Next                    
+                <span class="p">&lt;/</span><span class="nc">Button</span><span class="p">&gt;</span>
+            <span class="si">}</span>
+        <span class="p">&lt;/</span><span class="nc">Toolbar</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">PostList</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">List</span> <span class="na">pagination</span><span class="p">=</span><span class="si">{</span><span class="p">&lt;</span><span class="nc">PostPagination</span> <span class="p">/&gt;</span><span class="si">}</span><span class="p">&gt;</span>
+        ...
+    <span class="p">&lt;/</span><span class="nc">List</span><span class="p">&gt;</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p>But if you just want to change the color property of the pagination button, you can extend the existing components:</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">List</span><span class="p">,</span> <span class="nx">Pagination</span><span class="p">,</span> <span class="nx">PaginationActions</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-admin</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">MyPaginationActions</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">PaginationActions</span>
+        <span class="c1">// these props are passed down to the Material UI &lt;Pagination&gt; component</span>
+        <span class="na">color</span><span class="p">=</span><span class="s">"primary"</span>
+        <span class="na">showFirstButton</span>
+        <span class="na">showLastButton</span>
+    <span class="p">/&gt;</span>
+<span class="p">);</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">MyPagination</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">&lt;</span><span class="nc">Pagination</span> <span class="na">ActionsComponent</span><span class="p">=</span><span class="si">{</span><span class="nx">MyPaginationActions</span><span class="si">}</span> <span class="p">/&gt;;</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">UserList</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">List</span> <span class="na">pagination</span><span class="p">=</span><span class="si">{</span><span class="p">&lt;</span><span class="nc">MyPagination</span> <span class="p">/&gt;</span><span class="si">}</span> <span class="p">&gt;</span>
+        //...
+    <span class="p">&lt;/</span><span class="nc">List</span><span class="p">&gt;</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="third-party-components">Third-Party Components</h2>
+
+<p>You can find more List components for react-admin in third-party repositories.</p>
+
+<ul>
+  <li><a href="https://github.com/fizix-io/ra-customizable-datagrid">ra-customizable-datagrid</a>: plugin that allows to hide / show columns dynamically.</li>
+  <li><a href="https://github.com/marmelab/ra-datagrid">ra-datagrid</a>: Integration of <a href="https://mui.com/components/data-grid/">Material UI’s <code class="language-plaintext highlighter-rouge">&lt;Datagrid&gt;</code></a> into react-admin.</li>
+</ul>
+
+                        </div>
+                    </div>
+                    <div class="col hide-on-small-only m3 toc-container">
+                        <div class="toc"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <script src="/react-admin/js/materialize.min.js"></script>
+        <script src="/react-admin/js/prism.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.0/tocbot.min.js"
+            defer
+            integrity="sha512-oD3xGN8YTxenx6tdS4D/RKqO4OtORBQtAb2/FseM17GGMIi6jMwKUBc8duX4A5RwMOGGXoFBZrsqbOk8GpXFgQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+        <script src="/react-admin/js/ra-doc-exec.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+        
+        <script type="text/javascript">
+            docsearch({
+                container: '#docsearch',
+                appId: 'QY9T9CVM2N',
+                indexName: 'marmelab-react-admin',
+                apiKey: '75332227370be3dc35777cee6244881a',
+                searchParameters: {
+                    facetFilters: ['version:  latest'],
+                    attributesToHighlight: ['hierarchy.lvl0'],
+                },
+            });
+        </script>
+
+        <!--
+        React-admin protects your privacy!
+        We use our own self-hosted tracking solution to collect some raw metrics,
+        like page views, device type (mobile, desktop, etc.) or country.
+        We don't track any personal information about our visitors.
+    -->
+        <script
+            async
+            defer
+            data-website-id="ef7f8242-2808-4cbf-9dff-564daa515bbd"
+            src="https://analytics.marmelab.com/umami.js"
+        ></script>
+
+        <!-- Newsletter form -->
+        <script>
+            window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
+            window.LOCALE = 'en';
+            window.GENERIC_INVALID_MESSAGE =
+                window.EMAIL_INVALID_MESSAGE =
+                window.SMS_INVALID_MESSAGE =
+                    'The information provided is invalid. Please review the field format and try again.';
+            window.REQUIRED_ERROR_MESSAGE = 'This field is required.';
+
+            var AUTOHIDE = Boolean(0);
+        </script>
+
+        <script
+            async
+            defer
+            src="https://unpkg.com/typescript@5.1.3/lib/typescript.js"
+        ></script>
+        <script
+            async
+            defer
+            src="https://unpkg.com/prettier@2.8.8/standalone.js"
+        ></script>
+        <script
+            async
+            defer
+            src="https://unpkg.com/prettier@2.8.8/parser-babel.js"
+        ></script>
+    </body>
+</html>

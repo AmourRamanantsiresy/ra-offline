@@ -1,0 +1,2173 @@
+<!doctype html>
+<html lang="en-US">
+    <head>
+        <title>React-admin - Upgrading to v5</title>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+        <meta name="description" content="" />
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <link
+            rel="canonical"
+            href="/react-admin/Upgrade.html"
+        />
+        <link
+            rel="stylesheet"
+            href="/react-admin/css/materialize.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="/react-admin/css/style-v21.css"
+        />
+        <link rel="stylesheet" href="/react-admin/css/syntax.css" />
+        <link rel="stylesheet" href="/react-admin/css/prism.css" />
+        <link rel="stylesheet" href="/react-admin/css/tocbot.css" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.0/tocbot.css"
+            integrity="sha512-2kqK5bWDwdrluTn6Wkj+jgiwyzvAHLirVp08Kz7kN5I8PWQ0tUtEMxfhyWDCrnws91BJ9PfrUy6ImfA7Qb22TA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <link
+            rel="stylesheet"
+            href="/react-admin/css/docsearch.css"
+        />
+        <!-- Newsletter form -->
+        <style>
+            @font-face {
+                font-display: block;
+                font-family: Roboto;
+                src:
+                    url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2)
+                        format('woff2'),
+                    url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff)
+                        format('woff');
+            }
+
+            @font-face {
+                font-display: fallback;
+                font-family: Roboto;
+                font-weight: 600;
+                src:
+                    url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2)
+                        format('woff2'),
+                    url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/71501f0d8d5aa95960f6475d5487d4c2.woff)
+                        format('woff');
+            }
+
+            @font-face {
+                font-display: fallback;
+                font-family: Roboto;
+                font-weight: 700;
+                src:
+                    url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2)
+                        format('woff2'),
+                    url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff)
+                        format('woff');
+            }
+
+            #sib-container input:-ms-input-placeholder {
+                text-align: left;
+                font-family: 'Helvetica', sans-serif;
+                color: #c0ccda;
+            }
+
+            #sib-container input::placeholder {
+                text-align: left;
+                font-family: 'Helvetica', sans-serif;
+                color: #c0ccda;
+            }
+
+            #sib-container textarea::placeholder {
+                text-align: left;
+                font-family: 'Helvetica', sans-serif;
+                color: #c0ccda;
+            }
+        </style>
+        <link
+            rel="stylesheet"
+            href="/react-admin/css/newsletter.css"
+        />
+    </head>
+
+    <body>
+        <header>
+            <nav>
+    <a href="#" data-target="slide-out" class="sidenav-trigger">
+        <i class="material-icons">&#xe5d2;</i>
+    </a>
+    <div class="nav-wrapper">
+        <div class="left react-admin-logo">
+            <a href="https://marmelab.com/react-admin"> <svg version="1.0" x="0px" y="0px" preserveAspectRatio="xMidYMid meet" viewBox="0 0 130 130" >
+<style type="text/css">
+	:root{
+		--color: #ffffff;
+	}
+	.st0{opacity:0.3;}
+	.st2{opacity:0.6;}
+	.st1{fill: var(--color);}
+</style>
+<g id="layer3Fill" class="st0">
+	<polygon class="st1" points="67.4,117.7 81.3,125.7 88.7,112.9 75.7,112.9 	"/>
+	<polygon class="st1" points="12.3,67.5 4.4,81.2 17.2,88.6 17.2,76 	"/>
+	<polygon class="st1" points="62.6,12.3 48.8,4.3 41.4,17.1 54.2,17.1 	"/>
+	<polygon class="st1" points="117.7,62.6 125.7,48.8 112.8,41.3 112.8,54.1 	"/>
+</g>
+<g id="layer3Border" class="st2">
+	<path class="st1" d="M39.2,17.1c0.5,0,1.7,0,2.2,0l7.4-12.8l13.8,8l1.9-1.1L48.1,1.7L39.2,17.1z"/>
+	<path class="st1" d="M112.8,39.1c0,0.5,0,1.7,0,2.2l12.9,7.5l-8,13.8c0.3,0.5,0.8,1.5,1.1,2l9.5-16.5L112.8,39.1z"/>
+	<path class="st1" d="M88.7,112.9l-7.4,12.8l-13.9-8l-1.9,1.1l16.5,9.5l8.9-15.4C90.4,112.9,89.2,112.9,88.7,112.9z"/>
+	<path class="st1" d="M12.3,67.5c-0.3-0.5-0.8-1.4-1.1-1.9L1.8,82l15.4,8.9c0-0.6,0-1.7,0-2.3L4.4,81.2L12.3,67.5z"/>
+</g>
+<g id="layer2Fill" class="st2">
+	<polygon class="st1" points="41.9,112.9 48.9,125.1 70.1,112.9 	"/>
+	<polygon class="st1" points="17.2,70.1 17.2,41.9 5,49 	"/>
+	<polygon class="st1" points="60.1,17.1 88.1,17.1 81.1,5 	"/>
+	<polygon class="st1" points="112.8,60 112.8,88.2 125,81.1 	"/>
+</g>
+<g id="layer2Border">
+	<polygon class="st1" points="17.2,76 17.2,70.1 5,49 17.2,41.9 17.2,38.5 1,47.9 	"/>
+	<path class="st1" d="M54.2,17.1h5.9c0,0,19.9-11.5,21-12.1l7,12.1c0.8,0,2.5,0,3.3,0L82.1,1L54.2,17.1z"/>
+	<polygon class="st1" points="112.8,54.1 112.8,60 125,81.1 112.8,88.2 112.8,91.5 129,82.2 	"/>
+	<path class="st1" d="M48.9,125.1l-7-12.2c-0.8,0-2.6,0-3.4,0l9.3,16.1c6.7-3.9,21.4-12.3,27.9-16.1c-1.4,0-5.6,0-5.6,0L48.9,125.1z
+		"/>
+</g>
+<path id="raBorder" class="st1" d="M17,17v96h96V17H17z M108,108H22V22h86V108z"/>
+<g id="ra">
+	<path id="aLetter" class="st1" d="M96.1,55.4c-0.7-1.9-2-3.2-3.7-4c-1.9-0.8-4.6-1.2-8.2-1.2c-4.2,0-7.9,0.3-11.1,1v4.2
+		c1.2-0.2,2.7-0.4,4.7-0.5c1.9-0.1,3.5-0.2,4.8-0.2c2.9,0,5,0.2,6.2,0.5c1.3,0.4,2.1,1.2,2.5,2.3c0.5,1.2,0.7,3.2,0.7,6.1V66
+		c-6.2-0.2-9.9-0.3-11.1-0.3c-2.5,0-4.5,0.3-5.9,1c-1.4,0.7-2.3,1.8-2.9,3.2c-0.6,1.4-0.9,3.5-0.9,6.2c0,3.9,0.9,6.5,2.4,8
+		c1.7,1.5,4.2,2.1,7.8,2.1c2.4,0,4.6-0.4,6.4-1.1c1.9-0.7,3.2-2.1,4-4.3h0.3l0.3,4.9h4.7v-22C97.1,60,96.8,57.3,96.1,55.4z M92,71.6
+		c0,2.9-0.4,5.4-1.3,7.1c-0.6,1.2-1.6,2-2.7,2.3c-1.3,0.4-2.8,0.6-4.7,0.8c-2,0-3.4-0.2-4.4-0.5c-0.9-0.4-1.6-1-2-1.8
+		c-0.4-0.8-0.6-2.1-0.6-3.8s0.2-3,0.5-3.9c0.3-0.9,0.9-1.5,1.7-1.8s2.1-0.5,3.7-0.5H92V71.6z"/>
+	<path id="rLetter" class="st1" d="M62.4,61.2c0.9-2.2,1.3-5.1,1.3-8.5c0-3.1-0.3-5.7-0.8-7.6c-0.5-2-1.7-3.5-3.4-4.7
+		c-1.8-1.2-4.4-1.8-7.9-1.8H33.5v47.1H39V67h11.9h1.2l6.5,18.8h5.9L57.3,66C59.9,65,61.6,63.4,62.4,61.2z M55.4,61.2
+		c-1.3,0.7-3.1,1-5.6,1H39V43.5h11.2c2.4,0,4.2,0.3,5.4,1c1.2,0.7,2,1.6,2.2,2.8c0.3,1.3,0.5,3,0.5,5.5c0,2.3-0.2,4.2-0.6,5.5
+		C57.3,59.5,56.6,60.5,55.4,61.2z"/>
+</g>
+</svg>
+ </a>
+        </div>
+        <div class="left">
+            <div id="docsearch" class="center"></div>
+        </div>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li class="active">
+                <a href="https://marmelab.com/react-admin/documentation.html">Documentation</a>
+            </li>
+            <li>
+                <a href="https://marmelab.com/react-admin/Demos.html">Demos</a>
+            </li>
+            <li>
+                <a href="https://marmelab.com/en/blog/#react-admin">Blog</a>
+            </li>
+            <li>
+                <a
+                    href="https://react-admin-ee.marmelab.com/"
+                    style="color: #f0c070"
+                    >Enterprise Edition</a
+                >
+            </li>
+            <li class="social">
+                <a
+                    href="https://github.com/marmelab/react-admin"
+                    title="GitHub"
+                >
+                    <svg
+                        viewBox="0 0 256 250"
+                        preserveAspectRatio="xMidYMid"
+                        style="
+                            height: 20px;
+                            vertical-align: middle;
+                            fill: #ffffff;
+                        "
+                    >
+                        <path
+                            d="M128.001 0C57.317 0 0 57.307 0 128.001c0 56.554 36.676 104.535 87.535 121.46 6.397 1.185 8.746-2.777 8.746-6.158 0-3.052-.12-13.135-.174-23.83-35.61 7.742-43.124-15.103-43.124-15.103-5.823-14.795-14.213-18.73-14.213-18.73-11.613-7.944.876-7.78.876-7.78 12.853.902 19.621 13.19 19.621 13.19 11.417 19.568 29.945 13.911 37.249 10.64 1.149-8.272 4.466-13.92 8.127-17.116-28.431-3.236-58.318-14.212-58.318-63.258 0-13.975 5-25.394 13.188-34.358-1.329-3.224-5.71-16.242 1.24-33.874 0 0 10.749-3.44 35.21 13.121 10.21-2.836 21.16-4.258 32.038-4.307 10.878.049 21.837 1.47 32.066 4.307 24.431-16.56 35.165-13.12 35.165-13.12 6.967 17.63 2.584 30.65 1.255 33.873 8.207 8.964 13.173 20.383 13.173 34.358 0 49.163-29.944 59.988-58.447 63.157 4.591 3.972 8.682 11.762 8.682 23.704 0 17.126-.148 30.91-.148 35.126 0 3.407 2.304 7.398 8.792 6.14C219.37 232.5 256 184.537 256 128.002 256 57.307 198.691 0 128.001 0zm-80.06 182.34c-.282.636-1.283.827-2.194.39-.929-.417-1.45-1.284-1.15-1.922.276-.655 1.279-.838 2.205-.399.93.418 1.46 1.293 1.139 1.931zm6.296 5.618c-.61.566-1.804.303-2.614-.591-.837-.892-.994-2.086-.375-2.66.63-.566 1.787-.301 2.626.591.838.903 1 2.088.363 2.66zm4.32 7.188c-.785.545-2.067.034-2.86-1.104-.784-1.138-.784-2.503.017-3.05.795-.547 2.058-.055 2.861 1.075.782 1.157.782 2.522-.019 3.08zm7.304 8.325c-.701.774-2.196.566-3.29-.49-1.119-1.032-1.43-2.496-.726-3.27.71-.776 2.213-.558 3.315.49 1.11 1.03 1.45 2.505.701 3.27zm9.442 2.81c-.31 1.003-1.75 1.459-3.199 1.033-1.448-.439-2.395-1.613-2.103-2.626.301-1.01 1.747-1.484 3.207-1.028 1.446.436 2.396 1.602 2.095 2.622zm10.744 1.193c.036 1.055-1.193 1.93-2.715 1.95-1.53.034-2.769-.82-2.786-1.86 0-1.065 1.202-1.932 2.733-1.958 1.522-.03 2.768.818 2.768 1.868zm10.555-.405c.182 1.03-.875 2.088-2.387 2.37-1.485.271-2.861-.365-3.05-1.386-.184-1.056.893-2.114 2.376-2.387 1.514-.263 2.868.356 3.061 1.403z"
+                        ></path>
+                    </svg>
+                </a>
+            </li>
+            <li class="social">
+                <a href="https://discord.gg/GeZF9sqh3N" title="Discord">
+                    <svg
+                        height="25px"
+                        width="25px"
+                        viewBox="0 -28.5 256 256"
+                        preserveAspectRatio="xMidYMid"
+                        style="
+                            height: 20px;
+                            vertical-align: middle;
+                            fill: #ffffff;
+                        "
+                    >
+                        <path
+                            d="M216.856339,16.5966031 C200.285002,8.84328665 182.566144,3.2084988 164.041564,0 C161.766523,4.11318106 159.108624,9.64549908 157.276099,14.0464379 C137.583995,11.0849896 118.072967,11.0849896 98.7430163,14.0464379 C96.9108417,9.64549908 94.1925838,4.11318106 91.8971895,0 C73.3526068,3.2084988 55.6133949,8.86399117 39.0420583,16.6376612 C5.61752293,67.146514 -3.4433191,116.400813 1.08711069,164.955721 C23.2560196,181.510915 44.7403634,191.567697 65.8621325,198.148576 C71.0772151,190.971126 75.7283628,183.341335 79.7352139,175.300261 C72.104019,172.400575 64.7949724,168.822202 57.8887866,164.667963 C59.7209612,163.310589 61.5131304,161.891452 63.2445898,160.431257 C105.36741,180.133187 151.134928,180.133187 192.754523,160.431257 C194.506336,161.891452 196.298154,163.310589 198.110326,164.667963 C191.183787,168.842556 183.854737,172.420929 176.223542,175.320965 C180.230393,183.341335 184.861538,190.991831 190.096624,198.16893 C211.238746,191.588051 232.743023,181.531619 254.911949,164.955721 C260.227747,108.668201 245.831087,59.8662432 216.856339,16.5966031 Z M85.4738752,135.09489 C72.8290281,135.09489 62.4592217,123.290155 62.4592217,108.914901 C62.4592217,94.5396472 72.607595,82.7145587 85.4738752,82.7145587 C98.3405064,82.7145587 108.709962,94.5189427 108.488529,108.914901 C108.508531,123.290155 98.3405064,135.09489 85.4738752,135.09489 Z M170.525237,135.09489 C157.88039,135.09489 147.510584,123.290155 147.510584,108.914901 C147.510584,94.5396472 157.658606,82.7145587 170.525237,82.7145587 C183.391518,82.7145587 193.761324,94.5189427 193.539891,108.914901 C193.539891,123.290155 183.391518,135.09489 170.525237,135.09489 Z"
+                        ></path>
+                    </svg>
+                </a>
+            </li>
+            <li class="social">
+                <a href="https://www.youtube.com/@react-admin" title="Youtube">
+                    <svg
+                        height="25px"
+                        width="25px"
+                        viewBox="0 0 16 16"
+                        preserveAspectRatio="xMidYMid"
+                        style="
+                            vertical-align: middle;
+                            margin-right: 10px;
+                            fill: #ffffff;
+                        "
+                    >
+                        <path
+                            d="M15.32 4.06c-.434-.772-.905-.914-1.864-.968C12.498 3.027 10.089 3 8.002 3c-2.091 0-4.501.027-5.458.091-.957.055-1.429.196-1.867.969C.23 4.831 0 6.159 0 8.497v.008c0 2.328.23 3.666.677 4.429.438.772.909.912 1.866.977.958.056 3.368.089 5.459.089 2.087 0 4.496-.033 5.455-.088.959-.065 1.43-.205 1.864-.977.451-.763.679-2.101.679-4.429v-.008c0-2.339-.228-3.667-.68-4.438zM6 11.5v-6l5 3-5 3z"
+                        ></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+            <ul id="slide-out" class="sidenav sidenav-fixed">
+                <li class="logo">
+                    <a href="https://marmelab.com/react-admin"
+                        ><img src="https://marmelab.com/react-admin/assets/logo_white.png"
+                    /></a>
+                </li>
+                <li class="version">
+<a class="dropdown-trigger" href="#" data-target="versions">
+    
+    latest (5.5.4)
+    
+    <svg class="caret" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7 10l5 5 5-5z"></path>
+        <path d="M0 0h24v24H0z" fill="none"></path>
+    </svg>
+</a>
+<ul id="versions" class="dropdown-content">
+    
+    <li>
+        
+        
+        <a href="#">latest (5.5.4)</a>
+        
+        
+    </li>
+    
+    <li>
+        
+        <a href="https://marmelab.com/react-admin/doc/5.4/Upgrade.html">5.4</a>
+        
+    </li>
+    
+    <li>
+        
+        <a href="https://marmelab.com/react-admin/doc/5.3/Upgrade.html">5.3</a>
+        
+    </li>
+    
+    <li>
+        
+        <a href="https://marmelab.com/react-admin/doc/5.2/Upgrade.html">5.2</a>
+        
+    </li>
+    
+    <li>
+        
+        <a href="https://marmelab.com/react-admin/doc/5.1/Upgrade.html">5.1</a>
+        
+    </li>
+    
+    <li>
+        
+        <a href="https://marmelab.com/react-admin/doc/5.0/Upgrade.html">5.0</a>
+        
+    </li>
+    
+    <li>
+        
+        <a href="https://marmelab.com/react-admin/doc/4.16/Upgrade.html">4.16</a>
+        
+    </li>
+    
+    <li>
+        <a href="https://marmelab.com/react-admin/doc/3.19/Readme.html">3.19</a>
+    </li>
+    <li>
+        <a href="https://marmelab.com/react-admin/doc/2.9/Readme.html">2.9</a>
+    </li>
+    <li>
+        <a href="https://marmelab.com/react-admin/OldVersions.html">Older versions</a>
+    </li>
+</ul>
+</li>
+                <a class="center-align switch" style="display:block;margin-bottom: 1em" name="beginner-mode" title="Hide the sections concerning advanced usage to navigate more easily in the documentation">
+  <label>
+    <input type="checkbox" name="beginner-mode-trigger" id="beginner-mode-trigger" />
+    <span class="lever"></span>
+    Beginner Mode
+  </label>
+</a>
+
+<li><a class="nav-link external" href="https://github.com/marmelab/react-admin/releases" target="_blank">What's new?</a></li>
+
+<ul><div>Getting Started</div>
+  <li  class="beginner" ><a class="nav-link" href="./Tutorial.html">Tutorial</a></li>
+  <li  class="beginner" ><a class="nav-link" href="./CreateReactAdmin.html">Create React Admin</a></li>
+  <li ><a class="nav-link" href="./Vite.html">Vite</a></li>
+  <li ><a class="nav-link" href="./NextJs.html">Next.js</a></li>
+  <li ><a class="nav-link" href="./Remix.html">Remix</a></li>
+</ul>
+
+<ul><div>Guides & Concepts</div>
+  <li ><a class="nav-link" href="./Architecture.html">General Concepts</a></li>
+  <li  class="beginner" ><a class="nav-link" href="./DataFetchingGuide.html">Data Fetching</a></li>
+  <li  class="beginner" ><a class="nav-link" href="./CRUD.html">CRUD Pages</a></li>
+  <li  class="beginner" ><a class="nav-link" href="./Forms.html">Forms</a></li>
+  <li  class="beginner" ><a class="nav-link" href="./SecurityGuide.html">Security</a></li>
+  <li ><a class="nav-link" href="./Routing.html">Routing</a></li>
+  <li ><a class="nav-link" href="./Realtime.html">Realtime</a></li>
+  <li  class="beginner" ><a class="nav-link" href="./Theming.html">Theming</a></li>
+  <li ><a class="nav-link" href="./Translation.html">I18N</a></li>
+  <li ><a class="nav-link" href="./Store.html">Preferences</a></li>
+  <li  class="beginner" ><a class="nav-link" href="./Features.html">All Features</a></li>
+  <li  class="active" ><a class="nav-link" href="./Upgrade.html">Upgrading to v5</a></li>
+  <li  class="beginner" ><a class="nav-link" href="./Community.html">Community</a></li>
+  </ul>
+
+  <ul><div>App Configuration</div>
+    <li  class="beginner" ><a class="nav-link" href="./Admin.html"><code>&lt;Admin&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./Resource.html"><code>&lt;Resource&gt;</code></a></li>
+    <li ><a class="nav-link" href="./CustomRoutes.html"><code>&lt;CustomRoutes&gt;</code></a></li>
+  </ul>
+  
+  <ul><div>Data Fetching</div>
+    <li  class="beginner" ><a class="nav-link" href="./DataProviders.html">Data Provider Setup</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./Actions.html">Querying the API</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./DataProviderList.html">Supported backends</a></li>
+    <li ><a class="nav-link" href="./DataProviderWriting.html">Writing A Data Provider</a></li>
+    <li ><a class="nav-link" href="./useDataProvider.html"><code>useDataProvider</code></a></li>
+    <li ><a class="nav-link" href="./useGetList.html"><code>useGetList</code></a></li>
+    <li ><a class="nav-link" href="./useInfiniteGetList.html"><code>useInfiniteGetList</code></a></li>
+    <li ><a class="nav-link" href="./useGetOne.html"><code>useGetOne</code></a></li>
+    <li ><a class="nav-link" href="./useGetMany.html"><code>useGetMany</code></a></li>
+    <li ><a class="nav-link" href="./useGetManyReference.html"><code>useGetManyReference</code></a></li>
+    <li ><a class="nav-link" href="./useCreate.html"><code>useCreate</code></a></li>
+    <li ><a class="nav-link" href="./useUpdate.html"><code>useUpdate</code></a></li>
+    <li ><a class="nav-link" href="./useUpdateMany.html"><code>useUpdateMany</code></a></li>
+    <li ><a class="nav-link" href="./useDelete.html"><code>useDelete</code></a></li>
+    <li ><a class="nav-link" href="./useDeleteMany.html"><code>useDeleteMany</code></a></li>
+    <li ><a class="nav-link" href="./useGetTree.html"><code>useGetTree</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./withLifecycleCallbacks.html"><code>withLifecycleCallbacks</code></a></li>
+    <li ><a class="nav-link" href="./fetchJson.html"><code>fetchJson</code></a></li>
+  </ul>
+  
+  <ul><div>Security</div>
+    <li  class="beginner" ><a class="nav-link" href="./Authentication.html">Auth Provider Setup</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./AuthProviderList.html">Supported backends</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./AuthProviderWriting.html">Writing An Auth Provider</a></li>
+    <li ><a class="nav-link" href="./Permissions.html">Authorization</a></li>
+    <li ><a class="nav-link" href="./AuthRBAC.html">RBAC<img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./Authenticated.html"><code>&lt;Authenticated&gt;</code></a></li>
+    <li ><a class="nav-link" href="./CanAccess.html"><code>&lt;CanAccess&gt;</code></a></li>
+    <li ><a class="nav-link" href="./useAuthenticated.html"><code>useAuthenticated</code></a></li>
+    <li ><a class="nav-link" href="./useAuthState.html"><code>useAuthState</code></a></li>
+    <li ><a class="nav-link" href="./useLogin.html"><code>useLogin</code></a></li>
+    <li ><a class="nav-link" href="./useLogout.html"><code>useLogout</code></a></li>
+    <li ><a class="nav-link" href="./useGetIdentity.html"><code>useGetIdentity</code></a></li>
+    <li ><a class="nav-link" href="./useCanAccess.html"><code>useCanAccess</code></a></li>
+    <li ><a class="nav-link" href="./usePermissions.html"><code>usePermissions</code></a></li>
+    <li ><a class="nav-link" href="./useAuthProvider.html"><code>useAuthProvider</code></a></li>
+    <li ><a class="nav-link" href="./addRefreshAuthToAuthProvider.html"><code>addRefreshAuthToAuthProvider</code></a></li>
+    <li ><a class="nav-link" href="./addRefreshAuthToDataProvider.html"><code>addRefreshAuthToDataProvider</code></a></li>
+  </ul>
+  
+  <ul><div>List Page</div>
+    <li  class="beginner" ><a class="nav-link" href="./ListTutorial.html">Introduction</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./FilteringTutorial.html">Filtering The List</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./List.html"><code>&lt;List&gt;</code></a></li>
+    <li ><a class="nav-link" href="./ListBase.html"><code>&lt;ListBase&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./ListGuesser.html"><code>&lt;ListGuesser&gt;</code></a></li>
+    <li ><a class="nav-link" href="./InfiniteList.html"><code>&lt;InfiniteList&gt;</code></a></li>
+    <li ><a class="nav-link" href="./TreeWithDetails.html"><code>&lt;TreeWithDetails&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./Datagrid.html"><code>&lt;Datagrid&gt;</code></a></li>
+    <li ><a class="nav-link" href="./DatagridAG.html"><code>&lt;DatagridAG&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./SimpleList.html"><code>&lt;SimpleList&gt;</code></a></li>
+    <li ><a class="nav-link" href="./SingleFieldList.html"><code>&lt;SingleFieldList&gt;</code></a></li>
+    <li ><a class="nav-link" href="./EditableDatagrid.html"><code>&lt;EditableDatagrid&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./Calendar.html"><code>&lt;Calendar&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./FilterButton.html"><code>&lt;FilterButton&gt;</code></a></li>
+    <li ><a class="nav-link" href="./FilterList.html"><code>&lt;FilterList&gt;</code></a></li>
+    <li ><a class="nav-link" href="./FilterLiveForm.html"><code>&lt;FilterLiveForm&gt;</code></a></li>
+    <li ><a class="nav-link" href="./FilterLiveSearch.html"><code>&lt;FilterLiveSearch&gt;</code></a></li>
+    <li ><a class="nav-link" href="./SavedQueriesList.html"><code>&lt;SavedQueriesList&gt;</code></a></li>
+    <li ><a class="nav-link" href="./StackedFilters.html"><code>&lt;StackedFilters&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./Pagination.html"><code>&lt;Pagination&gt;</code></a></li>
+    <li ><a class="nav-link" href="./SortButton.html"><code>&lt;SortButton&gt;</code></a></li>
+    <li ><a class="nav-link" href="./SelectColumnsButton.html"><code>&lt;SelectColumnsButton&gt;</code></a></li>
+    <li ><a class="nav-link" href="./Count.html"><code>&lt;Count&gt;</code></a></li>
+    <li ><a class="nav-link" href="./WithListContext.html"><code>&lt;WithListContext&gt;</code></a></li>
+    <li ><a class="nav-link" href="./useListContext.html"><code>useListContext</code></a></li>
+    <li ><a class="nav-link" href="./useList.html"><code>useList</code></a></li>
+    <li ><a class="nav-link" href="./useListController.html"><code>useListController</code></a></li>
+    <li ><a class="nav-link" href="./useUnselect.html"><code>useUnselect</code></a></li>
+    <li ><a class="nav-link" href="./useUnselectAll.html"><code>useUnselectAll</code></a></li>
+  </ul>
+  
+  <ul><div>Creation & Edition Pages</div>
+    <li  class="beginner" ><a class="nav-link" href="./EditTutorial.html">Introduction</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./Validation.html">Form Validation</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./Create.html"><code>&lt;Create&gt;</code></a></li>
+    <li ><a class="nav-link" href="./CreateBase.html"><code>&lt;CreateBase&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./Edit.html"><code>&lt;Edit&gt;</code></a></li>
+    <li ><a class="nav-link" href="./EditBase.html"><code>&lt;EditBase&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./EditGuesser.html"><code>&lt;EditGuesser&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./SimpleForm.html"><code>&lt;SimpleForm&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./TabbedForm.html"><code>&lt;TabbedForm&gt;</code></a></li>
+    <li ><a class="nav-link" href="./Form.html"><code>&lt;Form&gt;</code></a></li>
+    <li ><a class="nav-link" href="./LongForm.html"><code>&lt;LongForm&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./AccordionForm.html"><code>&lt;AccordionForm&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./WizardForm.html"><code>&lt;WizardForm&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./EditDialog.html"><code>&lt;EditDialog&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./EditInDialogButton.html"><code>&lt;EditInDialogButton&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./CreateDialog.html"><code>&lt;CreateDialog&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./CreateInDialogButton.html"><code>&lt;CreateInDialogButton&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./JsonSchemaForm.html"><code>&lt;JsonSchemaForm&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./Toolbar.html"><code>&lt;Toolbar&gt;</code></a></li>
+    <li ><a class="nav-link" href="./SaveButton.html"><code>&lt;SaveButton&gt;</code></a></li>
+    <li ><a class="nav-link" href="./AutoSave.html"><code>&lt;AutoSave&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useCreateContext.html"><code>useCreateContext</code></a></li>
+    <li ><a class="nav-link" href="./useCreateController.html"><code>useCreateController</code></a></li>
+    <li ><a class="nav-link" href="./useEditContext.html"><code>useEditContext</code></a></li>
+    <li ><a class="nav-link" href="./useEditController.html"><code>useEditController</code></a></li>
+    <li ><a class="nav-link" href="./useSaveContext.html"><code>useSaveContext</code></a></li>
+    <li ><a class="nav-link" href="./useRecordFromLocation.html"><code>useRecordFromLocation</code></a></li>
+    <li ><a class="nav-link" href="./useRegisterMutationMiddleware.html"><code>useRegisterMutationMiddleware</code></a></li>
+    <li ><a class="nav-link" href="./useUnique.html"><code>useUnique</code></a></li>
+  </ul>
+  
+  <ul><div>Show Page</div>
+    <li  class="beginner" ><a class="nav-link" href="./ShowTutorial.html">Introduction</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./Show.html"><code>&lt;Show&gt;</code></a></li>
+    <li ><a class="nav-link" href="./ShowBase.html"><code>&lt;ShowBase&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./ShowGuesser.html"><code>&lt;ShowGuesser&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./SimpleShowLayout.html"><code>&lt;SimpleShowLayout&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./TabbedShowLayout.html"><code>&lt;TabbedShowLayout&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./Labeled.html"><code>&lt;Labeled&gt;</code></a></li>
+    <li ><a class="nav-link" href="./ShowInDialogButton.html"><code>&lt;ShowInDialogButton&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useShowContext.html"><code>useShowContext</code></a></li>
+    <li ><a class="nav-link" href="./useShowController.html"><code>useShowController</code></a></li>
+  </ul>
+  
+  <ul><div>Common</div>
+    <li  class="beginner" ><a class="nav-link" href="./WithRecord.html"><code>&lt;WithRecord&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./useRecordContext.html"><code>useRecordContext</code></a></li>
+    <li ><a class="nav-link" href="./useGetRecordId.html"><code>useGetRecordId</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./useNotify.html"><code>useNotify</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./useRedirect.html"><code>useRedirect</code></a></li>
+    <li ><a class="nav-link" href="./useRefresh.html"><code>useRefresh</code></a></li>
+  </ul>
+  
+  <ul><div>Fields</div>
+    <li  class="beginner" ><a class="nav-link" href="./Fields.html">Introduction</a></li>
+    <li ><a class="nav-link" href="./FieldsForRelationships.html">Fields for Relationships</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./ArrayField.html"><code>&lt;ArrayField&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./BooleanField.html"><code>&lt;BooleanField&gt;</code></a></li>
+    <li ><a class="nav-link" href="./ChipField.html"><code>&lt;ChipField&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./DateField.html"><code>&lt;DateField&gt;</code></a></li>
+    <li ><a class="nav-link" href="./EmailField.html"><code>&lt;EmailField&gt;</code></a></li>
+    <li ><a class="nav-link" href="./FileField.html"><code>&lt;FileField&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./FunctionField.html"><code>&lt;FunctionField&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./ImageField.html"><code>&lt;ImageField&gt;</code></a></li>
+    <li ><a class="nav-link" href="./MarkdownField.html"><code>&lt;MarkdownField&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./NumberField.html"><code>&lt;NumberField&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./ReferenceField.html"><code>&lt;ReferenceField&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./ReferenceArrayField.html"><code>&lt;ReferenceArrayField&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./ReferenceManyField.html"><code>&lt;ReferenceManyField&gt;</code></a></li>
+    <li ><a class="nav-link" href="./ReferenceManyCount.html"><code>&lt;ReferenceManyCount&gt;</code></a></li>
+    <li ><a class="nav-link" href="./ReferenceManyToManyField.html"><code>&lt;ReferenceManyToManyField&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./ReferenceOneField.html"><code>&lt;ReferenceOneField&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./RichTextField.html"><code>&lt;RichTextField&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./SelectField.html"><code>&lt;SelectField&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./TextField.html"><code>&lt;TextField&gt;</code></a></li>
+    <li ><a class="nav-link" href="./TranslatableFields.html"><code>&lt;TranslatableFields&gt;</code></a></li>
+    <li ><a class="nav-link" href="./UrlField.html"><code>&lt;UrlField&gt;</code></a></li>
+    <li ><a class="nav-link" href="./WrapperField.html"><code>&lt;WrapperField&gt;</code></a></li>
+    <li ><a class="nav-link" href="./useFieldValue.html"><code>useFieldValue</code></a></li>
+  </ul>
+  
+  <ul><div>Inputs</div>
+    <li  class="beginner" ><a class="nav-link" href="./Inputs.html">Introduction</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./ArrayInput.html"><code>&lt;ArrayInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./AutocompleteInput.html"><code>&lt;AutocompleteInput&gt;</code></a></li>
+    <li ><a class="nav-link" href="./AutocompleteArrayInput.html"><code>&lt;AutocompleteArrayInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./BooleanInput.html"><code>&lt;BooleanInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./CheckboxGroupInput.html"><code>&lt;CheckboxGroupInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./DateInput.html"><code>&lt;DateInput></code></a></li>
+    <li ><a class="nav-link" href="./DateRangeInput.html"><code>&lt;DateRangeInput&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./DateTimeInput.html"><code>&lt;DateTimeInput&gt;</code></a></li>
+    <li ><a class="nav-link" href="./DualListInput.html"><code>&lt;DualListInput&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./FileInput.html"><code>&lt;FileInput&gt;</code></a></li>
+    <li ><a class="nav-link" href="./ImageInput.html"><code>&lt;ImageInput&gt;</code></a></li>
+    <li ><a class="nav-link" href="./MarkdownInput.html"><code>&lt;MarkdownInput&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./NullableBooleanInput.html"><code>&lt;NullableBooleanInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./NumberInput.html"><code>&lt;NumberInput&gt;</code></a></li>
+    <li ><a class="nav-link" href="./PasswordInput.html"><code>&lt;PasswordInput&gt;</code></a></li>
+    <li ><a class="nav-link" href="./PredictiveTextInput.html"><code>&lt;PredictiveTextInput&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./RadioButtonGroupInput.html"><code>&lt;RadioButtonGroupInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./ReferenceInput.html"><code>&lt;ReferenceInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./ReferenceArrayInput.html"><code>&lt;ReferenceArrayInput&gt;</code></a></li>
+    <li ><a class="nav-link" href="./ReferenceManyInput.html"><code>&lt;ReferenceManyInput&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./ReferenceManyToManyInput.html"><code>&lt;ReferenceManyToManyInput&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./ReferenceNodeInput.html"><code>&lt;ReferenceNodeInput&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./ReferenceOneInput.html"><code>&lt;ReferenceOneInput&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./RichTextInput.html"><code>&lt;RichTextInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./SearchInput.html"><code>&lt;SearchInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./SelectInput.html"><code>&lt;SelectInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./SelectArrayInput.html"><code>&lt;SelectArrayInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./SimpleFormIterator.html"><code>&lt;SimpleFormIterator&gt;</code></a></li>
+    <li ><a class="nav-link" href="./SmartRichTextInput.html"><code>&lt;SmartRichTextInput&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./TextArrayInput.html"><code>&lt;TextArrayInput&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./TextInput.html"><code>&lt;TextInput&gt;</code></a></li>
+    <li ><a class="nav-link" href="./TimeInput.html"><code>&lt;TimeInput&gt;</code></a></li>
+    <li ><a class="nav-link" href="./TranslatableInputs.html"><code>&lt;TranslatableInputs&gt;</code></a></li>
+    <li ><a class="nav-link" href="./TreeInput.html"><code>&lt;TreeInput&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useInput.html"><code>useInput</code></a></li>
+  </ul>
+  
+  <ul><div>Preferences</div>
+    <li ><a class="nav-link" href="./useStore.html"><code>useStore</code></a></li>
+    <li ><a class="nav-link" href="./useRemoveFromStore.html"><code>useRemoveFromStore</code></a></li>
+    <li ><a class="nav-link" href="./useResetStore.html"><code>useResetStore</code></a></li>
+    <li ><a class="nav-link" href="./useStoreContext.html"><code>useStoreContext</code></a></li>
+    <li ><a class="nav-link" href="./Configurable.html"><code>&lt;Configurable&gt;</code></a></li>
+  </ul>
+  
+  <ul><div>I18N Provider and Translations</div>
+    <li ><a class="nav-link" href="./TranslationSetup.html">Setting Up</a></li>
+    <li ><a class="nav-link" href="./TranslationLocales.html">Supported Locales</a></li>
+    <li ><a class="nav-link" href="./TranslationTranslating.html">Translating UI Components</a></li>
+    <li ><a class="nav-link" href="./TranslationWriting.html">Writing an i18nProvider</a></li>
+    <li ><a class="nav-link" href="./useTranslate.html"><code>useTranslate</code></a></li>
+    <li ><a class="nav-link" href="./useLocaleState.html"><code>useLocaleState</code></a></li>
+    <li ><a class="nav-link" href="./LocalesMenuButton.html"><code>&lt;LocalesMenuButton&gt;</code></a></li>
+  </ul>
+  
+  <ul><div>Other UI components</div>
+    <li  class="beginner" ><a class="nav-link" href="./Layout.html"><code>&lt;Layout&gt;</code></a></li>
+    <li ><a class="nav-link" href="./ContainerLayout.html"><code>&lt;ContainerLayout&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./SolarLayout.html"><code>&lt;SolarLayout&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./AppBar.html"><code>&lt;AppBar&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./Menu.html"><code>&lt;Menu&gt;</code></a></li>
+    <li ><a class="nav-link" href="./MultiLevelMenu.html"><code>&lt;MultiLevelMenu&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./IconMenu.html"><code>&lt;IconMenu&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./Title.html"><code>&lt;Title&gt;</code></a></li>
+    <li ><a class="nav-link" href="./Breadcrumb.html"><code>&lt;Breadcrumb&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./Search.html"><code>&lt;Search&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./SearchWithResult.html"><code>&lt;SearchWithResult&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./Confirm.html"><code>&lt;Confirm&gt;</code></a></li>
+    <li  class="beginner" ><a class="nav-link" href="./Buttons.html">Buttons</a></li>
+    <li ><a class="nav-link" href="./RevisionsButton.html"><code>&lt;RevisionsButton&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./CheckForApplicationUpdate.html"><code>&lt;CheckForApplicationUpdate&gt;</code></a></li>
+    <li ><a class="nav-link" href="./RecordRepresentation.html"><code>&lt;RecordRepresentation&gt;</code></a></li>
+    <li ><a class="nav-link" href="./PrevNextButtons.html"><code>&lt;PrevNextButtons&gt;</code></a></li>
+    <li ><a class="nav-link" href="./useDefineAppLocation.html"><code>useDefineAppLocation</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useGetRecordRepresentation.html"><code>useGetRecordRepresentation</code></a></li>
+  </ul>
+  
+  <ul><div>Theming</div>
+    <li  class="beginner" ><a class="nav-link" href="./SX.html">The <code>sx</code> prop</a></li>
+    <li  class="beginner" ><a class="nav-link" href="./AppTheme.html">Application Theme</a></li>
+    <li ><a class="nav-link" href="./BoxStackGrid.html"><code>&lt;Box&gt;</code>, <code>&lt;Stack&gt;</code> and <code>&lt;Grid&gt;</code></a></li>
+    <li ><a class="nav-link" href="./ToggleThemeButton.html"><code>&lt;ToggleThemeButton&gt;</code></a></li>
+    <li ><a class="nav-link" href="./useMediaQuery.html"><code>useMediaQuery</code></a></li>
+    <li ><a class="nav-link" href="./useTheme.html"><code>useTheme</code></a></li>
+  </ul>
+  
+  <ul><div>Realtime</div>
+    <li ><a class="nav-link" href="./RealtimeDataProvider.html">Setting Up</a></li>
+    <li ><a class="nav-link" href="./usePublish.html"><code>usePublish</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useSubscribe.html"><code>useSubscribe</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useSubscribeCallback.html"><code>useSubscribeCallback</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useSubscribeToRecord.html"><code>useSubscribeToRecord</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useSubscribeToRecordList.html"><code>useSubscribeToRecordList</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useLock.html"><code>useLock</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useUnlock.html"><code>useUnlock</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useGetLock.html"><code>useGetLock</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useGetLockLive.html"><code>useGetLockLive</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useGetLocks.html"><code>useGetLocks</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useGetLocksLive.html"><code>useGetLocksLive</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useLockOnMount.html"><code>useLockOnMount</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useLockOnCall.html"><code>useLockOnCall</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useGetListLive.html"><code>useGetListLive</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./useGetOneLive.html"><code>useGetOneLive</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./ListLive.html"><code>&lt;ListLive&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./EditLive.html"><code>&lt;EditLive&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./ShowLive.html"><code>&lt;ShowLive&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+    <li ><a class="nav-link" href="./MenuLive.html"><code>&lt;MenuLive&gt;</code><img class="premium" src="./img/premium.svg" /></a></li>
+  </ul>
+  
+  <ul><div>Recipes</div>
+    <li ><a class="nav-link" href="./Caching.html">Caching</a></li>
+    <li ><a class="nav-link" href="./UnitTesting.html">Unit Testing</a></li>
+    <li ><a class="nav-link" href="./AdvancedTutorials.html">Advanced tutorials</a></li>
+  </ul>
+  
+  <li ><a class="nav-link" href="./Ecosystem.html">Ecosystem</a></li>
+  <li ><a class="nav-link" href="./Contributing.html">Contributing</a></li>
+  <li ><a class="nav-link" href="./FAQ.html">FAQ</a></li>
+  <li  class="beginner" ><a class="nav-link" href="./Reference.html">Index</a></li>
+  
+  <div class="beginner-mode-on" style="margin:1em;padding:1em;background:#ffffca;border-radius:4px;display:none;font-size:0.8em;opacity:0.8;text-align:center;">
+    <a href="#beginner-mode">Beginner mode is on</a>. Turn it off to reveal more documentation for advanced components.
+  </div>
+  
+
+            </ul>
+        </header>
+
+        <main>
+            <div class="container sticker-container">
+                <div class="row">
+                    <div class="col s12 m9">
+                        <div
+                            class="markdown-section DocSearch-content toc-content"
+                        >
+                            <h1 id="upgrading-to-v5">Upgrading to v5</h1>
+
+<p>React-admin v5 mostly focuses on removing deprecated features and upgrading dependencies. This makes the upgrade process easier than previous versions. However, there are still some breaking changes you should be aware of.</p>
+
+<ul>
+  <li><a href="#ie11-is-no-longer-supported">IE11 Is No Longer Supported</a></li>
+  <li><a href="#dependencies">Dependencies</a>
+    <ul>
+      <li><a href="#react-18">React 18</a></li>
+      <li><a href="#use-tanstackreact-query-instead-of-react-query">Use @tanstack/react-query instead of react-query</a></li>
+      <li><a href="#minor-dependencies">Minor Dependencies</a></li>
+    </ul>
+  </li>
+  <li><a href="#ui-changes">UI Changes</a>
+    <ul>
+      <li><a href="#inputs-have-full-width-by-default">Inputs Have Full Width By Default</a></li>
+      <li><a href="#links-are-now-underlined-by-default">Links are now underlined by default</a></li>
+      <li><a href="#dark-theme-is-available-by-default">Dark Theme Is Available By Default</a></li>
+    </ul>
+  </li>
+  <li><a href="#data-provider">Data Provider</a>
+    <ul>
+      <li><a href="#ra-data-graphql-and-ra-data-graphql-simple-no-longer-return-a-promise"><code class="language-plaintext highlighter-rouge">ra-data-graphql</code> And <code class="language-plaintext highlighter-rouge">ra-data-graphql-simple</code> No Longer Return A Promise</a></li>
+    </ul>
+  </li>
+  <li><a href="#application-root--layout">Application Root &amp; Layout</a>
+    <ul>
+      <li><a href="#admin-menu-is-no-longer-supported"><code class="language-plaintext highlighter-rouge">&lt;Admin menu&gt;</code> Is No Longer Supported</a></li>
+      <li><a href="#admin-history-prop-was-removed"><code class="language-plaintext highlighter-rouge">&lt;Admin history&gt;</code> Prop Was Removed</a></li>
+      <li><a href="#historyrouter-was-removed"><code class="language-plaintext highlighter-rouge">&lt;HistoryRouter&gt;</code> Was Removed</a></li>
+      <li><a href="#custom-layout-no-longer-receives-props">Custom Layout No Longer Receives Props</a></li>
+      <li><a href="#custom-app-bars-no-longer-receive-props">Custom App Bars No Longer Receive Props</a></li>
+      <li><a href="#custom-menu-no-longer-receive-props">Custom Menu No Longer Receive Props</a></li>
+      <li><a href="#custom-error-page-no-longer-receives-title">Custom Error Page No Longer Receives Title</a></li>
+      <li><a href="#custom-catch-all-no-longer-receives-title">Custom Catch All No Longer Receives Title</a></li>
+    </ul>
+  </li>
+  <li><a href="#list-components">List Components</a>
+    <ul>
+      <li><a href="#list-components-can-no-longer-be-used-in-standalone">List Components Can No Longer Be Used In Standalone</a></li>
+      <li><a href="#list-hascreate-is-no-longer-supported"><code class="language-plaintext highlighter-rouge">&lt;List hasCreate&gt;</code> Is No Longer Supported</a></li>
+      <li><a href="#datagrid-rowclick-is-no-longer-false-by-default"><code class="language-plaintext highlighter-rouge">&lt;Datagrid rowClick&gt;</code> is no longer false by default</a></li>
+      <li><a href="#datagrid-expand-components-no-longer-receive-any-props"><code class="language-plaintext highlighter-rouge">&lt;Datagrid expand&gt;</code> Components No Longer Receive Any Props</a></li>
+      <li><a href="#datagrid-in-standalone-requires-a-resource-prop"><code class="language-plaintext highlighter-rouge">&lt;Datagrid&gt;</code> In Standalone Requires a <code class="language-plaintext highlighter-rouge">resource</code> Prop</a></li>
+      <li><a href="#setfilters-is-no-longer-debounced-by-default">setFilters Is No Longer Debounced By Default</a></li>
+      <li><a href="#updates-to-bulkactionbuttons-syntax">Updates to bulkActionButtons Syntax</a></li>
+      <li><a href="#paginationlimit-component-was-removed"><code class="language-plaintext highlighter-rouge">&lt;PaginationLimit&gt;</code> Component Was Removed</a></li>
+      <li><a href="#datagridbody-no-longer-provides-record-prop-to-datagridrow"><code class="language-plaintext highlighter-rouge">&lt;DatagridBody&gt;</code> No Longer Provides record Prop To <code class="language-plaintext highlighter-rouge">&lt;DatagridRow&gt;</code></a></li>
+      <li><a href="#userecordselection-props-have-changed"><code class="language-plaintext highlighter-rouge">useRecordSelection</code> Props have changed</a></li>
+    </ul>
+  </li>
+  <li><a href="#show-and-edit-pages">Show and Edit Pages</a>
+    <ul>
+      <li><a href="#custom-edit-or-show-actions-no-longer-receive-any-props">Custom Edit or Show Actions No Longer Receive Any Props</a></li>
+      <li><a href="#inputs-default-ids-are-auto-generated">Inputs default ids are auto-generated</a></li>
+      <li><a href="#simpleformiterator-no-longer-clones-its-buttons"><code class="language-plaintext highlighter-rouge">&lt;SimpleFormIterator&gt;</code> No Longer Clones Its Buttons</a></li>
+      <li><a href="#simpleformiterator-no-longer-clones-its-children"><code class="language-plaintext highlighter-rouge">&lt;SimpleFormIterator&gt;</code> no longer clones its children</a></li>
+      <li><a href="#formdataconsumer-no-longer-passes-a-getsource-function"><code class="language-plaintext highlighter-rouge">&lt;FormDataConsumer&gt;</code> no longer passes a getSource function</a></li>
+      <li><a href="#mutation-middlewares-no-longer-receive-the-mutation-options">Mutation Middlewares No Longer Receive The Mutation Options</a></li>
+      <li><a href="#warnwhenunsavedchanges-changes"><code class="language-plaintext highlighter-rouge">warnWhenUnsavedChanges</code> Changes</a></li>
+      <li><a href="#global-server-side-validation-error-message-must-be-passed-via-the-rootservererror-key">Global Server Side Validation Error Message Must Be Passed Via The <code class="language-plaintext highlighter-rouge">root.serverError</code> Key</a></li>
+    </ul>
+  </li>
+  <li><a href="#input-components">Input Components</a>
+    <ul>
+      <li><a href="#fileinput-and-imageinput-accept-prop-has-changed"><code class="language-plaintext highlighter-rouge">&lt;FileInput&gt;</code> And <code class="language-plaintext highlighter-rouge">&lt;ImageInput&gt;</code> accept prop has changed</a></li>
+      <li><a href="#inputs-no-longer-require-to-be-touched-to-display-a-validation-error">Inputs No Longer Require To Be Touched To Display A Validation Error</a></li>
+      <li><a href="#inputhelpertext-touched-prop-was-removed"><code class="language-plaintext highlighter-rouge">&lt;InputHelperText touched&gt;</code> Prop Was Removed</a></li>
+    </ul>
+  </li>
+  <li><a href="#typescript">TypeScript</a>
+    <ul>
+      <li><a href="#fields-components-requires-the-source-prop">Fields Components Requires The source Prop</a></li>
+      <li><a href="#userecordcontext-returns-undefined-when-no-record-is-available"><code class="language-plaintext highlighter-rouge">useRecordContext</code> Returns <code class="language-plaintext highlighter-rouge">undefined</code> When No Record Is Available</a></li>
+      <li><a href="#useauthprovider-returns-undefined-when-no-authprovider-is-available"><code class="language-plaintext highlighter-rouge">useAuthProvider</code> Returns <code class="language-plaintext highlighter-rouge">undefined</code> When No <code class="language-plaintext highlighter-rouge">authProvider</code> Is Available</a></li>
+      <li><a href="#page-contexts-are-now-types-instead-of-interfaces">Page Contexts Are Now Types Instead of Interfaces</a></li>
+      <li><a href="#stronger-types-for-page-contexts">Stronger Types For Page Contexts</a></li>
+      <li><a href="#editprops-and-createprops-now-expect-a-children-prop">EditProps and CreateProps now expect a children prop</a></li>
+      <li><a href="#bulkactionprops-type-has-been-removed">BulkActionProps Type Has Been Removed</a></li>
+      <li><a href="#onerror-type-from-ra-core-was-removed">onError Type From ra-core Was Removed</a></li>
+      <li><a href="#publicfieldprops-interface-was-removed">PublicFieldProps Interface Was Removed</a></li>
+      <li><a href="#injectedfieldprops-interface-was-removed">InjectedFieldProps Interface Was Removed</a></li>
+      <li><a href="#formclassname-prop-of-fieldprops-type-was-removed">formClassName Prop Of FieldProps Type Was Removed</a></li>
+      <li><a href="#formclassname-prop-of-commoninputprops-type-was-removed">formClassName Prop Of CommonInputProps Type Was Removed</a></li>
+    </ul>
+  </li>
+  <li><a href="#authentication">Authentication</a>
+    <ul>
+      <li><a href="#usecheckauth-no-longer-accepts-a-disablenotification-param"><code class="language-plaintext highlighter-rouge">useCheckAuth</code> No Longer Accepts A disableNotification Param</a></li>
+      <li><a href="#uselogoutifaccessdenied-no-longer-accepts-a-disablenotification-param"><code class="language-plaintext highlighter-rouge">useLogoutIfAccessDenied</code> No Longer Accepts A disableNotification Param</a></li>
+      <li><a href="#usepermissionsoptimized-hook-was-removed"><code class="language-plaintext highlighter-rouge">usePermissionsOptimized</code> Hook Was Removed</a></li>
+    </ul>
+  </li>
+  <li><a href="#routing">Routing</a>
+    <ul>
+      <li><a href="#linktorecord-helper-was-removed"><code class="language-plaintext highlighter-rouge">linkToRecord</code> Helper Was Removed</a></li>
+      <li><a href="#resolveredirectto-helper-was-removed"><code class="language-plaintext highlighter-rouge">resolveRedirectTo</code> Helper Was Removed</a></li>
+    </ul>
+  </li>
+  <li><a href="#theming">Theming</a>
+    <ul>
+      <li><a href="#usetheme-no-longer-accepts-a-theme-object-as-an-optional-argument"><code class="language-plaintext highlighter-rouge">useTheme</code> no longer accepts a theme object as an optional argument</a></li>
+      <li><a href="#togglethemebutton-no-longer-accepts-themes-as-props"><code class="language-plaintext highlighter-rouge">&lt;ToggleThemeButton&gt;</code> no longer accepts themes as props</a></li>
+      <li><a href="#themeprovider-theme-is-no-longer-supported"><code class="language-plaintext highlighter-rouge">&lt;ThemeProvider theme&gt;</code> Is No Longer Supported</a></li>
+    </ul>
+  </li>
+  <li><a href="#misc">Misc</a>
+    <ul>
+      <li><a href="#data-generator-retail-commands-have-been-renamed-to-orders"><code class="language-plaintext highlighter-rouge">data-generator-retail</code> commands Have Been Renamed to orders</a></li>
+      <li><a href="#support-for-proptypes-was-removed">Support For PropTypes Was Removed</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="ie11-is-no-longer-supported">IE11 Is No Longer Supported</h2>
+
+<p>React-admin v5 uses React 18, which dropped support for Internet Explorer. If you need to support IE11, you’ll have to stay on react-admin v4.</p>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<h3 id="react-18">React 18</h3>
+
+<p>React-admin v5 uses React 18. If you use react-admin as a library in your own application, you’ll have to upgrade to React 18 as well.</p>
+
+<p>The React team has published a <a href="https://react.dev/blog/2022/03/08/react-18-upgrade-guide">migration guide</a> to help you upgrade. On most projects, this should be a matter of updating the root file of your application:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">-import { render } from 'react-dom';
+-const container = document.getElementById('app');
+-render(&lt;App tab="home" /&gt;, container);
+</span><span class="gi">+import { createRoot } from 'react-dom/client';
++const container = document.getElementById('app');
++const root = createRoot(container); // createRoot(container!) if you use TypeScript
++root.render(&lt;App tab="home" /&gt;);
+</span></code></pre></div></div>
+
+<p>React 18 adds out-of-the-box performance improvements by doing more batching by default.</p>
+
+<h3 id="use-tanstackreact-query-instead-of-react-query">Use <code class="language-plaintext highlighter-rouge">@tanstack/react-query</code> instead of <code class="language-plaintext highlighter-rouge">react-query</code></h3>
+
+<p>React-admin now uses <code class="language-plaintext highlighter-rouge">react-query</code> v5 instead of v3. The library name has changed to <code class="language-plaintext highlighter-rouge">@tanstack/react-query</code> (but it’s almost the same API). This new version supports React 18, offers performance improvements and new features (see <a href="https://tanstack.com/blog/announcing-tanstack-query-v4">v4</a> and <a href="https://tanstack.com/blog/announcing-tanstack-query-v5">v5</a> announcements).</p>
+
+<p>If you used <code class="language-plaintext highlighter-rouge">react-query</code> directly in your code, you’ll have to update it, following their migration guides:</p>
+
+<ul>
+  <li><a href="https://tanstack.com/query/v5/docs/react/guides/migrating-to-react-query-4">From react-query v3 to @tanstack/react-query v4</a></li>
+  <li><a href="https://tanstack.com/query/v5/docs/react/guides/migrating-to-v5">From @tanstack/react-query v4 to @tanstack/react-query v5</a>.</li>
+</ul>
+
+<p>Here is a focus of the most important changes.</p>
+
+<p>The package has been renamed to <code class="language-plaintext highlighter-rouge">@tanstack/react-query</code> so you’ll have to change your imports:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">-import { useQuery } from 'react-query';
+</span><span class="gi">+import { useQuery } from '@tanstack/react-query';
+</span></code></pre></div></div>
+
+<p>All react-query hooks, <code class="language-plaintext highlighter-rouge">queryClient</code> and <code class="language-plaintext highlighter-rouge">queryCache</code> methods now accept a single object argument:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">- useQuery(key, fn, options)
+</span><span class="gi">+ useQuery({ queryKey, queryFn, ...options })
+</span><span class="gd">- useInfiniteQuery(key, fn, options)
+</span><span class="gi">+ useInfiniteQuery({ queryKey, queryFn, ...options })
+</span><span class="gd">- useMutation(fn, options)
+</span><span class="gi">+ useMutation({ mutationFn, ...options })
+</span><span class="gd">- useIsFetching(key, filters)
+</span><span class="gi">+ useIsFetching({ queryKey, ...filters })
+</span><span class="gd">- useIsMutating(key, filters)
+</span><span class="gi">+ useIsMutating({ mutationKey, ...filters })
+</span>
+- queryClient.isFetching(key, filters)
+<span class="gi">+ queryClient.isFetching({ queryKey, ...filters })
+</span><span class="gd">- queryClient.ensureQueryData(key, filters)
+</span><span class="gi">+ queryClient.ensureQueryData({ queryKey, ...filters })
+</span><span class="gd">- queryClient.getQueriesData(key, filters)
+</span><span class="gi">+ queryClient.getQueriesData({ queryKey, ...filters })
+</span><span class="gd">- queryClient.setQueriesData(key, updater, filters, options)
+</span><span class="gi">+ queryClient.setQueriesData({ queryKey, ...filters }, updater, options)
+</span><span class="gd">- queryClient.removeQueries(key, filters)
+</span><span class="gi">+ queryClient.removeQueries({ queryKey, ...filters })
+</span><span class="gd">- queryClient.resetQueries(key, filters, options)
+</span><span class="gi">+ queryClient.resetQueries({ queryKey, ...filters }, options)
+</span><span class="gd">- queryClient.cancelQueries(key, filters, options)
+</span><span class="gi">+ queryClient.cancelQueries({ queryKey, ...filters }, options)
+</span><span class="gd">- queryClient.invalidateQueries(key, filters, options)
+</span><span class="gi">+ queryClient.invalidateQueries({ queryKey, ...filters }, options)
+</span><span class="gd">- queryClient.refetchQueries(key, filters, options)
+</span><span class="gi">+ queryClient.refetchQueries({ queryKey, ...filters }, options)
+</span><span class="gd">- queryClient.fetchQuery(key, fn, options)
+</span><span class="gi">+ queryClient.fetchQuery({ queryKey, queryFn, ...options })
+</span><span class="gd">- queryClient.prefetchQuery(key, fn, options)
+</span><span class="gi">+ queryClient.prefetchQuery({ queryKey, queryFn, ...options })
+</span><span class="gd">- queryClient.fetchInfiniteQuery(key, fn, options)
+</span><span class="gi">+ queryClient.fetchInfiniteQuery({ queryKey, queryFn, ...options })
+</span><span class="gd">- queryClient.prefetchInfiniteQuery(key, fn, options)
+</span><span class="gi">+ queryClient.prefetchInfiniteQuery({ queryKey, queryFn, ...options })
+</span>
+- queryCache.find(key, filters)
+<span class="gi">+ queryCache.find({ queryKey, ...filters })
+</span><span class="gd">- queryCache.findAll(key, filters)
+</span><span class="gi">+ queryCache.findAll({ queryKey, ...filters })
+</span></code></pre></div></div>
+
+<h4 id="codemod">Codemod</h4>
+
+<p>Fortunately, React Query comes with <a href="https://tanstack.com/query/latest/docs/react/guides/migrating-to-v5#codemod">codemods</a> to make the migration easier.</p>
+
+<blockquote>
+  <p><strong>DISCLAIMER</strong></p>
+
+  <p>The codemod is a best efforts attempt to help you migrate the breaking change. Please review the generated code thoroughly! Also, there are edge cases that cannot be found by the codemod, so please keep an eye on the log output.</p>
+
+  <p>Applying the codemod might break your code formatting, so please don’t forget to run <code class="language-plaintext highlighter-rouge">prettier</code> and/or <code class="language-plaintext highlighter-rouge">eslint</code> after you’ve applied the codemod!</p>
+</blockquote>
+
+<p>Once you have added <code class="language-plaintext highlighter-rouge">@tanstack/react-query</code> to your dependencies, you can run a codemod like so:</p>
+
+<p>For <code class="language-plaintext highlighter-rouge">.js</code> or <code class="language-plaintext highlighter-rouge">.jsx</code> files:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npx jscodeshift@latest ./path/to/src/ <span class="se">\</span>
+  <span class="nt">--extensions</span><span class="o">=</span>js,jsx <span class="se">\</span>
+  <span class="nt">--transform</span><span class="o">=</span>./node_modules/@tanstack/react-query/build/codemods/src/v5/remove-overloads/remove-overloads.cjs
+</code></pre></div></div>
+
+<p>For <code class="language-plaintext highlighter-rouge">.ts</code> or <code class="language-plaintext highlighter-rouge">.tsx</code> files:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npx jscodeshift@latest ./path/to/src/ <span class="se">\</span>
+  <span class="nt">--extensions</span><span class="o">=</span>ts,tsx <span class="se">\</span>
+  <span class="nt">--parser</span><span class="o">=</span>tsx <span class="se">\</span>
+  <span class="nt">--transform</span><span class="o">=</span>./node_modules/@tanstack/react-query/build/codemods/src/v5/remove-overloads/remove-overloads.cjs
+</code></pre></div></div>
+
+<p>Here are the available codemods you may need to run on your codebase:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">v4/replace-import-specifier.cjs</code></li>
+  <li><code class="language-plaintext highlighter-rouge">v4/key-transformation.cjs</code></li>
+  <li><code class="language-plaintext highlighter-rouge">v5/remove-overloads/remove-overloads.cjs</code></li>
+  <li><code class="language-plaintext highlighter-rouge">v5/is-loading/is-loading.cjs</code></li>
+  <li><code class="language-plaintext highlighter-rouge">v5/keep-previous-data/keep-previous-data.cjs</code></li>
+  <li><code class="language-plaintext highlighter-rouge">v5/rename-properties/rename-properties.cjs</code></li>
+  <li><code class="language-plaintext highlighter-rouge">v5/rename-hydrate/rename-hydrate.cjs</code></li>
+</ul>
+
+<p>Check out React Query <a href="https://tanstack.com/query/latest/docs/react/guides/migrating-to-v5#codemod">codemod documentation</a> for more information.</p>
+
+<h3 id="minor-dependencies">Minor Dependencies</h3>
+
+<p>Some dependencies of react-admin have been upgraded to their latest major:</p>
+
+<ul>
+  <li><a href="https://www.npmjs.com/package/date-fns">date-fns</a> from v2 to v3</li>
+  <li><a href="https://www.npmjs.com/package/inflection">inflection</a> from v1 to v3</li>
+  <li><a href="https://www.npmjs.com/package/react-dropzone">react-dropzone</a> from v12 to v14</li>
+  <li><a href="https://www.npmjs.com/package/react-error-boundary">react-error-boundary</a> from v3 to v4</li>
+  <li><a href="https://www.npmjs.com/package/react-i18next">react-i18next</a> from v13 to v14</li>
+</ul>
+
+<p>Each of these major versions comes with some breaking changes. You should check their respective changelogs to see if you need to update your code.</p>
+
+<p>If you use these dependencies in your own application, make sure you use similar versions to avoid bundling them twice in your application.</p>
+
+<h2 id="ui-changes">UI Changes</h2>
+
+<h3 id="inputs-have-full-width-by-default">Inputs Have Full Width By Default</h3>
+
+<p>In the default theme, all inputs now have full width. This makes forms better looking by default, and facilitates custom form layouts as you can nest inputs under <code class="language-plaintext highlighter-rouge">&lt;Grid&gt;</code>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Before</th>
+      <th>After</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img width="606" alt="Capture d’écran 2024-03-08 à 22 47 03" src="https://github.com/marmelab/react-admin/assets/99944/b9ff3b48-55ff-4d70-b154-da074f99f88b" /></td>
+      <td><img width="580" alt="Capture d’écran 2024-03-08 à 22 46 24" src="https://github.com/marmelab/react-admin/assets/99944/3c0e83da-3f3f-491b-999d-17fdec09e05e" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>If this breaks your existing form layouts, you can revert to the previous style by resetting the <code class="language-plaintext highlighter-rouge">fullWidth</code> default prop in the application theme. To do so:</p>
+
+<ul>
+  <li>If you didn’t use a custom theme, create one based on the default theme:</li>
+</ul>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">-import { Admin } from 'react-admin';
+</span><span class="gi">+import { Admin, defaultTheme } from 'react-admin';
++import { deepmerge } from '@mui/utils';
+</span><span class="p">import { dataProvider } from './dataProvider';
+</span>
++const theme = deepmerge(defaultTheme, {
+<span class="gi">+   components: { 
++       MuiFormControl: { defaultProps: { fullWidth: undefined } },
++       MuiTextField: { defaultProps: { fullWidth: undefined } },
++       MuiAutocomplete: { defaultProps: { fullWidth: undefined } },
++       RaSimpleFormIterator: { defaultProps: { fullWidth: undefined } },
++       RaTranslatableInputs: { defaultProps: { fullWidth: undefined } },
++   }
++});
+</span>
+const MyApp = () =&gt; (
+<span class="gd">-   &lt;Admin dataProvider={dataProvider}&gt;
+</span><span class="gi">+   &lt;Admin dataProvider={dataProvider} theme={theme}&gt;
+</span>        ...
+    &lt;/Admin&gt;
+<span class="err">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>If you used a custom theme, update it to include the following lines:</li>
+</ul>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">const myTheme = {
+</span>    // ...
+    components: {
+        // ...
+<span class="gi">+       MuiFormControl: { defaultProps: { fullWidth: undefined } },
++       MuiTextField: { defaultProps: { fullWidth: undefined } },
++       MuiAutocomplete: { defaultProps: { fullWidth: undefined } },
++       RaSimpleFormIterator: { defaultProps: { fullWidth: undefined } },
++       RaTranslatableInputs: { defaultProps: { fullWidth: undefined } },
+</span>    },
+<span class="err">}</span>
+</code></pre></div></div>
+
+<h3 id="links-are-now-underlined-by-default">Links are now underlined by default</h3>
+
+<p>In the default theme, links are now underlined by default.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Before</th>
+      <th>After</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img src="https://github.com/marmelab/react-admin/assets/99944/5501a2bc-5cc8-47c9-b267-2b80b672cf1a" alt="localhost_8000_ (1)" /></td>
+      <td><img src="https://github.com/marmelab/react-admin/assets/99944/525dc9f5-0b27-4fd0-b3c7-fe9f9af089b1" alt="localhost_8000_" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>If you use the <code class="language-plaintext highlighter-rouge">&lt;Link&gt;</code> component from <code class="language-plaintext highlighter-rouge">react-admin</code>, and you want to remove the underline, set the <code class="language-plaintext highlighter-rouge">underline</code> prop to <code class="language-plaintext highlighter-rouge">none</code>:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">import { Link } from 'react-admin';
+</span>
+const MyComponent = () =&gt; (
+<span class="gd">-   &lt;Link to="/foo"&gt;Foo&lt;/Link&gt;
+</span><span class="gi">+   &lt;Link to="/foo" underline="none"&gt;Foo&lt;/Link&gt;
+</span><span class="err">);</span>
+</code></pre></div></div>
+
+<p>Some react-admin component use <code class="language-plaintext highlighter-rouge">&lt;Link&gt;</code> under the hood, and will also render underlined links:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;Count&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;EmailField&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;FileField&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;ReferenceField&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;ReferenceManyCount&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;UrlField&gt;</code></li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;SingleFieldList&gt;</code> still disables the underline by default.</p>
+
+<p>To remove the underline in these components, use the <code class="language-plaintext highlighter-rouge">sx</code> prop. For instance, to remove the underline in <code class="language-plaintext highlighter-rouge">&lt;ReferenceField&gt;</code>:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">const CompanyField = () =&gt; (
+</span><span class="gd">-   &lt;ReferenceField source="company_id" reference="companies" /&gt;
+</span><span class="gi">+   &lt;ReferenceField source="company_id" reference="companies" sx={{
++      '&amp; a': { textDecoration: 'none' }
++   }} /&gt;
+</span><span class="err">)</span>
+</code></pre></div></div>
+
+<h3 id="dark-theme-is-available-by-default">Dark Theme Is Available By Default</h3>
+
+<p>In addition to the light theme, React-admin v5 includes a <a href="https://marmelab.com/react-admin/AppTheme.html#light-and-dark-themes">dark theme</a>, renders a theme switcher in the app bar, and chooses the default theme based on the user OS preferences.</p>
+
+<p>If you don’t need the dark mode feature, you’ll have to explicitly disable it:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">-&lt;Admin&gt;
+</span><span class="gi">+&lt;Admin darkTheme={null}&gt;
+</span>   ...
+<span class="gd">&lt;/Admin&gt;
+</span></code></pre></div></div>
+
+<h2 id="data-provider">Data Provider</h2>
+
+<h3 id="ra-data-graphql-and-ra-data-graphql-simple-no-longer-return-a-promise"><code class="language-plaintext highlighter-rouge">ra-data-graphql</code> And <code class="language-plaintext highlighter-rouge">ra-data-graphql-simple</code> No Longer Return A Promise</h3>
+
+<p>The Graphql data providers builders used to return a promise that made admins initialization complicated. This is no longer needed.</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">//</span> in App.js
+<span class="p">import React from 'react';
+import { Component } from 'react';
+import buildGraphQLProvider from 'ra-data-graphql-simple';
+import { Admin, Resource } from 'react-admin';
+</span>
+import { PostCreate, PostEdit, PostList } from './posts';
+
++ const dataProvider = buildGraphQLProvider({ clientOptions: { uri: 'http://localhost:4000' } });
+
+const App = () =&gt; {
+<span class="gd">-    const [dataProvider, setDataProvider] = React.useState(null);
+-    React.useEffect(() =&gt; {
+-        buildGraphQLProvider({ clientOptions: { uri: 'http://localhost:4000' } })
+-            .then(graphQlDataProvider =&gt; setDataProvider(() =&gt; graphQlDataProvider));
+-    }, []);
+</span>
+-    if (!dataProvider) {
+<span class="gd">-        return &lt;div&gt;Loading &lt; /div&gt;;
+-    }
+</span>
+    return (
+        &lt;Admin dataProvider={dataProvider} &gt;
+            &lt;Resource name="Post" list={PostList} edit={PostEdit} create={PostCreate} /&gt;
+        &lt;/Admin&gt;
+    );
+<span class="err">}</span>
+
+<span class="p">export default App;
+</span></code></pre></div></div>
+
+<h2 id="application-root--layout">Application Root &amp; Layout</h2>
+
+<h3 id="admin-menu-is-no-longer-supported"><code class="language-plaintext highlighter-rouge">&lt;Admin menu&gt;</code> Is No Longer Supported</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">&lt;Admin menu&gt;</code> prop was deprecated since 4.0. It’s no longer supported. If you want to customize the application menu, you’ll have to do it in a custom Layout instead:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">-import { Admin } from 'react-admin';
+</span><span class="gi">+import { Admin, Layout } from 'react-admin';
+</span><span class="p">import { MyMenu } from './MyMenu';
+</span>
++const MyLayout = ({ children }) =&gt; (
+<span class="gi">+    &lt;Layout menu={MyMenu}&gt;{children}&lt;/Layout&gt;
++);
+</span>
+const App = () =&gt; (
+<span class="gd">-   &lt;Admin menu={MyMenu} dataProvider={dataProvider}&gt;
+</span><span class="gi">+   &lt;Admin layout={MyLayout} dataProvider={dataProvider}&gt;
+</span>        ...
+    &lt;/Admin&gt;
+<span class="err">);</span>
+</code></pre></div></div>
+
+<h3 id="admin-history-prop-was-removed"><code class="language-plaintext highlighter-rouge">&lt;Admin history&gt;</code> Prop Was Removed</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">&lt;Admin history&gt;</code> prop was deprecated since version 4. It is no longer supported.</p>
+
+<p>The most common use-case for this prop was inside unit tests (and stories), to pass a <code class="language-plaintext highlighter-rouge">MemoryRouter</code> and control the <code class="language-plaintext highlighter-rouge">initialEntries</code>.</p>
+
+<p>To that purpose, <code class="language-plaintext highlighter-rouge">react-admin</code> now exports a <code class="language-plaintext highlighter-rouge">TestMemoryHistory</code> component that you can use in your tests:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">import { render, screen } from '@testing-library/react';
+</span><span class="gd">-import { createMemoryHistory } from 'history';
+-import { CoreAdminContext } from 'react-admin';
+</span><span class="gi">+import { CoreAdminContext, TestMemoryRouter } from 'react-admin';
+</span><span class="p">import * as React from 'react';
+</span>
+describe('my test suite', () =&gt; {
+    it('my test', async () =&gt; {
+<span class="gd">-       const history = createMemoryHistory({ initialEntries: ['/'] });
+</span>        render(
+<span class="gi">+           &lt;TestMemoryRouter initialEntries={['/']}&gt;
+</span><span class="gd">-             &lt;CoreAdminContext history={history}&gt;
+</span><span class="gi">+             &lt;CoreAdminContext&gt;
+</span>                &lt;div&gt;My Component&lt;/div&gt;
+              &lt;/CoreAdminContext&gt;
+<span class="gi">+           &lt;/TestMemoryRouter&gt;
+</span>        );
+        await screen.findByText('My Component');
+    });
+<span class="err">});</span>
+</code></pre></div></div>
+
+<h4 id="codemod-1">Codemod</h4>
+
+<p>To help you migrate your tests, we’ve created a codemod that will replace the <code class="language-plaintext highlighter-rouge">&lt;Admin history&gt;</code> prop with the <code class="language-plaintext highlighter-rouge">&lt;TestMemoryRouter&gt;</code> component.</p>
+
+<blockquote>
+  <p><strong>DISCLAIMER</strong></p>
+
+  <p>This codemod was used to migrate the react-admin test suite, but it was never designed to cover all cases, and was not tested against other code bases. You can try using it as basis to see if it helps migrating your code base, but please review the generated changes thoroughly!</p>
+
+  <p>Applying the codemod might break your code formatting, so please don’t forget to run <code class="language-plaintext highlighter-rouge">prettier</code> and/or <code class="language-plaintext highlighter-rouge">eslint</code> after you’ve applied the codemod!</p>
+</blockquote>
+
+<p>For <code class="language-plaintext highlighter-rouge">.js</code> or <code class="language-plaintext highlighter-rouge">.jsx</code> files:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npx jscodeshift ./path/to/src/ <span class="se">\</span>
+    <span class="nt">--extensions</span><span class="o">=</span>js,jsx <span class="se">\</span>
+    <span class="nt">--transform</span><span class="o">=</span>./node_modules/ra-core/codemods/replace-Admin-history.ts
+</code></pre></div></div>
+
+<p>For <code class="language-plaintext highlighter-rouge">.ts</code> or <code class="language-plaintext highlighter-rouge">.tsx</code> files:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npx jscodeshift ./path/to/src/ <span class="se">\</span>
+    <span class="nt">--extensions</span><span class="o">=</span>ts,tsx <span class="se">\</span>
+    <span class="nt">--parser</span><span class="o">=</span>tsx <span class="se">\</span>
+    <span class="nt">--transform</span><span class="o">=</span>./node_modules/ra-core/codemods/replace-Admin-history.ts
+</code></pre></div></div>
+
+<h3 id="historyrouter-was-removed"><code class="language-plaintext highlighter-rouge">&lt;HistoryRouter&gt;</code> Was Removed</h3>
+
+<p>Along with the removal of the <code class="language-plaintext highlighter-rouge">&lt;Admin history&gt;</code> prop, we also removed the (undocumented) <code class="language-plaintext highlighter-rouge">&lt;HistoryRouter&gt;</code> component.</p>
+
+<p>Just like for <code class="language-plaintext highlighter-rouge">&lt;Admin history&gt;</code>, the most common use-case for this component was inside unit tests (and stories), to control the <code class="language-plaintext highlighter-rouge">initialEntries</code>.</p>
+
+<p>Here too, you can use <code class="language-plaintext highlighter-rouge">TestMemoryHistory</code> as a replacement:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">import { render, screen } from '@testing-library/react';
+</span><span class="gd">-import { createMemoryHistory } from 'history';
+-import { CoreAdminContext, HistoryRouter } from 'react-admin';
+</span><span class="gi">+import { CoreAdminContext, TestMemoryRouter } from 'react-admin';
+</span><span class="p">import * as React from 'react';
+</span>
+describe('my test suite', () =&gt; {
+    it('my test', async () =&gt; {
+<span class="gd">-       const history = createMemoryHistory({ initialEntries: ['/'] });
+</span>        render(
+<span class="gd">-           &lt;HistoryRouter history={history}&gt;            
+</span><span class="gi">+           &lt;TestMemoryRouter initialEntries={['/']}&gt;
+</span>              &lt;CoreAdminContext&gt;
+                &lt;div&gt;My Component&lt;/div&gt;
+              &lt;/CoreAdminContext&gt;
+<span class="gd">-           &lt;/HistoryRouter&gt;
+</span><span class="gi">+           &lt;/TestMemoryRouter&gt;
+</span>        );
+        await screen.findByText('My Component');
+    });
+<span class="err">});</span>
+</code></pre></div></div>
+
+<h3 id="custom-layout-no-longer-receives-props">Custom Layout No Longer Receives Props</h3>
+
+<p>React-admin used to inject 4 props to <a href="https://marmelab.com/react-admin/Admin.html#layout">custom layouts</a>: <code class="language-plaintext highlighter-rouge">children</code>, <code class="language-plaintext highlighter-rouge">dashboard</code>, <code class="language-plaintext highlighter-rouge">menu</code>, and <code class="language-plaintext highlighter-rouge">title</code>. In react-admin v5, only the <code class="language-plaintext highlighter-rouge">children</code> prop is injected.</p>
+
+<p>This means that you’ll need to use hooks to get the other props:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gi">+import { useHasDashboard, useDefaultTitle } from 'react-admin';
+</span>
+-const MyLayout = ({ children, dashboard, title }) =&gt; (
+<span class="gi">+const MyLayout = ({ children }) =&gt; {
+</span><span class="gd">-   const hasDashboard = !!dashboard;
+</span><span class="gi">+   const hasDashboard = useHasDashboard();
++   const title = useDefaultTitle();
+</span>    // ...
+<span class="err">}</span>
+
+<span class="p">const App = () =&gt; (
+</span>    &lt;Admin layout={MyLayout} dataProvider={dataProvider}&gt;
+        ...
+    &lt;/Admin&gt;
+<span class="err">);</span>
+</code></pre></div></div>
+
+<p>As for the <code class="language-plaintext highlighter-rouge">menu</code> prop, it’s no longer injected by react-admin because the <code class="language-plaintext highlighter-rouge">&lt;Admin menu&gt;</code> prop is no longer supported. But you can still customize the menu of the default Layout as before:</p>
+
+<div class="language-tsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Layout</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-admin</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">MyMenu</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./MyMenu</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">MyLayout</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">children</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Layout</span> <span class="na">menu</span><span class="p">=</span><span class="si">{</span><span class="nx">MyMenu</span><span class="si">}</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">children</span><span class="si">}</span><span class="p">&lt;/</span><span class="nc">Layout</span><span class="p">&gt;</span>
+<span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Admin</span> <span class="na">layout</span><span class="p">=</span><span class="si">{</span><span class="nx">MyLayout</span><span class="si">}</span> <span class="na">dataProvider</span><span class="p">=</span><span class="si">{</span><span class="nx">dataProvider</span><span class="si">}</span><span class="p">&gt;</span>
+        ...
+    <span class="p">&lt;/</span><span class="nc">Admin</span><span class="p">&gt;</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="custom-app-bars-no-longer-receive-props">Custom App Bars No Longer Receive Props</h3>
+
+<p>React-admin used to inject 2 props to <a href="https://marmelab.com/react-admin/Layout.html#appbar">custom app bars</a>: <code class="language-plaintext highlighter-rouge">open</code>, and <code class="language-plaintext highlighter-rouge">title</code>. These deprecated props are no longer injected in v5. If you need them, you’ll have to use hooks:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gi">+import { useSidebarState, useDefaultTitle } from 'react-admin';
+</span>
+-const MyAppBar = ({ open, title }) =&gt; (
+<span class="gi">+const MyAppBar = () =&gt; {
++   const [open] = useSidebarState();
++   const title = useDefaultTitle();
+</span>    // ...
+<span class="err">}</span>
+
+<span class="p">const MyLayout = ({ children }) =&gt; (
+</span>    &lt;Layout appBar={MyAppBar}&gt;{children}&lt;/Layout&gt;
+<span class="err">);</span>
+</code></pre></div></div>
+
+<h3 id="custom-menu-no-longer-receive-props">Custom Menu No Longer Receive Props</h3>
+
+<p>React-admin used to inject one prop to <a href="https://marmelab.com/react-admin/Layout.html#menu">custom menus</a>: <code class="language-plaintext highlighter-rouge">hasDashboard</code>. This deprecated prop is no longer injected in v5. If you need it, you’ll have to use the <code class="language-plaintext highlighter-rouge">useHasDashboard</code> hook instead:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gi">+import { useHasDashboard } from 'react-admin';
+</span>
+-const MyMenu = ({ hasDashboard }) =&gt; (
+<span class="gi">+const MyMenu = () =&gt; {
++   const hasDashboard = useHasDashboard();
+</span>    // ...
+<span class="err">}</span>
+
+<span class="p">const MyLayout = ({ children }) =&gt; (
+</span>    &lt;Layout menu={MyMenu}&gt;{children}&lt;/Layout&gt;
+<span class="err">);</span>
+</code></pre></div></div>
+
+<h3 id="custom-error-page-no-longer-receives-title">Custom Error Page No Longer Receives Title</h3>
+
+<p>React-admin injects several props to <a href="https://marmelab.com/react-admin/Layout.html#error">custom error pages</a>, including the default app <code class="language-plaintext highlighter-rouge">title</code>. This prop is no longer injected in v5. If you need it, you’ll have to use the <code class="language-plaintext highlighter-rouge">useDefaultTitle</code> hook instead:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gi">+import { useDefaultTitle } from 'react-admin';
+</span>
+-const MyError = ({ error, errorInfo, title }) =&gt; (
+<span class="gi">+const MyError = ({ error, errorInfo }) =&gt; {
++   const title = useDefaultTitle();
+</span>    // ...
+<span class="err">}</span>
+
+<span class="p">const MyLayout = ({ children }) =&gt; (
+</span>    &lt;Layout error={MyError}&gt;{children}&lt;/Layout&gt;
+<span class="err">);</span>
+</code></pre></div></div>
+
+<h3 id="custom-catch-all-no-longer-receives-title">Custom Catch All No Longer Receives Title</h3>
+
+<p>React-admin used to inject the default app <code class="language-plaintext highlighter-rouge">title</code> to <a href="https://marmelab.com/react-admin/Admin.html#catchall">custom catch all pages</a>. This prop is no longer injected in v5. If you need it, you’ll have to use the <code class="language-plaintext highlighter-rouge">useDefaultTitle</code> hook instead:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gi">+import { useDefaultTitle } from 'react-admin';
+</span>
+-const MyCatchAll = ({ title }) =&gt; (
+<span class="gi">+const MyCatchAll = () =&gt; {
++   const title = useDefaultTitle();
+</span>    // ...
+<span class="err">}</span>
+
+<span class="p">const App = () =&gt; (
+</span>    &lt;Admin catchAll={MyCatchAll} dataProvider={dataProvider}&gt;
+        ...
+    &lt;/Admin&gt;
+<span class="err">);</span>
+</code></pre></div></div>
+
+<h2 id="list-components">List Components</h2>
+
+<h3 id="list-components-can-no-longer-be-used-in-standalone">List Components Can No Longer Be Used In Standalone</h3>
+
+<p>An undocumented feature allowed some components designed for list pages to be used outside of a list page, by relying on their props instead of the <code class="language-plaintext highlighter-rouge">ListContext</code>. This feature was removed in v5.</p>
+
+<p>This concerns the following components:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;BulkActionsToolbar&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;BulkDeleteWithConfirmButton&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;BulkDeleteWithUndoButton&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;BulkExportButton&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;BulkUpdateWithConfirmButton&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;BulkUpdateWithUndoButton&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;EditActions&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;ExportButton&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;FilterButton&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;FilterForm&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;ListActions&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;Pagination&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;UpdateWithConfirmButton&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;UpdateWithUndoButton&gt;</code></li>
+</ul>
+
+<p>To continue using these components, you’ll have to wrap them in a <code class="language-plaintext highlighter-rouge">&lt;ListContextProvider&gt;</code> component:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">const MyPagination = ({
+</span>    page,
+    perPage,
+    total,
+    setPage,
+    setPerPage,
+<span class="err">})</span> =&gt; {
+    return (
+<span class="gd">-       &lt;Pagination page={page} perPage={perPage} total={total} setPage={setPage} setPerPage={setPerPage} /&gt;
+</span><span class="gi">+       &lt;ListContextProvider value={{ page, perPage, total, setPage, setPerPage }}&gt;
++           &lt;Pagination /&gt;
++       &lt;/ListContextProvider&gt;
+</span>    );
+<span class="err">};</span>
+</code></pre></div></div>
+
+<p>The following components are not affected and can still be used in standalone mode:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;Datagrid&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;SimpleList&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;SingleFieldList&gt;</code></li>
+</ul>
+
+<h3 id="list-hascreate-is-no-longer-supported"><code class="language-plaintext highlighter-rouge">&lt;List hasCreate&gt;</code> Is No Longer Supported</h3>
+
+<p>To force a List view to display a Create button even though the corresponding resource doesn’t have a <code class="language-plaintext highlighter-rouge">create</code> component, pass a custom actions component to the List component:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">-import { List } from 'react-admin';
+</span><span class="gi">+import { List, ListActions } from 'react-admin';
+</span>
+const PostList = () =&gt; (
+<span class="gd">-   &lt;List hasCreate&gt;
+</span><span class="gi">+   &lt;List actions={&lt;ListActions hasCreate /&gt;}&gt;
+</span>        ...
+    &lt;/List&gt;
+<span class="err">);</span>
+</code></pre></div></div>
+
+<h3 id="datagrid-rowclick-is-no-longer-false-by-default"><code class="language-plaintext highlighter-rouge">&lt;Datagrid rowClick&gt;</code> is no longer <code class="language-plaintext highlighter-rouge">false</code> by default</h3>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;Datagrid&gt;</code> will now make the rows clickable as soon as a Show or Edit view is declared on the resource (using the <a href="https://marmelab.com/react-admin/Resource.html">resource definition</a>).</p>
+
+<p>If you previously relied on the fact that the rows were not clickable by default, you now need to explicitly disable the <code class="language-plaintext highlighter-rouge">rowClick</code> feature:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">-&lt;Datagrid&gt;
+</span><span class="gi">+&lt;Datagrid rowClick={false}&gt;
+</span>   ...
+<span class="gd">&lt;/Datagrid&gt;
+</span></code></pre></div></div>
+
+<h3 id="datagrid-expand-components-no-longer-receive-any-props"><code class="language-plaintext highlighter-rouge">&lt;Datagrid expand&gt;</code> Components No Longer Receive Any Props</h3>
+
+<p>An undocumented features allowed datagrid expand panels to read the current resource, record, and id from their props. This is no longer the case in v5, as expand panels are now rendered without props by <code class="language-plaintext highlighter-rouge">&lt;Datagrid&gt;</code>.</p>
+
+<p>If you used these props in your expand components, you’ll have to use the <code class="language-plaintext highlighter-rouge">useRecordContext</code> hook instead:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">-const PostExpandPanel = ({ record, resource, id }) =&gt; {
+</span><span class="gi">+const PostExpandPanel = () =&gt; {
++   const record = useRecordContext();
++   const resource = useResourceContext();
++   const id = record?.id;
+</span>    // ...
+<span class="err">}</span>
+</code></pre></div></div>
+
+<h3 id="datagrid-in-standalone-requires-a-resource-prop"><code class="language-plaintext highlighter-rouge">&lt;Datagrid&gt;</code> In Standalone Requires a <code class="language-plaintext highlighter-rouge">resource</code> Prop</h3>
+
+<p>When using <code class="language-plaintext highlighter-rouge">&lt;Datagrid&gt;</code> outside of a <code class="language-plaintext highlighter-rouge">&lt;List&gt;</code> component, you now need to pass a <code class="language-plaintext highlighter-rouge">resource</code> prop:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">const sort = { field: 'id', order: 'DESC' };
+</span>
+const MyCustomList = () =&gt; {
+    const { data, total, isPending } = useGetList('books', {
+        pagination: { page: 1, perPage: 10 },
+        sort,
+    });
+
+    return (
+        &lt;Datagrid
+<span class="gi">+           resource="books"
+</span>            data={data}
+            total={total}
+            isPending={isPending}
+            sort={sort}
+            bulkActionButtons={false}
+        &gt;
+            &lt;TextField source="id" /&gt;
+            &lt;TextField source="title" /&gt;
+        &lt;/Datagrid&gt;
+    );
+<span class="err">};</span>
+</code></pre></div></div>
+
+<h3 id="setfilters-is-no-longer-debounced-by-default"><code class="language-plaintext highlighter-rouge">setFilters</code> Is No Longer Debounced By Default</h3>
+
+<p>If you’re using the <code class="language-plaintext highlighter-rouge">useListContext</code> hook to filter a list, you might have used the <code class="language-plaintext highlighter-rouge">setFilters</code> function to update the filters. In react-admin v5, the <code class="language-plaintext highlighter-rouge">setFilters</code> function is no longer debounced by default. If you want to debounce the filters, you’ll have to pass <code class="language-plaintext highlighter-rouge">true</code> as the third argument:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">import { useListContext } from 'react-admin';
+</span>
+const MyFilter = () =&gt; {
+    const { filterValues, setFilters } = useListContext();
+    const handleChange = (event) =&gt; {
+<span class="gd">-       setFilters({ ...filterValues, [event.target.name]: event.target.value });
+</span><span class="gi">+       setFilters({ ...filterValues, [event.target.name]: event.target.value }, undefined, true);
+</span>    };
+
+    return (
+        &lt;form&gt;
+            &lt;input name="country" value={filterValues.country} onChange={handleChange} /&gt;
+            &lt;input name="city" value={filterValues.city} onChange={handleChange} /&gt;
+            &lt;input name="zipcode" value={filterValues.zipcode} onChange={handleChange} /&gt;
+        &lt;/form&gt;
+    );
+<span class="err">};</span>
+</code></pre></div></div>
+
+<h3 id="updates-to-bulkactionbuttons-syntax">Updates to <code class="language-plaintext highlighter-rouge">bulkActionButtons</code> Syntax</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">bulkActionButtons</code> prop has been moved from the <code class="language-plaintext highlighter-rouge">&lt;List&gt;</code> component to the <code class="language-plaintext highlighter-rouge">&lt;Datagrid&gt;</code> component.</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">const PostList = () =&gt; (
+</span><span class="gd">-   &lt;List bulkActionButtons={&lt;BulkActionButtons /&gt;}&gt;
+</span><span class="gi">+   &lt;List&gt;
+</span><span class="gd">-      &lt;Datagrid&gt;
+</span><span class="gi">+      &lt;Datagrid bulkActionButtons={&lt;BulkActionButtons /&gt;}&gt;
+</span>           ...
+       &lt;/Datagrid&gt;
+   &lt;/List&gt;
+<span class="err">);</span>
+</code></pre></div></div>
+
+<p>Besides, the buttons passed as <code class="language-plaintext highlighter-rouge">bulkActionButtons</code> no longer receive any prop. If you need the current filter values or the selected ids, you’ll have to use the <code class="language-plaintext highlighter-rouge">useListContext</code> hook:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">-const BulkResetViewsButton = ({ resource, selectedIds }) =&gt; {
+</span><span class="gi">+const BulkResetViewsButton = () =&gt; {
++   const { resource, selectedIds } = useListContext();
+</span>    const notify = useNotify();
+    const unselectAll = useUnselectAll(resource);
+    const [updateMany, { isPending }] = useUpdateMany();
+
+    const handleClick = () =&gt; {
+        updateMany(
+            resource,
+            { ids: selectedIds, data: { views: 0 } },
+            {
+                onSuccess: () =&gt; {
+                    notify('Views reset');
+                    unselectAll();
+                },
+                onError: () =&gt; notify('Views not reset', { type: 'error' }),
+            }
+        );
+    }
+    return (
+        &lt;Button
+            label="Reset views"
+            disabled={isPending}
+            onClick={() =&gt; updateMany()}
+        &gt;
+            &lt;VisibilityOff /&gt;
+        &lt;/Button&gt;
+    );
+<span class="err">};</span>
+</code></pre></div></div>
+
+<h3 id="paginationlimit-component-was-removed"><code class="language-plaintext highlighter-rouge">&lt;PaginationLimit&gt;</code> Component Was Removed</h3>
+
+<p>The deprecated <code class="language-plaintext highlighter-rouge">&lt;PaginationLimit&gt;</code> component was removed.</p>
+
+<h3 id="datagridbody-no-longer-provides-record-prop-to-datagridrow"><code class="language-plaintext highlighter-rouge">&lt;DatagridBody&gt;</code> No Longer Provides <code class="language-plaintext highlighter-rouge">record</code> Prop To <code class="language-plaintext highlighter-rouge">&lt;DatagridRow&gt;</code></h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">&lt;DatagridBody&gt;</code> component no longer provides a <code class="language-plaintext highlighter-rouge">record</code> prop to its <code class="language-plaintext highlighter-rouge">&lt;DatagridRow&gt;</code> children. Instead, it provides a <code class="language-plaintext highlighter-rouge">RecordContext</code> for each row:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">const MyDatagridRow = ({
+</span><span class="gd">-    record,
+-    id,
+</span>     onToggleItem,
+     children,
+     selected,
+     selectable,
+<span class="err">}:</span> DatagridRowProps) =&gt; {
+<span class="gi">+    const record = useRecordContext();
++    return record ? (
+</span><span class="gd">-         &lt;RecordContextProvider value={record}&gt;
+</span>          &lt;TableRow&gt;
+              &lt;/TableCell&gt;
+                  {selectable &amp;&amp; (
+                      &lt;Checkbox
+                          checked={selected}
+                          onClick={event =&gt; {
+                              if (onToggleItem) {
+<span class="gd">-                                      onToggleItem(id, event);
+</span><span class="gi">+                                      onToggleItem(record.id, event);
+</span>                              }
+                          }}
+                      /&gt;
+                  )}
+              &lt;/TableCell&gt;
+              {React.Children.map(children, field =&gt;
+                  React.isValidElement&lt;FieldProps&gt;(field) &amp;&amp;
+                  field.props.source ? (
+<span class="gd">-                         &lt;TableCell key={`${id}-${field.props.source}`}&gt;{field}&lt;/TableCell&gt;
+</span><span class="gi">+                         &lt;TableCell key={`${record.id}-${field.props.source}`}&gt;{field}&lt;/TableCell&gt;
+</span>                  ) : null
+              )}
+          &lt;/TableRow&gt;
+<span class="gd">-         &lt;/RecordContextProvider&gt;
+</span>     ) : null;
+<span class="err">};</span>
+</code></pre></div></div>
+
+<p>See the <a href="/react-admin/Datagrid.html#body"><code class="language-plaintext highlighter-rouge">&lt;Datagrid body/&gt;</code></a> documentation to learn how to create your own row component.</p>
+
+<h3 id="userecordselection-props-have-changed"><code class="language-plaintext highlighter-rouge">useRecordSelection</code> Props Have Changed</h3>
+
+<p>The props passed to the <code class="language-plaintext highlighter-rouge">useRecordSelection</code> hook have changed.
+You have to pass an object with a <code class="language-plaintext highlighter-rouge">resource</code> attribute instead of a string.</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">const MyComponent = () =&gt; {
+</span><span class="gd">-    const [selectedIds, selectionModifiers] = useRecordSelection('posts');
+</span><span class="gi">+    const [selectedIds, selectionModifiers] = useRecordSelection( { resource: 'posts' });
+</span>
+    ...
+<span class="err">};</span>
+</code></pre></div></div>
+
+<h2 id="show-and-edit-pages">Show and Edit Pages</h2>
+
+<h3 id="custom-edit-or-show-actions-no-longer-receive-any-props">Custom Edit or Show Actions No Longer Receive Any Props</h3>
+
+<p>React-admin used to inject the <code class="language-plaintext highlighter-rouge">record</code> and <code class="language-plaintext highlighter-rouge">resource</code> props to custom edit or show actions. These props are no longer injected in v5. If you need them, you’ll have to use the <code class="language-plaintext highlighter-rouge">useRecordContext</code> and <code class="language-plaintext highlighter-rouge">useResourceContext</code> hooks instead. But if you use the standard react-admin buttons like <code class="language-plaintext highlighter-rouge">&lt;ShowButton&gt;</code>, which already uses these hooks, you don’t need to inject anything.</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">-const MyEditActions = ({ data }) =&gt; (
+</span><span class="gi">+const MyEditActions = () =&gt; (
+</span>    &lt;TopToolbar&gt;
+<span class="gd">-       &lt;ShowButton record={data} /&gt;
+</span><span class="gi">+       &lt;ShowButton /&gt;
+</span>    &lt;/TopToolbar&gt;
+<span class="err">);</span>
+
+<span class="p">const PostEdit = () =&gt; (
+</span>    &lt;Edit actions={&lt;MyEditActions /&gt;} {...props}&gt;
+        ...
+    &lt;/Edit&gt;
+<span class="err">);</span>
+</code></pre></div></div>
+
+<h3 id="inputs-default-ids-are-auto-generated">Inputs default ids are auto-generated</h3>
+
+<p>In previous versions, the input default id was the source of the input. In v5, inputs defaults ids are auto-generated with <a href="https://react.dev/reference/react/useId">React useId()</a>.</p>
+
+<p><strong>Tip:</strong> You still can pass an id as prop of any <a href="/react-admin/Inputs.html">react-admin input</a> or use a <a href="https://fr.react.dev/reference/react/useRef">reference</a>.</p>
+
+<p>If you were using inputs ids in your tests, you should pass your own id to the dedicated input.</p>
+
+<h3 id="simpleformiterator-no-longer-clones-its-buttons"><code class="language-plaintext highlighter-rouge">&lt;SimpleFormIterator&gt;</code> No Longer Clones Its Buttons</h3>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;SimpleFormIterator&gt;</code> used to clones the add, remove and reorder buttons and inject some props to them such as <code class="language-plaintext highlighter-rouge">onClick</code> and <code class="language-plaintext highlighter-rouge">className</code>.
+If you relied on those props in your custom buttons, you should now leverage the following hooks:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">useSimpleFormIterator</code> for buttons that are not tied to an item such as the add button.</li>
+</ul>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">- import { Button, ButtonProps } from 'react-admin';
+</span><span class="gi">+ import { Button, ButtonProps, useSimpleFormIterator } from 'react-admin';
+</span>
+export const MyAddButton = (props: ButtonProps) =&gt; {
+<span class="gi">+    const { add } = useSimpleFormIterator();
+</span><span class="gd">-    return &lt;Button {...props}&gt;Add&lt;/Button&gt;;
+</span><span class="gi">+    return &lt;Button {...props} onClick={() =&gt; add()}&gt;Add&lt;/Button&gt;;
+</span><span class="err">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">useSimpleFormIteratorItem</code> for buttons that are tied to an item such as the remove and reorder buttons.</li>
+</ul>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">- import { Button, ButtonProps } from 'react-admin';
+</span><span class="gi">+ import { Button, ButtonProps, useSimpleFormIteratorItem } from 'react-admin';
+</span>
+export const MyRemoveButton = (props: ButtonProps) =&gt; {
+<span class="gi">+    const { remove } = useSimpleFormIteratorItem();
+</span><span class="gd">-    return &lt;Button {...props}&gt;Add&lt;/Button&gt;;
+</span><span class="gi">+    return &lt;Button {...props} onClick={() =&gt; remove()}&gt;Add&lt;/Button&gt;;
+</span><span class="err">}</span>
+</code></pre></div></div>
+
+<h3 id="simpleformiterator-no-longer-clones-its-children"><code class="language-plaintext highlighter-rouge">&lt;SimpleFormIterator&gt;</code> no longer clones its children</h3>
+
+<p>We’ve changed the implementation of <code class="language-plaintext highlighter-rouge">&lt;SimpleFormIterator&gt;</code>, the companion child of <code class="language-plaintext highlighter-rouge">&lt;ArrayInput&gt;</code>. This internal change is mostly backwards compatible, with one exception: defining the <code class="language-plaintext highlighter-rouge">disabled</code> prop on the <code class="language-plaintext highlighter-rouge">&lt;ArrayInput&gt;</code> component does not disable the children inputs anymore. If you relied on this behavior, you now have to specify the <code class="language-plaintext highlighter-rouge">disabled</code> prop on each input:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">&lt;ArrayInput disabled={someCondition}&gt;
+</span>   &lt;SimpleFormIterator&gt;
+<span class="gd">-      &lt;TextInput source="lastName" /&gt;
+-      &lt;TextInput source="firstName" /&gt;
+</span><span class="gi">+      &lt;TextInput source="lastName" disabled={someCondition} /&gt;
++      &lt;TextInput source="firstName" disabled={someCondition} /&gt;
+</span>   &lt;/SimpleFormIterator&gt;
+<span class="gd">&lt;/ArrayInput&gt;
+</span></code></pre></div></div>
+
+<h3 id="formdataconsumer-no-longer-passes-a-getsource-function"><code class="language-plaintext highlighter-rouge">&lt;FormDataConsumer&gt;</code> no longer passes a <code class="language-plaintext highlighter-rouge">getSource</code> function</h3>
+
+<p>When using <code class="language-plaintext highlighter-rouge">&lt;FormDataConsumer&gt;</code> inside an <code class="language-plaintext highlighter-rouge">&lt;ArrayInput&gt;</code>, the child function no longer receives a <code class="language-plaintext highlighter-rouge">getSource</code> callback. We’ve made all Input components able to work seamlessly inside an <code class="language-plaintext highlighter-rouge">&lt;ArrayInput&gt;</code>, so it’s no longer necessary to transform their source with <code class="language-plaintext highlighter-rouge">getSource</code>:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">import { Edit, SimpleForm, TextInput, ArrayInput, SelectInput, FormDataConsumer } from 'react-admin';
+</span>
+const PostEdit = () =&gt; (
+    &lt;Edit&gt;
+        &lt;SimpleForm&gt;
+            &lt;ArrayInput source="authors"&gt;
+                &lt;SimpleFormIterator&gt;
+                    &lt;TextInput source="name" /&gt;
+                    &lt;FormDataConsumer&gt;
+                        {({
+                            formData, // The whole form data
+                            scopedFormData, // The data for this item of the ArrayInput
+<span class="gd">-                           getSource,
+</span>                        }) =&gt;
+                            scopedFormData &amp;&amp; getSource &amp;&amp; scopedFormData.name ? (
+                                &lt;SelectInput
+<span class="gd">-                                    source={getSource('role')}
+</span><span class="gi">+                                    source="role" // Will translate to "authors[0].role"
+</span>                                    choices={[{ id: 1, name: 'Head Writer' }, { id: 2, name: 'Co-Writer' }]}
+                                /&gt;
+                            ) : null
+                        }
+                    &lt;/FormDataConsumer&gt;
+                &lt;/SimpleFormIterator&gt;
+            &lt;/ArrayInput&gt;
+        &lt;/SimpleForm&gt;
+    &lt;/Edit&gt;
+<span class="err">);</span>
+</code></pre></div></div>
+
+<h3 id="mutation-middlewares-no-longer-receive-the-mutation-options">Mutation Middlewares No Longer Receive The Mutation Options</h3>
+
+<p>Mutations middlewares no longer receive the mutation options:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">import * as React from 'react';
+import {
+</span>    useRegisterMutationMiddleware,
+    CreateParams,
+<span class="gd">-    MutateOptions,
+</span>    CreateMutationFunction
+<span class="err">}</span> from 'react-admin';
+
+const MyComponent = () =&gt; {
+    const createMiddleware = async (
+        resource: string,
+        params: CreateParams,
+<span class="gd">-        options: MutateOptions,
+</span>        next: CreateMutationFunction
+    ) =&gt; {
+        // Do something before the mutation
+
+        // Call the next middleware
+<span class="gd">-        await next(resource, params, options);
+</span><span class="gi">+        await next(resource, params);
+</span>
+        // Do something after the mutation
+    }
+    const memoizedMiddleWare = React.useCallback(createMiddleware, []);
+    useRegisterMutationMiddleware(memoizedMiddleWare);
+    // ...
+<span class="err">}</span>
+</code></pre></div></div>
+
+<h3 id="warnwhenunsavedchanges-changes"><code class="language-plaintext highlighter-rouge">warnWhenUnsavedChanges</code> Changes</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">warnWhenUnsavedChanges</code> feature is a little more restrictive than before:</p>
+
+<ul>
+  <li>It will open a confirmation dialog (and block the navigation) if a navigation is fired when the form is currently submitting (submission will continue in the background).</li>
+  <li><a href="https://stackoverflow.com/questions/38879742/is-it-possible-to-display-a-custom-message-in-the-beforeunload-popup">Due to browser constraints</a>, the message displayed in the confirmation dialog when closing the browser’s tab cannot be customized (it is managed by the browser).</li>
+</ul>
+
+<p>This behavior allows to prevent unwanted data loss in more situations. No changes are required in the code.</p>
+
+<p>However, the <code class="language-plaintext highlighter-rouge">warnWhenUnsavedChanges</code> now requires a <a href="https://reactrouter.com/en/6.22.3/routers/picking-a-router">Data Router</a> (a new type of router from react-router) to work. React-admin uses such a data router by default, so the feature works out of the box in v5.</p>
+
+<p>However, if you use a <a href="/react-admin/Routing.html#using-a-custom-router">custom router</a> and the <code class="language-plaintext highlighter-rouge">warnWhenUnsavedChanges</code> prop, the “warn when unsaved changes” feature will be disabled.</p>
+
+<p>To re-enable it, you’ll have to migrate your custom router to use the data router. For instance, if you were using <code class="language-plaintext highlighter-rouge">react-router</code>’s <code class="language-plaintext highlighter-rouge">BrowserRouter</code>, you will need to migrate to <code class="language-plaintext highlighter-rouge">createBrowserRouter</code> and wrap your app in a <code class="language-plaintext highlighter-rouge">RouterProvider</code>:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">import * as React from 'react';
+import { Admin, Resource } from 'react-admin';
+import { createRoot } from 'react-dom/client';
+</span><span class="gd">-import { BrowserRouter } from 'react-router-dom';
+</span><span class="gi">+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+</span>
+import dataProvider from './dataProvider';
+<span class="p">import posts from './posts';
+</span>
+const App = () =&gt; (
+<span class="gd">-    &lt;BrowserRouter&gt;
+</span>        &lt;Admin dataProvider={dataProvider}&gt;
+            &lt;Resource name="posts" {...posts} /&gt;
+        &lt;/Admin&gt;
+<span class="gd">-    &lt;/BrowserRouter&gt;
+</span><span class="err">);</span>
+
+<span class="gi">+const router = createBrowserRouter([{ path: '*', element: &lt;App /&gt; }]);
+</span>
+const container = document.getElementById('root');
+<span class="p">const root = createRoot(container);
+</span>
+root.render(
+    &lt;React.StrictMode&gt;
+<span class="gd">-        &lt;App /&gt;
+</span><span class="gi">+        &lt;RouterProvider router={router} /&gt;
+</span>    &lt;/React.StrictMode&gt;
+<span class="err">);</span>
+</code></pre></div></div>
+
+<p><strong>Tip:</strong> Check out the <a href="https://reactrouter.com/en/main/upgrading/v6-data">Migrating to RouterProvider</a> documentation to learn more about the migration steps and impacts.</p>
+
+<h3 id="global-server-side-validation-error-message-must-be-passed-via-the-rootservererror-key">Global Server Side Validation Error Message Must Be Passed Via The <code class="language-plaintext highlighter-rouge">root.serverError</code> Key</h3>
+
+<p>You can now include a global server-side error message in the response to a failed create or update request. This message will be rendered in a notification. To do so, include the error message in the <code class="language-plaintext highlighter-rouge">root.serverError</code> key of the <code class="language-plaintext highlighter-rouge">errors</code> object in the response body:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">{</span>
+    "body": {
+        "errors": {
+<span class="gi">+           "root": { "serverError": "Some of the provided values are not valid. Please fix them and retry." },
+</span>            "title": "An article with this title already exists. The title must be unique.",
+            "date": "The date is required",
+            "tags": { "message": "The tag 'agrriculture' doesn't exist" },
+        }
+    }
+<span class="err">}</span>
+</code></pre></div></div>
+
+<p><strong>Minor BC:</strong> To avoid a race condition between the notifications sent due to both the http error and the validation error, React Admin will no longer display a notification for the http error if the response contains a non-empty <code class="language-plaintext highlighter-rouge">errors</code> object and the mutation mode is <code class="language-plaintext highlighter-rouge">pessimistic</code>. If you relied on this behavior to render a global server-side error message, you should now include the message in the <code class="language-plaintext highlighter-rouge">root.serverError</code> key of the <code class="language-plaintext highlighter-rouge">errors</code> object.</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">{</span>
+-   "message": "Some of the provided values are not valid. Please fix them and retry.",
+    "body": {
+        "errors": {
+<span class="gi">+           "root": { "serverError": "Some of the provided values are not valid. Please fix them and retry." },
+</span>            "title": "An article with this title already exists. The title must be unique.",
+            "date": "The date is required",
+            "tags": { "message": "The tag 'agrriculture' doesn't exist" },
+        }
+    }
+<span class="err">}</span>
+</code></pre></div></div>
+
+<h2 id="input-components">Input Components</h2>
+
+<h3 id="fileinput-and-imageinput-accept-prop-has-changed"><code class="language-plaintext highlighter-rouge">&lt;FileInput&gt;</code> And <code class="language-plaintext highlighter-rouge">&lt;ImageInput&gt;</code> <code class="language-plaintext highlighter-rouge">accept</code> prop has changed</h3>
+
+<p>As we updated <a href="https://www.npmjs.com/package/react-dropzone">react-dropzone</a> from v12 to v14, the <code class="language-plaintext highlighter-rouge">accept</code> prop of the <code class="language-plaintext highlighter-rouge">&lt;FileInput&gt;</code> and <code class="language-plaintext highlighter-rouge">&lt;ImageInput&gt;</code> components has changed:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">-&lt;FileInput source="attachments" accept="application/pdf"&gt;
+</span><span class="gi">+&lt;FileInput source="attachments" accept={{ 'application/pdf': ['.pdf'] }}&gt;
+</span></code></pre></div></div>
+
+<p>See <a href="https://react-dropzone.js.org/#section-accepting-specific-file-types">react-dropzone documentation</a> for more details.</p>
+
+<h3 id="inputs-no-longer-require-to-be-touched-to-display-a-validation-error">Inputs No Longer Require To Be Touched To Display A Validation Error</h3>
+
+<p>In previous versions, validation errors were only displayed after the input was touched or the form was submitted. In v5, validation errors are fully entrusted to the form library (<code class="language-plaintext highlighter-rouge">react-hook-form</code>), which is responsible to decide when to display them.</p>
+
+<p><strong>Tip:</strong> You can use the <a href="https://react-hook-form.com/docs/useform#mode"><code class="language-plaintext highlighter-rouge">mode</code></a> prop to configure the validation strategy to your needs (<code class="language-plaintext highlighter-rouge">onSubmit</code>, <code class="language-plaintext highlighter-rouge">onBlur</code>, <code class="language-plaintext highlighter-rouge">onChange</code>, or <code class="language-plaintext highlighter-rouge">onTouched</code>).</p>
+
+<p>For most use-cases this will have no impact, because <code class="language-plaintext highlighter-rouge">react-hook-form</code> works the same way (it will wait for an input to be touched before triggering its validation).</p>
+
+<p>But this should help with some advanced cases, for instance if some validation errors need to be displayed on untouched fields.</p>
+
+<p>It will also improve the user experience, as the form <code class="language-plaintext highlighter-rouge">isValid</code> state will be consistent with error messages displayed on inputs, regardless of whether they have been touched or not.</p>
+
+<h3 id="inputhelpertext-touched-prop-was-removed"><code class="language-plaintext highlighter-rouge">&lt;InputHelperText touched&gt;</code> Prop Was Removed</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">&lt;InputHelperText&gt;</code> component no longer accepts a <code class="language-plaintext highlighter-rouge">touched</code> prop. This prop was used to display validation errors only if the input was touched. This behavior is now handled by <code class="language-plaintext highlighter-rouge">react-hook-form</code>.</p>
+
+<p>If you were using this prop, you can safely remove it.</p>
+
+<h2 id="typescript">TypeScript</h2>
+
+<p>React-admin now compiles with <code class="language-plaintext highlighter-rouge">strictNullChecks</code>. This means that an application based on react-admin v4 will probably not compile immediately with react-admin v5. This will force you to update your codebase, but that’s for the best: it will make your code more robust and less error-prone.</p>
+
+<h3 id="fields-components-requires-the-source-prop">Fields Components Requires The <code class="language-plaintext highlighter-rouge">source</code> Prop</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">FieldProps</code> interface now requires the <code class="language-plaintext highlighter-rouge">source</code> prop to be defined. As a consequence, all the default fields components also require the <code class="language-plaintext highlighter-rouge">source</code> prop to be defined.
+This impacts custom fields that typed their props with the <code class="language-plaintext highlighter-rouge">FieldProps</code> interface. If your custom field is not meant to be used in a <code class="language-plaintext highlighter-rouge">&lt;Datagrid&gt;</code>, you may declare the <code class="language-plaintext highlighter-rouge">source</code> prop optional:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">import { FieldProps, useRecordContext } from 'react-admin';
+</span>
+-const AvatarField = (props: FieldProps) =&gt; {
+<span class="gi">+const AvatarField = (props: Omit&lt;FieldProps, 'source'&gt;) =&gt; {
+</span>    const record = useRecordContext();
+    if (!record) return null;
+    return (
+        &lt;Avatar
+            src={record.avatar}
+            alt={`${record.first_name} ${record.last_name}`}
+            {...props}
+        /&gt;
+    );
+<span class="err">}</span>
+</code></pre></div></div>
+
+<h3 id="userecordcontext-returns-undefined-when-no-record-is-available"><code class="language-plaintext highlighter-rouge">useRecordContext</code> Returns <code class="language-plaintext highlighter-rouge">undefined</code> When No Record Is Available</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">useRecordContext</code> hook reads the current record from the <code class="language-plaintext highlighter-rouge">RecordContext</code>. This context may be empty (e.g. while the record is being fetched). The return type for <code class="language-plaintext highlighter-rouge">useRecordContext</code> has been modified to <code class="language-plaintext highlighter-rouge">Record | undefined</code> instead of <code class="language-plaintext highlighter-rouge">Record</code> to denote this possibility.</p>
+
+<p>As a consequence, the TypeScript compilation of your project may fail if you don’t check the existence of the record before reading it.</p>
+
+<p>To fix this error, your code should handle the case where <code class="language-plaintext highlighter-rouge">useRecordContext</code> returns <code class="language-plaintext highlighter-rouge">undefined</code>:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">const MyComponent = () =&gt; {
+</span>    const record = useRecordContext();
+<span class="gi">+   if (!record) return null;
+</span>    return (
+        &lt;div&gt;
+            &lt;h1&gt;{record.title}&lt;/h1&gt;
+            &lt;p&gt;{record.body}&lt;/p&gt;
+        &lt;/div&gt;
+    );
+<span class="err">};</span>
+</code></pre></div></div>
+
+<h3 id="useauthprovider-returns-undefined-when-no-authprovider-is-available"><code class="language-plaintext highlighter-rouge">useAuthProvider</code> Returns <code class="language-plaintext highlighter-rouge">undefined</code> When No <code class="language-plaintext highlighter-rouge">authProvider</code> Is Available</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">useAuthProvider</code> hook returns the current <code class="language-plaintext highlighter-rouge">authProvider</code>. Since the <code class="language-plaintext highlighter-rouge">authProvider</code> is optional, this context may be empty. Thus, the return type for <code class="language-plaintext highlighter-rouge">useAuthProvider</code> has been modified to <code class="language-plaintext highlighter-rouge">AuthProvider | undefined</code> instead of <code class="language-plaintext highlighter-rouge">AuthProvider</code> to denote this possibility.</p>
+
+<p>As a consequence, the TypeScript compilation of your project may fail if you don’t check the existence of the <code class="language-plaintext highlighter-rouge">authProvider</code> before reading it.</p>
+
+<p>To fix this error, your code should handle the case where <code class="language-plaintext highlighter-rouge">useAuthProvider</code> returns <code class="language-plaintext highlighter-rouge">undefined</code>:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">const useGetPermissions = (): GetPermissions =&gt; {
+</span>    const authProvider = useAuthProvider();
+    const getPermissions = useCallback(
+        (params: any = {}) =&gt;
+<span class="gi">+           authProvider ?
+</span>                authProvider
+                      .getPermissions(params)
+                      .then(result =&gt; result ?? null)
+<span class="gi">+               : Promise.resolve([]),
+</span>        [authProvider]
+    );
+    return getPermissions;
+<span class="err">};</span>
+</code></pre></div></div>
+
+<h3 id="page-contexts-are-now-types-instead-of-interfaces">Page Contexts Are Now Types Instead of Interfaces</h3>
+
+<p>The return type of page controllers is now a type. If you were using an interface extending one of:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">ListControllerResult</code>,</li>
+  <li><code class="language-plaintext highlighter-rouge">InfiniteListControllerResult</code>,</li>
+  <li><code class="language-plaintext highlighter-rouge">EditControllerResult</code>,</li>
+  <li><code class="language-plaintext highlighter-rouge">ShowControllerResult</code>, or</li>
+  <li><code class="language-plaintext highlighter-rouge">CreateControllerResult</code>,</li>
+</ul>
+
+<p>you’ll have to change it to a type:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">import { ListControllerResult } from 'react-admin';
+</span>
+-interface MyListControllerResult extends ListControllerResult {
+<span class="gi">+type MyListControllerResult = ListControllerResult &amp; {
+</span>    customProp: string;
+<span class="err">};</span>
+</code></pre></div></div>
+
+<h3 id="stronger-types-for-page-contexts">Stronger Types For Page Contexts</h3>
+
+<p>The return type of page context hooks is now smarter. This concerns the following hooks:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">useListContext</code>,</li>
+  <li><code class="language-plaintext highlighter-rouge">useEditContext</code>,</li>
+  <li><code class="language-plaintext highlighter-rouge">useShowContext</code>, and</li>
+  <li><code class="language-plaintext highlighter-rouge">useCreateContext</code></li>
+</ul>
+
+<p>Depending on the fetch status of the data, the type of the <code class="language-plaintext highlighter-rouge">data</code>, <code class="language-plaintext highlighter-rouge">error</code>, and <code class="language-plaintext highlighter-rouge">isPending</code> properties will be more precise:</p>
+
+<ul>
+  <li>Loading: <code class="language-plaintext highlighter-rouge">{ data: undefined, error: undefined, isPending: true }</code></li>
+  <li>Success: <code class="language-plaintext highlighter-rouge">{ data: &lt;Data&gt;, error: undefined, isPending: false }</code></li>
+  <li>Error: <code class="language-plaintext highlighter-rouge">{ data: undefined, error: &lt;Error&gt;, isPending: false }</code></li>
+  <li>Error After Refetch: <code class="language-plaintext highlighter-rouge">{ data: &lt;Data&gt;, error: &lt;Error&gt;, isPending: false }</code></li>
+</ul>
+
+<p>This means that TypeScript may complain if you use the <code class="language-plaintext highlighter-rouge">data</code> property without checking if it’s defined first. You’ll have to update your code to handle the different states:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">const MyCustomList = () =&gt; {
+</span>    const { data, error, isPending } = useListContext();
+    if (isPending) return &lt;Loading /&gt;;
+<span class="gi">+   if (error) return &lt;Error /&gt;;
+</span>    return (
+        &lt;ul&gt;
+            {data.map(record =&gt; (
+                &lt;li key={record.id}&gt;{record.name}&lt;/li&gt;
+            ))}
+        &lt;/ul&gt;
+    );
+<span class="err">};</span>
+</code></pre></div></div>
+
+<p>Besides, these hooks will now throw an error when called outside of a page context. This means that you can’t use them in a custom component that is not a child of a <code class="language-plaintext highlighter-rouge">&lt;List&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;ListBase&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;Edit&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;EditBase&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;Show&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;ShowBase&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;Create&gt;</code>, or <code class="language-plaintext highlighter-rouge">&lt;CreateBase&gt;</code> component.</p>
+
+<h3 id="editprops-and-createprops-now-expect-a-children-prop"><code class="language-plaintext highlighter-rouge">EditProps</code> and <code class="language-plaintext highlighter-rouge">CreateProps</code> now expect a <code class="language-plaintext highlighter-rouge">children</code> prop</h3>
+
+<p><code class="language-plaintext highlighter-rouge">EditProps</code> and <code class="language-plaintext highlighter-rouge">CreateProps</code> now expect a <code class="language-plaintext highlighter-rouge">children</code> prop, just like <code class="language-plaintext highlighter-rouge">ListProps</code> and <code class="language-plaintext highlighter-rouge">ShowProps</code>. If you were using these types in your custom components, you’ll have to update them:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">-const ReviewEdit = ({ id }: EditProps) =&gt; (
+</span><span class="gi">+const ReviewEdit = ({ id }: Omit&lt;EditProps, 'children'&gt;) =&gt; (
+</span>   &lt;Edit id={id}&gt;
+        &lt;SimpleForm&gt;
+            ...
+</code></pre></div></div>
+
+<h3 id="bulkactionprops-type-has-been-removed"><code class="language-plaintext highlighter-rouge">BulkActionProps</code> Type Has Been Removed</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">BulkActionProps</code> has been removed as it did not contain any prop. You can safely remove it from your custom bulk actions.</p>
+
+<h3 id="onerror-type-from-ra-core-was-removed"><code class="language-plaintext highlighter-rouge">onError</code> Type From <code class="language-plaintext highlighter-rouge">ra-core</code> Was Removed</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">onError</code> type from <code class="language-plaintext highlighter-rouge">ra-core</code> was removed. Use <code class="language-plaintext highlighter-rouge">OnError</code> instead.</p>
+
+<h3 id="publicfieldprops-interface-was-removed"><code class="language-plaintext highlighter-rouge">PublicFieldProps</code> Interface Was Removed</h3>
+
+<p><code class="language-plaintext highlighter-rouge">PublicFieldProps</code> interface has been removed. Use <code class="language-plaintext highlighter-rouge">FieldProps</code> instead.</p>
+
+<h3 id="injectedfieldprops-interface-was-removed"><code class="language-plaintext highlighter-rouge">InjectedFieldProps</code> Interface Was Removed</h3>
+
+<p><code class="language-plaintext highlighter-rouge">InjectedFieldProps</code> interface has been removed. Use <code class="language-plaintext highlighter-rouge">FieldProps</code> instead.</p>
+
+<h3 id="formclassname-prop-of-fieldprops-type-was-removed"><code class="language-plaintext highlighter-rouge">formClassName</code> Prop Of <code class="language-plaintext highlighter-rouge">FieldProps</code> Type Was Removed</h3>
+
+<p>The deprecated <code class="language-plaintext highlighter-rouge">formClassName</code> prop of <code class="language-plaintext highlighter-rouge">FieldProps</code> type has been removed as it is no longer used.</p>
+
+<h3 id="formclassname-prop-of-commoninputprops-type-was-removed"><code class="language-plaintext highlighter-rouge">formClassName</code> Prop Of <code class="language-plaintext highlighter-rouge">CommonInputProps</code> Type Was Removed</h3>
+
+<p>The deprecated <code class="language-plaintext highlighter-rouge">formClassName</code> prop of <code class="language-plaintext highlighter-rouge">CommonInputProps</code> type has been removed as it is no longer used.</p>
+
+<h2 id="authentication">Authentication</h2>
+
+<h3 id="usecheckauth-no-longer-accepts-a-disablenotification-param"><code class="language-plaintext highlighter-rouge">useCheckAuth</code> No Longer Accepts A <code class="language-plaintext highlighter-rouge">disableNotification</code> Param</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">useCheckAuth</code> hook no longer accepts the deprecated <code class="language-plaintext highlighter-rouge">disableNotification</code> param. To disable the “Authentication required” notification when calling <code class="language-plaintext highlighter-rouge">checkAuth</code>, <code class="language-plaintext highlighter-rouge">authProvider.checkAuth()</code> should return a rejected promise with the value <code class="language-plaintext highlighter-rouge">{ message: false }</code>:</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">authProvider</span><span class="p">:</span> <span class="nx">AuthProvider</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">//...</span>
+    <span class="na">checkAuth</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">reject</span><span class="p">({</span> <span class="na">message</span><span class="p">:</span> <span class="kc">false</span> <span class="p">}),</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="uselogoutifaccessdenied-no-longer-accepts-a-disablenotification-param"><code class="language-plaintext highlighter-rouge">useLogoutIfAccessDenied</code> No Longer Accepts A <code class="language-plaintext highlighter-rouge">disableNotification</code> Param</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">useLogoutIfAccessDenied</code> hook no longer accepts the deprecated <code class="language-plaintext highlighter-rouge">disableNotification</code> param. To disable the “Authentication required” notification when <code class="language-plaintext highlighter-rouge">checkError</code> is called, <code class="language-plaintext highlighter-rouge">authProvider.checkError()</code> should return a rejected promise with the value <code class="language-plaintext highlighter-rouge">{ message: false }</code>:</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">authProvider</span><span class="p">:</span> <span class="nx">AuthProvider</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">//...</span>
+    <span class="na">checkError</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">reject</span><span class="p">({</span> <span class="na">message</span><span class="p">:</span> <span class="kc">false</span> <span class="p">}),</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Or the <code class="language-plaintext highlighter-rouge">useLogoutIfAccessDenied</code> hook could be called with an error param as follows:</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">logoutIfAccessDenied</span> <span class="o">=</span> <span class="nx">useLogoutIfAccessDenied</span><span class="p">();</span>
+<span class="nx">logoutIfAccessDenied</span><span class="p">(</span><span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Denied</span><span class="dl">'</span><span class="p">));</span>
+</code></pre></div></div>
+
+<h3 id="usepermissionsoptimized-hook-was-removed"><code class="language-plaintext highlighter-rouge">usePermissionsOptimized</code> Hook Was Removed</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">usePermissionsOptimized</code> hooks was deprecated and has been removed. Use <code class="language-plaintext highlighter-rouge">usePermissions</code> instead.</p>
+
+<h2 id="routing">Routing</h2>
+
+<h3 id="linktorecord-helper-was-removed"><code class="language-plaintext highlighter-rouge">linkToRecord</code> Helper Was Removed</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">linkToRecord</code> helper was removed. Use <a href="/react-admin/Routing.html#linking-to-a-page"><code class="language-plaintext highlighter-rouge">useCreatePath</code></a> instead.</p>
+
+<h3 id="resolveredirectto-helper-was-removed"><code class="language-plaintext highlighter-rouge">resolveRedirectTo</code> Helper Was Removed</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">resolveRedirectTo</code> helper was removed. Use <a href="/react-admin/Routing.html#linking-to-a-page"><code class="language-plaintext highlighter-rouge">useCreatePath</code></a> instead.</p>
+
+<h2 id="theming">Theming</h2>
+
+<h3 id="usetheme-no-longer-accepts-a-theme-object-as-an-optional-argument"><code class="language-plaintext highlighter-rouge">useTheme</code> no longer accepts a theme object as an optional argument</h3>
+
+<p>The useTheme hook no longer accepts a <code class="language-plaintext highlighter-rouge">RaTheme</code> object as an argument to return a <code class="language-plaintext highlighter-rouge">RaTheme</code> object; instead, it now only takes an optional default value for the theme <strong>preference</strong> (<code class="language-plaintext highlighter-rouge">ThemeType</code>, like <code class="language-plaintext highlighter-rouge">"light"</code> and <code class="language-plaintext highlighter-rouge">"dark"</code>), and returns the current theme <strong>preference</strong> (<code class="language-plaintext highlighter-rouge">ThemeType</code>, like <code class="language-plaintext highlighter-rouge">"light"</code> and <code class="language-plaintext highlighter-rouge">"dark"</code>) and a setter for the <strong>preference</strong>.</p>
+
+<p>If you’re using a theme object to have <code class="language-plaintext highlighter-rouge">useTheme</code> determine the default value it should use, you should pass the value instead:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">const myThemeObject = {
+</span>    ...
+    palette: {
+        type: "light",
+        ...
+    }
+    ...
+<span class="err">};</span>
+
+<span class="gd">- const [themeObject, setTheme] = useTheme(myThemeObject)
+</span><span class="gi">+ const [themePreference, setTheme] = useTheme(myThemeObject.palette.type)
+</span><span class="err">//</span> Alternatively
+<span class="gi">+ const [themePreference, setTheme] = const useTheme("light")
+</span><span class="err">//</span> Alternatively, since you usually don't need a default value for the theme preference
+<span class="gi">+ const [themePreference, setTheme] = useTheme();
+</span></code></pre></div></div>
+
+<h3 id="togglethemebutton-no-longer-accepts-themes-as-props"><code class="language-plaintext highlighter-rouge">ToggleThemeButton</code> no longer accepts themes as props</h3>
+
+<p>In previous versions, <code class="language-plaintext highlighter-rouge">&lt;ToggleThemeButton&gt;</code> used to accept <code class="language-plaintext highlighter-rouge">lighTheme</code> and <code class="language-plaintext highlighter-rouge">darkTheme</code> props. These props are no longer supported in v5. Instead, you should set the themes in the <code class="language-plaintext highlighter-rouge">&lt;Admin&gt;</code> component. And by the way, react-admin is smart enough to include the <code class="language-plaintext highlighter-rouge">ToggleThemeButton</code> in the app bar if you set the themes in <code class="language-plaintext highlighter-rouge">&lt;Admin&gt;</code>, so you probably don’t need to include the button manually anymore.</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">-import { Admin, Layout, AppBar, ToggleThemeButton } from 'react-admin';
+</span><span class="gi">+import { Admin } from 'react-admin';
+</span><span class="p">import { dataProvider } from './dataProvider';
+import { lightTheme, darkTheme } from './themes';
+</span>
+-const MyAppBar = () =&gt; &lt;AppBar toolbar={&lt;ToggleThemeButton lightTheme={lightTheme} darkTheme={darkTheme} /&gt;} /&gt;
+<span class="gd">-const MyLayout = (props) =&gt; &lt;Layout {...props} appBar={&lt;MyAppBar /&gt;} /&gt;;
+</span>
+const App = () =&gt; (
+<span class="gd">-   &lt;Admin dataProvider={dataProvider} layout={MyLayout}&gt;
+</span><span class="gi">+   &lt;Admin dataProvider={dataProvider} lightTheme={lightTheme} darkTheme={darkTheme}&gt;
+</span>       ...
+    &lt;/Admin&gt;
+<span class="err">);</span>
+</code></pre></div></div>
+
+<h3 id="themeprovider-theme-is-no-longer-supported"><code class="language-plaintext highlighter-rouge">&lt;ThemeProvider theme&gt;</code> Is No Longer Supported</h3>
+
+<p>The deprecated <code class="language-plaintext highlighter-rouge">&lt;ThemeProvider theme&gt;</code> prop was removed. Use the <code class="language-plaintext highlighter-rouge">ThemesContext.Provider</code> instead:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">-import { ThemeProvider } from 'react-admin';
+</span><span class="gi">+import { ThemeProvider, ThemesContext } from 'react-admin';
+</span> 
+ export const ThemeWrapper = ({ children }) =&gt; {
+     return (
+<span class="gd">-        &lt;ThemeProvider
+-            theme={{
+-                palette: { mode: 'dark' },
+</span><span class="gi">+        &lt;ThemesContext.Provider
++            value={{
++                darkTheme: { palette: { mode: 'dark' } },
++                lightTheme: { palette: { mode: 'light' } },
+</span>             }}
+         &gt;
+<span class="gd">-            {children}
+-        &lt;/ThemeProvider&gt;
+</span><span class="gi">+            &lt;ThemeProvider&gt;{children}&lt;/ThemeProvider&gt;
++        &lt;/ThemesContext.Provider&gt;
+</span>     );
+ };
+</code></pre></div></div>
+
+<h2 id="misc">Misc</h2>
+
+<h3 id="data-generator-retail-commands-have-been-renamed-to-orders"><code class="language-plaintext highlighter-rouge">data-generator-retail</code> <code class="language-plaintext highlighter-rouge">commands</code> Have Been Renamed to <code class="language-plaintext highlighter-rouge">orders</code></h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">data-generator-retail</code> package has been updated to provide types for all its records. In the process, we renamed the <code class="language-plaintext highlighter-rouge">commands</code> resource to <code class="language-plaintext highlighter-rouge">orders</code>. Accordingly, the <code class="language-plaintext highlighter-rouge">nb_commands</code> property of the <code class="language-plaintext highlighter-rouge">customers</code> resource has been renamed to <code class="language-plaintext highlighter-rouge">nb_orders</code> and the <code class="language-plaintext highlighter-rouge">command_id</code> property of the <code class="language-plaintext highlighter-rouge">invoices</code> and <code class="language-plaintext highlighter-rouge">reviews</code> resources has been renamed to <code class="language-plaintext highlighter-rouge">order_id</code>.</p>
+
+<h3 id="support-for-proptypes-was-removed">Support For PropTypes Was Removed</h3>
+
+<p>React-admin no longer supports (<a href="https://legacy.reactjs.org/blog/2017/04/07/react-v15.5.0.html#new-deprecation-warnings">deprecated React PropTypes</a>). We encourage you to switch to TypeScript to type component props.</p>
+
+<h2 id="upgrading-to-v4">Upgrading to v4</h2>
+
+<p>If you are on react-admin v3, follow the <a href="https://marmelab.com/react-admin/doc/4.16/Upgrade.html">Upgrading to v4</a> guide before upgrading to v5.</p>
+
+                        </div>
+                    </div>
+                    <div class="col hide-on-small-only m3 toc-container">
+                        <div class="toc"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <script src="/react-admin/js/materialize.min.js"></script>
+        <script src="/react-admin/js/prism.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.0/tocbot.min.js"
+            defer
+            integrity="sha512-oD3xGN8YTxenx6tdS4D/RKqO4OtORBQtAb2/FseM17GGMIi6jMwKUBc8duX4A5RwMOGGXoFBZrsqbOk8GpXFgQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+        <script src="/react-admin/js/ra-doc-exec.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+        
+        <script type="text/javascript">
+            docsearch({
+                container: '#docsearch',
+                appId: 'QY9T9CVM2N',
+                indexName: 'marmelab-react-admin',
+                apiKey: '75332227370be3dc35777cee6244881a',
+                searchParameters: {
+                    facetFilters: ['version:  latest'],
+                    attributesToHighlight: ['hierarchy.lvl0'],
+                },
+            });
+        </script>
+
+        <!--
+        React-admin protects your privacy!
+        We use our own self-hosted tracking solution to collect some raw metrics,
+        like page views, device type (mobile, desktop, etc.) or country.
+        We don't track any personal information about our visitors.
+    -->
+        <script
+            async
+            defer
+            data-website-id="ef7f8242-2808-4cbf-9dff-564daa515bbd"
+            src="https://analytics.marmelab.com/umami.js"
+        ></script>
+
+        <!-- Newsletter form -->
+        <script>
+            window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
+            window.LOCALE = 'en';
+            window.GENERIC_INVALID_MESSAGE =
+                window.EMAIL_INVALID_MESSAGE =
+                window.SMS_INVALID_MESSAGE =
+                    'The information provided is invalid. Please review the field format and try again.';
+            window.REQUIRED_ERROR_MESSAGE = 'This field is required.';
+
+            var AUTOHIDE = Boolean(0);
+        </script>
+
+        <script
+            async
+            defer
+            src="https://unpkg.com/typescript@5.1.3/lib/typescript.js"
+        ></script>
+        <script
+            async
+            defer
+            src="https://unpkg.com/prettier@2.8.8/standalone.js"
+        ></script>
+        <script
+            async
+            defer
+            src="https://unpkg.com/prettier@2.8.8/parser-babel.js"
+        ></script>
+    </body>
+</html>
